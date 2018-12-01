@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+.pants.d
+dist
+.pids
+.pants.workdir.file_lock
