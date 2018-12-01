@@ -8,5 +8,10 @@ python_binary(
         "3rdparty/python:opentracing"
     ],
     source = "server.py",
-    entry_point = "hello_world.server"
+    entry_point = "hello_world.server",
+    platforms=[
+        'current',
+        'linux-x86_64',
+        'macosx-10.12-x86_64',
+    ],
 )
