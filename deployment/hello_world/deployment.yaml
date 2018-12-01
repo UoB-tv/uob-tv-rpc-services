@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        editor: vscode
+    spec:
+      containers:
+      - name: hello-world-server
+        image: eu.gcr.io/ubo-tv-project-dev/hello-world-server:1
+        ports:
+          - containerPort: 8000

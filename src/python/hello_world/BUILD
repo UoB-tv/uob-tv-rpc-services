@@ -1,9 +1,12 @@
 python_binary(
-    name = "server",
+    name = "hello-world-server",
     dependencies = [
         "generated/python:grpc_generated_services",
         "src/python/hello_world/service:hello_world_service",
-        "3rdparty/python:grpcio"
+        "3rdparty/python:grpcio",
+        "3rdparty/python:grpcio-opentracing",
+        "3rdparty/python:opentracing"
     ],
-    source = "server.py"
+    source = "server.py",
+    entry_point = "hello_world.server"
 )
