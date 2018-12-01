@@ -37,4 +37,3 @@ Each service folder contains Python source code and `BUILD` file. A build file d
 ### Testing a service locally
 
     $ ./pants test tests/python/hello-world:server
-
