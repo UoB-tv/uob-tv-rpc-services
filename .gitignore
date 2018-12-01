@@ -108,3 +108,8 @@ venv.bak/
 dist
 .pids
 .pants.workdir.file_lock
+
+node_modules/
+**/node_modules/
+
+deployment/**/*.pex

@@ -37,3 +37,14 @@ Each service folder contains Python source code and `BUILD` file. A build file d
 ### Testing a service locally
 
     $ ./pants test tests/python/hello-world:server
+
+### Build a Python PEX binary file 
+
+    $ pants binary src/python/hello_world:hello-world-server
+
+### Build and push a docker container to Google Container Registry
+
+    docker build --rm -t eu.gcr.io/uob-tv-project/dev/hello-world-server:1 -f deployment/hello_world/Dockerfile dist/
+
+    docker push eu.gcr.io/uob-tv-project-dev/hello-world-server:1
+

@@ -3,3 +3,6 @@ freeze_deps:
 
 proto_gen:
 	python -m grpc_tools.protoc -I src/proto/ --python_out=generated/python --grpc_python_out=generated/python src/proto/health_check.proto
+
+docker_clean:
+	docker rm $(docker ps -a -q);

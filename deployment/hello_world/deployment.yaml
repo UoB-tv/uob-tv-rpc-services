@@ -4,6 +4,8 @@ metadata:
   name: hello-world-v1
 spec:
   replicas: 1
+  selector:
+    app: 234
   template:
     metadata:
       labels:
