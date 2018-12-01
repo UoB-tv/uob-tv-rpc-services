@@ -3,7 +3,7 @@ import grpc_service_generated.hello_pb2 as hello
 
 class Greeter(hello_grpc.GreeterServicer):
     def SayHello(self, request, context):
-    return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+        return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
