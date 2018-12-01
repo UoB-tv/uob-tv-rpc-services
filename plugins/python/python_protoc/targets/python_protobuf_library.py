@@ -1,4 +1,4 @@
-from pants.backend.python.targets.python_target import PythonTarget
+from pants.backend.python.targets.python_library import PythonLibrary
 from pants.base.payload import Payload
 from pants.base.payload_field import PrimitivesSetField
 from pants.build_graph.target import Target
@@ -26,13 +26,11 @@ class PythonProtoBufLibrary(Target):
     def alias(cls):
         return "python_protobuf_library"
 
-class PythonProtoBufGenLibrary(PythonTarget):
+class PythonProtoBufGenLibrary(PythonLibrary):
     
-    def __init__(self, sources=None, address=None, payload=None, **kwargs):
-        payload = payload or Payload()
-        payload.add_fields({
-            'sources': self.create_sources_field(sources=sources,
-                                               sources_rel_path=address.spec_path,
-                                               key_arg='sources'),
-        })
+    def __init__(self, **kwargs):
         super(PythonProtoBufGenLibrary, self).__init__(**kwargs)
+
+    @classmethod
+    def alias(cls):
+        return "python_gen_protobuf_library"

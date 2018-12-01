@@ -5,12 +5,14 @@ from pants.build_graph.build_file_aliases import BuildFileAliases
 
 from python_protoc.targets.python_protobuf import PythonProtoBuf
 from python_protoc.targets.python_protobuf_library import PythonProtoBufLibrary
+from python_protoc.targets.python_protobuf_library import PythonProtoBufGenLibrary
 
 def build_file_aliases():
     return BuildFileAliases(
         targets={
             PythonProtoBuf.alias() : PythonProtoBuf,
             PythonProtoBufLibrary.alias() : PythonProtoBufLibrary,
+            PythonProtoBufGenLibrary.alias(): PythonProtoBufGenLibrary,
         }    
     )
 

@@ -44,7 +44,5 @@ class PythonProtocGenTask(SimpleCodegenTask):
         return PythonProtoBufGenLibrary
 
     def execute_codegen(self, target, target_workdir):
-        output_dir = os.path.join(target_workdir, "src", "python")
-        command = "python -m grpc_tools.protoc -I../../protos --python_out={} --grpc_python_out={}".format(output_dir, output_dir)
-        
-"
+        output_dir = os.path.join(target_workdir, "src", "python", "generated")
+        command = "python -m grpc_tools.protoc -I src/proto/** --python_out={} --grpc_python_out={}".format(output_dir, output_dir)
