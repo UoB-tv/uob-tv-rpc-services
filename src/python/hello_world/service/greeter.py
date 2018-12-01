@@ -1,5 +1,5 @@
-import generated.hello_pb2_grpc as hello_grpc
-import generated.hello_pb2
+import hello_pb2_grpc as hello_grpc
+import hello_pb2
 
 class Greeter(hello_grpc.GreeterServicer):
     def SayHello(self, request, context):
