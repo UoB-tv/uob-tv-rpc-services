@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: uob-tv-api-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+    number: 8000
+    name: grpc-gateway
+    protocol: HTTPS
+    hosts:
+    - "*"
+  - port:
+    number: 80
+    name: http
+    protocol: HTTP
+    hosts:
+    - "*"

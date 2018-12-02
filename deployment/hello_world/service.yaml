@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hello-world-service-v1
+  namespace: app-backends
 spec:
   selector:
     app: hello-world
