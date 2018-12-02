@@ -1,18 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-v1
+  name: hello-world-deployment
+  labels:
+    app: hello-world
 spec:
   replicas: 1
   selector:
-    app: 234
+    matchLabels:
+      app: hello-world
   template:
     metadata:
       labels:
-        editor: vscode
+        app: hello-world
+        version: "v1"
     spec:
       containers:
       - name: hello-world-server
-        image: eu.gcr.io/ubo-tv-project-dev/hello-world-server:1
+        image: eu.gcr.io/uob-tv-project-dev/hello-world-server:1
         ports:
           - containerPort: 8000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world-service-v1
+spec:
+  selector:
+    app: hello-world
+    version: "v1"
+  ports:
+  - port: 8000
+    targetPort: 8000
+
