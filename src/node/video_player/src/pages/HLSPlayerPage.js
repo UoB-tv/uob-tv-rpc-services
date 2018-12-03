@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { URLInput } from '../components'
 import ReactHLS from 'react-hls';
 
-export class HomePage extends Component {
+export class HLSPlayerPage extends Component {
     constructor(props) {
         super(props);
         this.state = {URL: ''};
         this.handleURLChange = this.handleURLChange.bind(this);
     
     }
-
+    
     handleURLChange(value) {
         console.log(value);
         this.setState({URL:value});
@@ -18,7 +18,11 @@ export class HomePage extends Component {
     render() {
         return (
             <div>
-                Home Page
+                <URLInput onSubmit={this.handleURLChange}/>
+                <div>
+                    <h2>HLS playback</h2>  
+                    <ReactHLS url={this.state.URL} />
+                </div>
             </div>
         )
     }
