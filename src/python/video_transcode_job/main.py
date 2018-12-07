@@ -1,5 +1,14 @@
 from argparse import ArgumentParser
 
+import logging
+
+from concurrent import futures
+
+logger = logging.getLogger("video-trancode-job.main")
+logger.setLevel(logging.INFO)
+
+configs = []
+
 job_args = ArgumentParser("video_transcode_job")
 
 job_args.add_argument(
@@ -49,8 +58,7 @@ job_args.add_argument(
 )
 
 def main():
-    # namespace = job_args.parse_args()
-    pass
+    namespace = jobs_args.parse_args()
 
 if __name__ == "__main__":
     main()

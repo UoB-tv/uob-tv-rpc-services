@@ -1,0 +1,10 @@
+python_binary(
+    name="pubsub-job-publisher",
+    dependencies=[
+        "3rdparty/python:google-cloud-pubsub",
+        "3rdparty/python:google-cloud-core",
+        "3rdparty/python:google-auth",
+        "generated/python:grpc_generated_services",
+    ],
+    source="main.py",
+)

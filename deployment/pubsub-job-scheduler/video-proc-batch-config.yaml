@@ -8,6 +8,9 @@ metadata:
 data:
   config: |-
     ---
-    videoSourceBucket: "uob-tv-videos"
-    convertedVideoBucket: "uob-tv-videos-public"
+    jobName: video-transcode-job
+    projectId: uob-tv-project-dev
+    subscriptionName: video-proc-workers-subscription
+    videoSourceBucket: uob-tv-videos
+    convertedVideoBucket: uob-tv-videos-public
     outputSizes: "480,720"

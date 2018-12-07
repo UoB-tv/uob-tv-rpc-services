@@ -1,4 +1,4 @@
-NAME = hello-world-server
+NAME = pubsub-job-scheduler
 BINARY = ${NAME}.pex
 
 BINARY_PATH = "../../dist/${BINARY}"
@@ -6,7 +6,6 @@ REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
 VERSION=1
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
-
 copy_binary:
 	cp -rf ${BINARY_PATH} .
 

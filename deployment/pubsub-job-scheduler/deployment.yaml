@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pubsub-job-scheduler
+  namespace: video-proc-batch
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: pubsub-job-scheduler
+        version: v1
+    spec:
+      containers:
+      - name: pubsub-job-scheduler
+        image: 

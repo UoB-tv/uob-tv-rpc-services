@@ -1,0 +1,1 @@
+./pants run src/python/pubsub_job_scheduler:pubsub-job-scheduler -- -p uob-tv-project-dev -s video-proc-workers-subscription

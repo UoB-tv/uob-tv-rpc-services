@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+message PubSubJobMessage {
+    string jobId = 1;
+    string jobType = 2;
+    /* reserve field IDs from 3 - 15 for future use*/
+    oneof jobArgs {
+        VideoTranscodeJobArgs videoTranscodeJobArgs = 16;
+
+    }
+}
+
+message VideoTranscodeJobArgs {
+    string bucketName = 1;
+    string gsRawVideo = 2;
+    string format = 3;
+    repeated string outputSizes=4;
+    string convertedVideoBucket = 5;
+    string convertedVidePath = 6;
+}
+
+/*
+
+payload = {
+            "job_id": "{}".format(uuid.uuid4()),
+            "job_type": "video-transcode",
+            "job_args": {
+                "bucket_name": namespace.bucket_name,
+                "gs_raw_video": namespace.gs_raw_video,
+                "format": namespace.format,
+                "output_sizes": namespace.output_sizes,
+                "converted_video_bucket": namespace.converted_video_bucket,
+                "converted_video_path": namespace.converted_video_path,
+            }
+        }
+
+*/
