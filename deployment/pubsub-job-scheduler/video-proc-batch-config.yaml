@@ -8,6 +8,6 @@ metadata:
 data:
   config: |-
     ---
-    :videoSourceBucket: "uob-tv-videos"
-    :convertedVideoBucket: "uob-tv-videos-public"
-    :outputSizes: "480,720"
+    videoSourceBucket: "uob-tv-videos"
+    convertedVideoBucket: "uob-tv-videos-public"
+    outputSizes: "480,720"
