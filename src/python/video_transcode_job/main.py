@@ -11,8 +11,8 @@ job_args.add_argument(
 )
 
 job_args.add_argument(
-    "-s",
-    "--gs_path",
+    "-r",
+    "--gs_raw_video",
     required= True,
     help="Google Storage path for the raw video file",
 )

@@ -3,9 +3,8 @@ ARG BINARY
 ENV BIN=$BINARY
 
 # install ffmpeg on ubuntu
-RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
-    apt-get update -y && \
-    apt-get install ffmpeg 
+RUN apt-get update -y && \
+    apt-get install ffmpeg -y
 
 # copy batch binary to python
 COPY $BINARY  /

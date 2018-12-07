@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: video-transcode-job-{{ job-id }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: video-transcode-job
+        image: eu.gcr.io/uob-tv-project-dev/video-transcode-job
+        command: ["python", "video-transcode-job.pex", "-b", "{{ source_bucket_name }}", "-r", "{{ gs_raw_video }}", "-d", "{{ upload_bucket }}", "-u", "{{ gs_upload_path }}", "-f", "{{ video_format }}", "-o", "720,480,360"]
+      restartPolicy: Never
+  backoffLimit: 4
