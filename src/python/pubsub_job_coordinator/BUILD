@@ -1,9 +1,0 @@
-python_binary(
-    name="pubsub-job-coordinator",
-    dependencies=[
-        "3rdparty/python:google-cloud-core",
-        "3rdparty/python:google-auth",
-        "3rdparty/python:google-cloud-pubsub",
-    ],
-    source="main.py"
-)
