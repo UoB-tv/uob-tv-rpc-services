@@ -113,3 +113,5 @@ node_modules/
 **/node_modules/
 
 deployment/**/*.pex
+
+.vscode/
