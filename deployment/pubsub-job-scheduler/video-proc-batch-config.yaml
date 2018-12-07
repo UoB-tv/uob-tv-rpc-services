@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: video-proc-batch-configs
+  namespace: video-proc-batch
+  labels:
+    app: video-transcode-job
+data:
+  config: |-
+    ---
+    :videoSourceBucket: "uob-tv-videos"
+    :convertedVideoBucket: "uob-tv-videos-public"
+    :outputSizes: "480,720"

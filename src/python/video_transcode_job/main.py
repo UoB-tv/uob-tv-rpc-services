@@ -34,15 +34,15 @@ job_args.add_argument(
 
 job_args.add_argument(
     "-u",
-    "--gs_upload_path",
+    "--converted_video_path",
     type=str,
     required=True,
     help="Google Storage path for transcoded segment files."
 )
 
 job_args.add_argument(
-    "-d",
-    "--upload_bucket_name",
+    "-c",
+    "--converted_video_bucket",
     type=str,
     required=True,
     help="Upload bucket name."
