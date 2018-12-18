@@ -3,6 +3,10 @@ import React from 'react'
 import {
     Layout
 } from '../layout'
+
+import {
+    UserAvatar,
+} from '../components'
 import { 
     Typography,
     Grid,
@@ -23,9 +27,9 @@ const styles = (theme) => ({
 })
 
 var ChannelPage = (props) => (
-    <Layout activeMenu={'home'}>
+    <Layout>
         <div className={props.classes.userInfo}>
-            <Typography variant="h6">jlasf's channel</Typography>
+            <Typography variant="h6"><UserAvatar inline /> jlasf's channel</Typography>
         </div>
         <div className={props.classes.container}>
             <Grid container spacing={16}>
@@ -50,7 +54,7 @@ var ChannelPage = (props) => (
                     </Typography>
                 </Grid>
                 <Grid container>
-                    
+
                 </Grid>
             </Grid>
         </div>
