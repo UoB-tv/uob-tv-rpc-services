@@ -5,7 +5,7 @@ import {
 } from '../layout'
 
 export var indexPage = () => (
-    <Layout activeMenu={'home'}>
+    <Layout activeMenu={'my_channel'}>
         <div></div>
     </Layout>
 )
