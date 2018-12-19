@@ -22,7 +22,6 @@ const styles = theme => ({
         width: "100%",
         padding: 0,
         maxHeight: "480",
-        backgroundColor: "black",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
@@ -94,6 +93,7 @@ export class IndexPage extends React.Component {
                             showMetadata
                             metadata={this.metadata}
                             playsinline
+                            live={true}
                         />
                     </Grid>
                     { false ? 
