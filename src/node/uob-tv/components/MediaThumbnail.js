@@ -3,7 +3,29 @@ import PropTypes from 'prop-types'
 import { Typography, withStyles } from '@material-ui/core';
 
 const styles = (theme) => ({
-
+    root: {
+        textAlign: "left",
+    },
+    imageFrame: {
+        width: "100%",
+        paddingBottom: "75%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundColor: "black",
+        backgroundSize: "cover",
+        marginBottom: theme.spacing.unit,
+    },
+    image: {
+        
+    },
+    title: {
+        fontWeight: 'bold',
+        fontSize: theme.typography.fontSize + 2,
+    },
+    description: {
+        fontWeight: 400,
+        fontSize: theme.typography.fontSize
+    }
 })
 
 export class MediaThumbnail extends React.PureComponent {
@@ -16,16 +38,15 @@ export class MediaThumbnail extends React.PureComponent {
     }
 
     render() {
-        const { media } = this.props.media
+        const { media, classes } = this.props
         return (
-            <div>
-                <div>
-                    <img src={media.thumbnailImg}/>
+            <div className={classes.root}>
+                <div className={classes.imageFrame} style={{backgroundImage: `url(${media.thumbnailImage})`}}>
                 </div>
-                <Typography>
+                <Typography className={classes.title}>
                     {media.title}
                 </Typography>
-                <Typography>
+                <Typography className={classes.description}>
                     {media.description}
                 </Typography>
             </div>
