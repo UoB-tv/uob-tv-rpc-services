@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+
+message User {
+    int64 id = 1;
+    string username = 2;
+    string email = 3;
+    string passwordHash = 4;
+    Profile profile = 5;
+    
+}
+
+message Profile {
+    string avatarURL = 1;
+}
+
+message GetUserByIdRequest {
+    int64 id = 1;
+}
+
+message GetUserByEmailRequest {
+    string email = 1;
+}
+
+message GetUserByUsernameRequest {
+    string username = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message CreateUserRequest {
+    string username = 1;
+    string email = 2;
+    string passwordHash = 3;
+}
+
+message CreateUserResponse {
+    bool created = 1;
+}
+
+
+service UserService {
+    rpc GetById(GetUserByIdRequest) returns (GetUserResponse) {}
+    rpc GetByUsername(GetUserByUsernameRequest) returns (GetUserResponse) {}
+    rpc GetByEmail(GetUserByEmailRequest) returns (GetUserResponse) {}
+    
+    rpc CreateUser(CreateUserRequest) returns(CreateUserResponse) {}
+}

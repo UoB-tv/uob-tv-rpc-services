@@ -87,7 +87,7 @@ export class IndexPage extends React.Component {
                 <Grid container>
                     <Grid item xs={12} className={classes.playerContainer}>
                         <MediaPlayer
-                            url="https://storage.googleapis.com/uob-tv-videos-public/vods/i0as8id8f0adf/manifest.m3u8"
+                            url="http://35.241.0.213/vods/i0as8id8f0adf/manifest.m3u8"
                             controls
                             responsive={true}
                             showMetadata
