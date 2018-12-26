@@ -1,5 +1,5 @@
 {
-  "name": "uob-tv",
+  "name": "uob-tv-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "serve": "next build && next start"
+    "serve": "next build && next start",
+    "start": "next start"
   },
   "keywords": [],
   "author": "",

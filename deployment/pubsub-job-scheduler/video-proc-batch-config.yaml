@@ -13,4 +13,4 @@ data:
     subscriptionName: video-proc-workers-subscription
     videoSourceBucket: uob-tv-videos
     convertedVideoBucket: uob-tv-videos-public
-    outputSizes: "480,720"
+    outputSizes: "480,720,1080"

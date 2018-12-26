@@ -11,6 +11,26 @@ spec:
         app: pubsub-job-scheduler
         version: v1
     spec:
+      serviceAccountName: video-job-scheduler-sa
       containers:
       - name: pubsub-job-scheduler
-        image: 
+        image: pubsub-job-scheduler:1
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      - name: kubectl-proxy
+        image: eu.gcr.io/uob-tv-project-dev/kubectl-container:1
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        # proxy kube api server locally on port 8085
+        command: ["kubectl proxy -p 8085"]
+      restartPolicy: Always

@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: uob-tv-web-service
+  namespace: app-backends
+  labels:
+    app: uob-tv-web
+spec:
+  selector:
+    app:  uob-tv-web
+  type: ClusterIP
+  ports:
+  - name:  http
+    port: 3000
+    targetPort: 3000
+    protocol: TCP
