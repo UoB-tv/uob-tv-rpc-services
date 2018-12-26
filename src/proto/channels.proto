@@ -1,10 +1,26 @@
 syntax = "proto3";
 
 message Channel {
-    int64 id = 1;
-    int64 userId = 4;
+    int32 id = 1;
+    int32 userId = 4;
     string title = 2;
     string description = 3;
 }
 
 
+message GetChannelForUserRequest {
+    int32 userid = 1;
+}
+
+message GetChannelByIdRequest {
+    int32 id = 1;
+}
+
+message CreateChannelForUser {
+    int32 userId = 1;
+}
+
+service ChannelService {
+    rpc GetChannelById(GetChannelByIdRequest) returns (Channel) {}
+    rpc GetChannelForUser(GetChannelForUserRequest) returns (Channel) {}
+}

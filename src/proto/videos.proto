@@ -1,6 +1,16 @@
 syntax = "proto3";
+import "google/protobuf/timestamp.proto";
 
 message Video {
-    int64 id = 1;
-    int64 created = 3;
+    int32 id = 1;
+    google.protobuf.Timestamp createdAt = 2;
+    float duration = 3;
+    string title = 4;
+    string description = 5;
+    string storageURL = 6;
+}
+
+message VideoUploadTask {
+    int64 videoId = 1;
+    int64 
 }
