@@ -1,7 +1,7 @@
 NAME = ossrs
 BINARY = ${NAME}
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=1
+VERSION=2
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 
@@ -10,4 +10,3 @@ docker_image:
 
 docker_push_image: docker_image
 	docker push ${TAG}
-

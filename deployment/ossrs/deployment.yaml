@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ossrs-deployment
+  namespace: video-proc-streaming
+  labels:
+    app: ossrs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ossrs
+  template:
+    metadata:
+      labels:
+        app: ossrs
+    spec:
+      containers:
+      - name: ossrs
+        image: eu.gcr.io/uob-tv-project-dev/ossrs:2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 1935
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "800m"

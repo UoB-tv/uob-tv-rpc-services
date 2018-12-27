@@ -14,6 +14,7 @@ spec:
     hosts:
     - "www.uob-tv.co.uk"
     - "uob-tv.co.uk"
+    - "ingest.uob-tv.co.uk"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -22,7 +23,8 @@ metadata:
   namespace: app-backends
 spec:
   hosts:
-  - "*"
+  - "www.uob-tv.co.uk"
+  - "uob-tv.co.uk"
   gateways:
   - uob-tv-web-gateway
   http:
