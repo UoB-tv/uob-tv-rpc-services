@@ -12,7 +12,8 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "www.uob-tv.co.uk"
+    - "uob-tv.co.uk"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
