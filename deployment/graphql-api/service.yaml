@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: graphql-api-service
+  namespace: app-backends
+spec:
+  selector:
+    app: graphql-api
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP

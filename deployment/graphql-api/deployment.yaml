@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphql-api-deployment
+  namespace: app-backends
+  labels:
+    app: graphql-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: graphql-api
+  template:
+    metadata:
+      labels:
+        app: graphql-api
+        version: "v0.1"
+    spec:
+      containers:
+      - name: graphql-api-server
+        image: eu.gcr.io/uob-tv-project-dev/graphql-api:0.1
+        ports:
+          - containerPort: 8080
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "350m"

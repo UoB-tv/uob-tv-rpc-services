@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: graphql-api-routes
+  namespace: app-backends
+spec:
+  hosts:
+  - "www.uob-tv.co.uk"
+  - "uob-tv.co.uk"
+  gateways:
+  - graphql-api-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api/v1/graphql
+    rewrite:
+      uri: /graphql
+    route:
+    - destination:
+        host: graphql-api-service
+        port:
+          number: 8080
