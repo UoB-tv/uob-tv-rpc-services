@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: uob-tv-web-gateway
+  name: uob-tv-public-gateway
   namespace: app-backends
 spec:
   selector:

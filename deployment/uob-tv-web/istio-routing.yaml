@@ -8,7 +8,7 @@ spec:
   - "www.uob-tv.co.uk"
   - "uob-tv.co.uk"
   gateways:
-  - uob-tv-web-gateway
+  - uob-tv-public-gateway
   http:
   - match:
     - uri:
