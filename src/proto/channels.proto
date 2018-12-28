@@ -3,7 +3,6 @@ package  tv.uob.grpc;
 
 option java_multiple_files = true;
 option java_package = "tv.uob.grpc";
-option java_outer_classname = "ChannelService";
 
 message Channel {
     int32 id = 1;
