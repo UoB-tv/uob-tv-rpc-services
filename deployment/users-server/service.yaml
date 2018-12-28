@@ -1,12 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: hello-world-service-v1
+  name: users-service
   namespace: app-backends
 spec:
   selector:
-    app: hello-world
-    version: "v1"
+    app: users
   ports:
   - port: 6000
     targetPort: 6000

@@ -11,4 +11,4 @@ python_binary(
         'linux-x86_64',
         'macosx-10.12-x86_64',
     ]
-),
+)

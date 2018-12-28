@@ -9,11 +9,14 @@ from grpc_opentracing.grpcext import intercept_server
 
 from hello_world.service.greeter import Greeter
 
+import os
 import time
 import grpc
 from concurrent import futures
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
+
+GRPC_PORT = os.getenv("GRPC_PORT", default=6000)
 
 class HealthCheck(health_check_pb2_grpc.HealthServicer):
     def Check(self, request, context):
@@ -31,9 +34,9 @@ def serve():
     hello_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
     health_check_pb2_grpc.add_HealthServicer_to_server(HealthCheck(), server)
 
-    server.add_insecure_port('[::]:8000')
+    server.add_insecure_port('[::]:{}'.format(GRPC_PORT))
     server.start()
-    print("server listening on 8000")
+    print("server listening on ", GRPC_PORT)
 
     try:
         while True:
