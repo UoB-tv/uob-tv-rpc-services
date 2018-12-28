@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='health_check.proto',
   package='grpc.health.v1',
   syntax='proto3',
-  serialized_options=None,
-  serialized_pb=_b('\n\x12health_check.proto\x12\x0egrpc.health.v1\"%\n\x12HealthCheckRequest\x12\x0f\n\x07service\x18\x01 \x01(\t\"\x94\x01\n\x13HealthCheckResponse\x12\x41\n\x06status\x18\x01 \x01(\x0e\x32\x31.grpc.health.v1.HealthCheckResponse.ServingStatus\":\n\rServingStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0b\n\x07SERVING\x10\x01\x12\x0f\n\x0bNOT_SERVING\x10\x02\x32Z\n\x06Health\x12P\n\x05\x43heck\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponseb\x06proto3')
+  serialized_options=_b('\n\016grpc.health.v1B\006HealthP\001'),
+  serialized_pb=_b('\n\x12health_check.proto\x12\x0egrpc.health.v1\"%\n\x12HealthCheckRequest\x12\x0f\n\x07service\x18\x01 \x01(\t\"\x94\x01\n\x13HealthCheckResponse\x12\x41\n\x06status\x18\x01 \x01(\x0e\x32\x31.grpc.health.v1.HealthCheckResponse.ServingStatus\":\n\rServingStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0b\n\x07SERVING\x10\x01\x12\x0f\n\x0bNOT_SERVING\x10\x02\x32Z\n\x06Health\x12P\n\x05\x43heck\x12\".grpc.health.v1.HealthCheckRequest\x1a#.grpc.health.v1.HealthCheckResponseB\x1a\n\x0egrpc.health.v1B\x06HealthP\x01\x62\x06proto3')
 )
 
 
@@ -134,6 +134,7 @@ HealthCheckResponse = _reflection.GeneratedProtocolMessageType('HealthCheckRespo
 _sym_db.RegisterMessage(HealthCheckResponse)
 
 
+DESCRIPTOR._options = None
 
 _HEALTH = _descriptor.ServiceDescriptor(
   name='Health',

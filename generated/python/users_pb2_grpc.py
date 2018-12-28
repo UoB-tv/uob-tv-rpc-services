@@ -15,22 +15,22 @@ class UserServiceStub(object):
       channel: A grpc.Channel.
     """
     self.GetById = channel.unary_unary(
-        '/UserService/GetById',
+        '/tv.uob.grpc.UserService/GetById',
         request_serializer=users__pb2.GetUserByIdRequest.SerializeToString,
         response_deserializer=users__pb2.GetUserResponse.FromString,
         )
     self.GetByUsername = channel.unary_unary(
-        '/UserService/GetByUsername',
+        '/tv.uob.grpc.UserService/GetByUsername',
         request_serializer=users__pb2.GetUserByUsernameRequest.SerializeToString,
         response_deserializer=users__pb2.GetUserResponse.FromString,
         )
     self.GetByEmail = channel.unary_unary(
-        '/UserService/GetByEmail',
+        '/tv.uob.grpc.UserService/GetByEmail',
         request_serializer=users__pb2.GetUserByEmailRequest.SerializeToString,
         response_deserializer=users__pb2.GetUserResponse.FromString,
         )
     self.CreateUser = channel.unary_unary(
-        '/UserService/CreateUser',
+        '/tv.uob.grpc.UserService/CreateUser',
         request_serializer=users__pb2.CreateUserRequest.SerializeToString,
         response_deserializer=users__pb2.CreateUserResponse.FromString,
         )
@@ -93,5 +93,5 @@ def add_UserServiceServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'UserService', rpc_method_handlers)
+      'tv.uob.grpc.UserService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

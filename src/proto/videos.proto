@@ -1,5 +1,11 @@
 syntax = "proto3";
+package  tv.uob.grpc;
+
 import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "tv.uob.grpc";
+option java_outer_classname = "VideoService";
 
 message Video {
     int32 id = 1;
@@ -8,4 +14,17 @@ message Video {
     string title = 4;
     string description = 5;
     string storageURL = 6;
+}
+
+message GetVideoByIdRequest {
+    int32 id = 1;
+}
+
+message GetVideoResponse {
+    bool sucess = 1;
+    Video video = 2;
+}
+
+service VideoService {
+    rpc GetVideoById(GetVideoByIdRequest) returns (GetVideoResponse) {}
 }

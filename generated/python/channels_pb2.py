@@ -16,10 +16,10 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='channels.proto',
-  package='',
+  package='tv.uob.grpc',
   syntax='proto3',
-  serialized_options=None,
-  serialized_pb=_b('\n\x0e\x63hannels.proto\"I\n\x07\x43hannel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"*\n\x18GetChannelForUserRequest\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"#\n\x15GetChannelByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x14\x43reateChannelForUser\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\x82\x01\n\x0e\x43hannelService\x12\x34\n\x0eGetChannelById\x12\x16.GetChannelByIdRequest\x1a\x08.Channel\"\x00\x12:\n\x11GetChannelForUser\x12\x19.GetChannelForUserRequest\x1a\x08.Channel\"\x00\x62\x06proto3')
+  serialized_options=_b('\n\013tv.uob.grpcB\016ChannelServiceP\001'),
+  serialized_pb=_b('\n\x0e\x63hannels.proto\x12\x0btv.uob.grpc\"I\n\x07\x43hannel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"*\n\x18GetChannelForUserRequest\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"#\n\x15GetChannelByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x14\x43reateChannelForUser\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xb2\x01\n\x0e\x43hannelService\x12L\n\x0eGetChannelById\x12\".tv.uob.grpc.GetChannelByIdRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x12R\n\x11GetChannelForUser\x12%.tv.uob.grpc.GetChannelForUserRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x42\x1f\n\x0btv.uob.grpcB\x0e\x43hannelServiceP\x01\x62\x06proto3')
 )
 
 
@@ -27,34 +27,34 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _CHANNEL = _descriptor.Descriptor(
   name='Channel',
-  full_name='Channel',
+  full_name='tv.uob.grpc.Channel',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='Channel.id', index=0,
+      name='id', full_name='tv.uob.grpc.Channel.id', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='userId', full_name='Channel.userId', index=1,
+      name='userId', full_name='tv.uob.grpc.Channel.userId', index=1,
       number=4, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='title', full_name='Channel.title', index=2,
+      name='title', full_name='tv.uob.grpc.Channel.title', index=2,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='description', full_name='Channel.description', index=3,
+      name='description', full_name='tv.uob.grpc.Channel.description', index=3,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -72,20 +72,20 @@ _CHANNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18,
-  serialized_end=91,
+  serialized_start=31,
+  serialized_end=104,
 )
 
 
 _GETCHANNELFORUSERREQUEST = _descriptor.Descriptor(
   name='GetChannelForUserRequest',
-  full_name='GetChannelForUserRequest',
+  full_name='tv.uob.grpc.GetChannelForUserRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userid', full_name='GetChannelForUserRequest.userid', index=0,
+      name='userid', full_name='tv.uob.grpc.GetChannelForUserRequest.userid', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -103,20 +103,20 @@ _GETCHANNELFORUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=93,
-  serialized_end=135,
+  serialized_start=106,
+  serialized_end=148,
 )
 
 
 _GETCHANNELBYIDREQUEST = _descriptor.Descriptor(
   name='GetChannelByIdRequest',
-  full_name='GetChannelByIdRequest',
+  full_name='tv.uob.grpc.GetChannelByIdRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='GetChannelByIdRequest.id', index=0,
+      name='id', full_name='tv.uob.grpc.GetChannelByIdRequest.id', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -134,20 +134,20 @@ _GETCHANNELBYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=137,
-  serialized_end=172,
+  serialized_start=150,
+  serialized_end=185,
 )
 
 
 _CREATECHANNELFORUSER = _descriptor.Descriptor(
   name='CreateChannelForUser',
-  full_name='CreateChannelForUser',
+  full_name='tv.uob.grpc.CreateChannelForUser',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userId', full_name='CreateChannelForUser.userId', index=0,
+      name='userId', full_name='tv.uob.grpc.CreateChannelForUser.userId', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -165,8 +165,8 @@ _CREATECHANNELFORUSER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=174,
-  serialized_end=212,
+  serialized_start=187,
+  serialized_end=225,
 )
 
 DESCRIPTOR.message_types_by_name['Channel'] = _CHANNEL
@@ -178,45 +178,46 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 Channel = _reflection.GeneratedProtocolMessageType('Channel', (_message.Message,), dict(
   DESCRIPTOR = _CHANNEL,
   __module__ = 'channels_pb2'
-  # @@protoc_insertion_point(class_scope:Channel)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.Channel)
   ))
 _sym_db.RegisterMessage(Channel)
 
 GetChannelForUserRequest = _reflection.GeneratedProtocolMessageType('GetChannelForUserRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETCHANNELFORUSERREQUEST,
   __module__ = 'channels_pb2'
-  # @@protoc_insertion_point(class_scope:GetChannelForUserRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.GetChannelForUserRequest)
   ))
 _sym_db.RegisterMessage(GetChannelForUserRequest)
 
 GetChannelByIdRequest = _reflection.GeneratedProtocolMessageType('GetChannelByIdRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETCHANNELBYIDREQUEST,
   __module__ = 'channels_pb2'
-  # @@protoc_insertion_point(class_scope:GetChannelByIdRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.GetChannelByIdRequest)
   ))
 _sym_db.RegisterMessage(GetChannelByIdRequest)
 
 CreateChannelForUser = _reflection.GeneratedProtocolMessageType('CreateChannelForUser', (_message.Message,), dict(
   DESCRIPTOR = _CREATECHANNELFORUSER,
   __module__ = 'channels_pb2'
-  # @@protoc_insertion_point(class_scope:CreateChannelForUser)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.CreateChannelForUser)
   ))
 _sym_db.RegisterMessage(CreateChannelForUser)
 
 
+DESCRIPTOR._options = None
 
 _CHANNELSERVICE = _descriptor.ServiceDescriptor(
   name='ChannelService',
-  full_name='ChannelService',
+  full_name='tv.uob.grpc.ChannelService',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=215,
-  serialized_end=345,
+  serialized_start=228,
+  serialized_end=406,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetChannelById',
-    full_name='ChannelService.GetChannelById',
+    full_name='tv.uob.grpc.ChannelService.GetChannelById',
     index=0,
     containing_service=None,
     input_type=_GETCHANNELBYIDREQUEST,
@@ -225,7 +226,7 @@ _CHANNELSERVICE = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='GetChannelForUser',
-    full_name='ChannelService.GetChannelForUser',
+    full_name='tv.uob.grpc.ChannelService.GetChannelForUser',
     index=1,
     containing_service=None,
     input_type=_GETCHANNELFORUSERREQUEST,

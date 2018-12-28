@@ -15,12 +15,12 @@ class ChannelServiceStub(object):
       channel: A grpc.Channel.
     """
     self.GetChannelById = channel.unary_unary(
-        '/ChannelService/GetChannelById',
+        '/tv.uob.grpc.ChannelService/GetChannelById',
         request_serializer=channels__pb2.GetChannelByIdRequest.SerializeToString,
         response_deserializer=channels__pb2.Channel.FromString,
         )
     self.GetChannelForUser = channel.unary_unary(
-        '/ChannelService/GetChannelForUser',
+        '/tv.uob.grpc.ChannelService/GetChannelForUser',
         request_serializer=channels__pb2.GetChannelForUserRequest.SerializeToString,
         response_deserializer=channels__pb2.Channel.FromString,
         )
@@ -59,5 +59,5 @@ def add_ChannelServiceServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'ChannelService', rpc_method_handlers)
+      'tv.uob.grpc.ChannelService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

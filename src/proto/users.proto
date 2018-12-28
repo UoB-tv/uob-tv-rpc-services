@@ -1,5 +1,10 @@
 syntax = "proto3";
 
+package  tv.uob.grpc;
+
+option java_multiple_files = true;
+option java_package = "tv.uob.grpc";
+option java_outer_classname = "UserService";
 
 message User {
     int32 id = 1;

@@ -15,12 +15,12 @@ class StreamServiceStub(object):
       channel: A grpc.Channel.
     """
     self.CreateStreamForUser = channel.unary_unary(
-        '/StreamService/CreateStreamForUser',
+        '/tv.uob.grpc.StreamService/CreateStreamForUser',
         request_serializer=streams__pb2.CreateStreamForUserRequest.SerializeToString,
         response_deserializer=streams__pb2.CreateStreamForUserResponse.FromString,
         )
     self.GetStreamForUser = channel.unary_unary(
-        '/StreamService/GetStreamForUser',
+        '/tv.uob.grpc.StreamService/GetStreamForUser',
         request_serializer=streams__pb2.GetStreamForUserRequest.SerializeToString,
         response_deserializer=streams__pb2.Stream.FromString,
         )
@@ -59,5 +59,5 @@ def add_StreamServiceServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'StreamService', rpc_method_handlers)
+      'tv.uob.grpc.StreamService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
