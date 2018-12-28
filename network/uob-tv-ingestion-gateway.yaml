@@ -9,7 +9,7 @@ spec:
     servers:
     - port:
         number: 1935
-        name: rtcmp
+        name: rtmp
         protocol: TCP
       hosts:
         - "ingestion.uob-tv.co.uk"
