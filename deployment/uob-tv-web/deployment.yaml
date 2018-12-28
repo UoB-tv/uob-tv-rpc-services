@@ -13,11 +13,11 @@ spec:
       namespace: app-backends
       labels:
         app: uob-tv-web
-        version: "0.1"
+        version: "0.2"
     spec:
       containers:
       - name: uob-tv-web
-        image: eu.gcr.io/uob-tv-project-dev/uob-tv-web:0.1
+        image: eu.gcr.io/uob-tv-project-dev/uob-tv-web:0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
