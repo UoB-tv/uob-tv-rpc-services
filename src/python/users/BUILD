@@ -1,0 +1,15 @@
+python_binary(
+    name="users-server",
+    dependencies=[
+        "generated/python:grpc_generated_services",
+        "src/python/users/service:user_service",
+        "3rdparty/python:grpcio",
+    ],
+    source=main.py,
+    entry_poin="users.main",
+    platforms=[
+        'current',
+        'linux-x86_64',
+        'macosx-10.12-x86_64',
+    ]
+),

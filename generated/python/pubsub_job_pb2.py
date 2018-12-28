@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x10pubsub_job.proto\"v\n\x10PubSubJobMessage\x12\r\n\x05jobId\x18\x01 \x01(\t\x12\x0f\n\x07jobType\x18\x02 \x01(\t\x12\x37\n\x15videoTranscodeJobArgs\x18\x10 \x01(\x0b\x32\x16.VideoTranscodeJobArgsH\x00\x42\t\n\x07jobArgs\"\x9d\x01\n\x15VideoTranscodeJobArgs\x12\x12\n\nbucketName\x18\x01 \x01(\t\x12\x12\n\ngsRawVideo\x18\x02 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x03 \x01(\t\x12\x13\n\x0boutputSizes\x18\x04 \x03(\t\x12\x1c\n\x14\x63onvertedVideoBucket\x18\x05 \x01(\t\x12\x19\n\x11\x63onvertedVidePath\x18\x06 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x10pubsub_job.proto\"v\n\x10PubSubJobMessage\x12\r\n\x05jobId\x18\x01 \x01(\t\x12\x0f\n\x07jobType\x18\x02 \x01(\t\x12\x37\n\x15videoTranscodeJobArgs\x18\x03 \x01(\x0b\x32\x16.VideoTranscodeJobArgsH\x00\x42\t\n\x07jobArgs\"\x88\x01\n\x15VideoTranscodeJobArgs\x12\x12\n\nbucketName\x18\x01 \x01(\t\x12\x12\n\ngsRawVideo\x18\x02 \x01(\t\x12\x0e\n\x06\x66ormat\x18\x03 \x01(\t\x12\x1c\n\x14\x63onvertedVideoBucket\x18\x04 \x01(\t\x12\x19\n\x11\x63onvertedVidePath\x18\x05 \x01(\tb\x06proto3')
 )
 
 
@@ -48,7 +48,7 @@ _PUBSUBJOBMESSAGE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='videoTranscodeJobArgs', full_name='PubSubJobMessage.videoTranscodeJobArgs', index=2,
-      number=16, type=11, cpp_type=10, label=1,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -102,22 +102,15 @@ _VIDEOTRANSCODEJOBARGS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='outputSizes', full_name='VideoTranscodeJobArgs.outputSizes', index=3,
-      number=4, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='convertedVideoBucket', full_name='VideoTranscodeJobArgs.convertedVideoBucket', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='convertedVideoBucket', full_name='VideoTranscodeJobArgs.convertedVideoBucket', index=3,
+      number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='convertedVidePath', full_name='VideoTranscodeJobArgs.convertedVidePath', index=5,
-      number=6, type=9, cpp_type=9, label=1,
+      name='convertedVidePath', full_name='VideoTranscodeJobArgs.convertedVidePath', index=4,
+      number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -135,7 +128,7 @@ _VIDEOTRANSCODEJOBARGS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=141,
-  serialized_end=298,
+  serialized_end=277,
 )
 
 _PUBSUBJOBMESSAGE.fields_by_name['videoTranscodeJobArgs'].message_type = _VIDEOTRANSCODEJOBARGS

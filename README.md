@@ -22,7 +22,26 @@ New 3rd party dependencies are declared in `3rdparty/python/requirements.txt`. W
 
 Each service folder contains Python source code and `BUILD` file. A build file defines a build target, we use either `python_library` or `python_binary` target.
 
-## Dev-Test-Deploy Pipeline
+## Setup python `virtualenv`
+
+Always use `virtualenv` for python development environment. 
+Run 
+
+    sudo pip install virtualenv
+    virtualenv -p python3 env
+
+Activate the python environment with:
+
+    source env/bin/activate
+
+Notice terminal prompt changes to something like:
+
+
+    (env) username@uob-tv-rpc-services
+
+Install dependencies:
+
+    pip install -r ./3rdparty/python/requirements.txt
 
 
 ## Get Started with build RPC Services
@@ -42,9 +61,20 @@ Each service folder contains Python source code and `BUILD` file. A build file d
 
     $ pants binary src/python/hello_world:hello-world-server
 
+
+## Service Configurations
+
+Eventually a service will be packaged in a docker container and deployed to Google Kubernetes Engine to run. 
+
+All kubernetes deployment YAML configurations live in `deployment/` folder. The convention is one service per folder.
+
+See `deployment/hello_world` for details.
+
+For a serve to run in production and accept traffic, we need write 2 main pieces of configuration:
+
+* Kuberentes configs: `deployment.yaml`, `service.yaml` which will setup pods and services so kubernetes can run them.
+* `istio-routing.yaml` which will setup istio to route traffic to the service.
+
 ### Build and push a docker container to Google Container Registry
 
-    docker build --rm -t eu.gcr.io/uob-tv-project/dev/hello-world-server:1 -f deployment/hello_world/Dockerfile dist/
-
-    docker push eu.gcr.io/uob-tv-project-dev/hello-world-server:1
-
+See `deployment/hello_world/Makefile` for commands.

@@ -9,8 +9,3 @@ message Video {
     string description = 5;
     string storageURL = 6;
 }
-
-message VideoUploadTask {
-    int64 videoId = 1;
-    int64 
-}
