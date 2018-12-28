@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='channels.proto',
   package='tv.uob.grpc',
   syntax='proto3',
-  serialized_options=_b('\n\013tv.uob.grpcB\016ChannelServiceP\001'),
-  serialized_pb=_b('\n\x0e\x63hannels.proto\x12\x0btv.uob.grpc\"I\n\x07\x43hannel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"*\n\x18GetChannelForUserRequest\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"#\n\x15GetChannelByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x14\x43reateChannelForUser\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xb2\x01\n\x0e\x43hannelService\x12L\n\x0eGetChannelById\x12\".tv.uob.grpc.GetChannelByIdRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x12R\n\x11GetChannelForUser\x12%.tv.uob.grpc.GetChannelForUserRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x42\x1f\n\x0btv.uob.grpcB\x0e\x43hannelServiceP\x01\x62\x06proto3')
+  serialized_options=_b('\n\013tv.uob.grpcP\001'),
+  serialized_pb=_b('\n\x0e\x63hannels.proto\x12\x0btv.uob.grpc\"I\n\x07\x43hannel\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x04 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\"*\n\x18GetChannelForUserRequest\x12\x0e\n\x06userid\x18\x01 \x01(\x05\"#\n\x15GetChannelByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x14\x43reateChannelForUser\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xb2\x01\n\x0e\x43hannelService\x12L\n\x0eGetChannelById\x12\".tv.uob.grpc.GetChannelByIdRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x12R\n\x11GetChannelForUser\x12%.tv.uob.grpc.GetChannelForUserRequest\x1a\x14.tv.uob.grpc.Channel\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 

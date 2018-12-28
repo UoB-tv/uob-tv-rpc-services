@@ -3,7 +3,7 @@ BINARY = ${NAME}.pex
 
 BINARY_PATH = "../../dist/${BINARY}"
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=1-dev
+VERSION=2-dev
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 

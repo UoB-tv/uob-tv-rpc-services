@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='users.proto',
   package='tv.uob.grpc',
   syntax='proto3',
-  serialized_options=_b('\n\013tv.uob.grpcB\013UserServiceP\001'),
-  serialized_pb=_b('\n\x0busers.proto\x12\x0btv.uob.grpc\"p\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x04 \x01(\t\x12%\n\x07profile\x18\x05 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\" \n\x12GetUserByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x15GetUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\",\n\x18GetUserByUsernameRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"2\n\x0fGetUserResponse\x12\x1f\n\x04user\x18\x01 \x01(\x0b\x32\x11.tv.uob.grpc.User\"J\n\x11\x43reateUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x03 \x01(\t\"%\n\x12\x43reateUserResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x32\xd4\x02\n\x0bUserService\x12J\n\x07GetById\x12\x1f.tv.uob.grpc.GetUserByIdRequest\x1a\x1c.tv.uob.grpc.GetUserResponse\"\x00\x12V\n\rGetByUsername\x12%.tv.uob.grpc.GetUserByUsernameRequest\x1a\x1c.tv.uob.grpc.GetUserResponse\"\x00\x12P\n\nGetByEmail\x12\".tv.uob.grpc.GetUserByEmailRequest\x1a\x1c.tv.uob.grpc.GetUserResponse\"\x00\x12O\n\nCreateUser\x12\x1e.tv.uob.grpc.CreateUserRequest\x1a\x1f.tv.uob.grpc.CreateUserResponse\"\x00\x42\x1c\n\x0btv.uob.grpcB\x0bUserServiceP\x01\x62\x06proto3')
+  serialized_options=_b('\n\013tv.uob.grpcP\001'),
+  serialized_pb=_b('\n\x0busers.proto\x12\x0btv.uob.grpc\"p\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x04 \x01(\t\x12%\n\x07profile\x18\x05 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\" \n\x12GetUserByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x15GetUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\",\n\x18GetUserByUsernameRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"J\n\x11\x43reateUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x03 \x01(\t\"%\n\x12\x43reateUserResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x32\xa5\x02\n\x0bUserService\x12?\n\x07GetById\x12\x1f.tv.uob.grpc.GetUserByIdRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12K\n\rGetByUsername\x12%.tv.uob.grpc.GetUserByUsernameRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12\x45\n\nGetByEmail\x12\".tv.uob.grpc.GetUserByEmailRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12\x41\n\nCreateUser\x12\x1e.tv.uob.grpc.CreateUserRequest\x1a\x11.tv.uob.grpc.User\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 
@@ -208,37 +208,6 @@ _GETUSERBYUSERNAMEREQUEST = _descriptor.Descriptor(
 )
 
 
-_GETUSERRESPONSE = _descriptor.Descriptor(
-  name='GetUserResponse',
-  full_name='tv.uob.grpc.GetUserResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='user', full_name='tv.uob.grpc.GetUserResponse.user', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=292,
-  serialized_end=342,
-)
-
-
 _CREATEUSERREQUEST = _descriptor.Descriptor(
   name='CreateUserRequest',
   full_name='tv.uob.grpc.CreateUserRequest',
@@ -279,8 +248,8 @@ _CREATEUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=344,
-  serialized_end=418,
+  serialized_start=292,
+  serialized_end=366,
 )
 
 
@@ -310,18 +279,16 @@ _CREATEUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=420,
-  serialized_end=457,
+  serialized_start=368,
+  serialized_end=405,
 )
 
 _USER.fields_by_name['profile'].message_type = _PROFILE
-_GETUSERRESPONSE.fields_by_name['user'].message_type = _USER
 DESCRIPTOR.message_types_by_name['User'] = _USER
 DESCRIPTOR.message_types_by_name['Profile'] = _PROFILE
 DESCRIPTOR.message_types_by_name['GetUserByIdRequest'] = _GETUSERBYIDREQUEST
 DESCRIPTOR.message_types_by_name['GetUserByEmailRequest'] = _GETUSERBYEMAILREQUEST
 DESCRIPTOR.message_types_by_name['GetUserByUsernameRequest'] = _GETUSERBYUSERNAMEREQUEST
-DESCRIPTOR.message_types_by_name['GetUserResponse'] = _GETUSERRESPONSE
 DESCRIPTOR.message_types_by_name['CreateUserRequest'] = _CREATEUSERREQUEST
 DESCRIPTOR.message_types_by_name['CreateUserResponse'] = _CREATEUSERRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -361,13 +328,6 @@ GetUserByUsernameRequest = _reflection.GeneratedProtocolMessageType('GetUserByUs
   ))
 _sym_db.RegisterMessage(GetUserByUsernameRequest)
 
-GetUserResponse = _reflection.GeneratedProtocolMessageType('GetUserResponse', (_message.Message,), dict(
-  DESCRIPTOR = _GETUSERRESPONSE,
-  __module__ = 'users_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.GetUserResponse)
-  ))
-_sym_db.RegisterMessage(GetUserResponse)
-
 CreateUserRequest = _reflection.GeneratedProtocolMessageType('CreateUserRequest', (_message.Message,), dict(
   DESCRIPTOR = _CREATEUSERREQUEST,
   __module__ = 'users_pb2'
@@ -391,8 +351,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=460,
-  serialized_end=800,
+  serialized_start=408,
+  serialized_end=701,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetById',
@@ -400,7 +360,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_GETUSERBYIDREQUEST,
-    output_type=_GETUSERRESPONSE,
+    output_type=_USER,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -409,7 +369,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=1,
     containing_service=None,
     input_type=_GETUSERBYUSERNAMEREQUEST,
-    output_type=_GETUSERRESPONSE,
+    output_type=_USER,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -418,7 +378,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=2,
     containing_service=None,
     input_type=_GETUSERBYEMAILREQUEST,
-    output_type=_GETUSERRESPONSE,
+    output_type=_USER,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -427,7 +387,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=3,
     containing_service=None,
     input_type=_CREATEUSERREQUEST,
-    output_type=_CREATEUSERRESPONSE,
+    output_type=_USER,
     serialized_options=None,
   ),
 ])

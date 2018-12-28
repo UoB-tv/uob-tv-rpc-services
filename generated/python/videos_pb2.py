@@ -19,8 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='videos.proto',
   package='tv.uob.grpc',
   syntax='proto3',
-  serialized_options=_b('\n\013tv.uob.grpcB\014VideoServiceP\001'),
-  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x05\x12-\n\tcreatedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08\x64uration\x18\x03 \x01(\x02\x12\r\n\x05title\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\x12\n\nstorageURL\x18\x06 \x01(\t\"!\n\x13GetVideoByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video2a\n\x0cVideoService\x12Q\n\x0cGetVideoById\x12 .tv.uob.grpc.GetVideoByIdRequest\x1a\x1d.tv.uob.grpc.GetVideoResponse\"\x00\x42\x1d\n\x0btv.uob.grpcB\x0cVideoServiceP\x01\x62\x06proto3')
+  serialized_options=_b('\n\013tv.uob.grpcP\001'),
+  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8c\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x05\x12-\n\tcreatedAt\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08\x64uration\x18\x03 \x01(\x02\x12\r\n\x05title\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\x12\n\nstorageURL\x18\x06 \x01(\t\"!\n\x13GetVideoByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video2a\n\x0cVideoService\x12Q\n\x0cGetVideoById\x12 .tv.uob.grpc.GetVideoByIdRequest\x1a\x1d.tv.uob.grpc.GetVideoResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 

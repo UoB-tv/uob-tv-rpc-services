@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='streams.proto',
   package='tv.uob.grpc',
   syntax='proto3',
-  serialized_options=_b('\n\013tv.uob.grpcB\rStreamServiceP\001'),
-  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"7\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\",\n\x1a\x43reateStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"=\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\")\n\x17GetStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xcc\x01\n\rStreamService\x12j\n\x13\x43reateStreamForUser\x12\'.tv.uob.grpc.CreateStreamForUserRequest\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12O\n\x10GetStreamForUser\x12$.tv.uob.grpc.GetStreamForUserRequest\x1a\x13.tv.uob.grpc.Stream\"\x00\x42\x1e\n\x0btv.uob.grpcB\rStreamServiceP\x01\x62\x06proto3')
+  serialized_options=_b('\n\013tv.uob.grpcP\001'),
+  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"7\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\",\n\x1a\x43reateStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"=\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\")\n\x17GetStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xcc\x01\n\rStreamService\x12j\n\x13\x43reateStreamForUser\x12\'.tv.uob.grpc.CreateStreamForUserRequest\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12O\n\x10GetStreamForUser\x12$.tv.uob.grpc.GetStreamForUserRequest\x1a\x13.tv.uob.grpc.Stream\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 

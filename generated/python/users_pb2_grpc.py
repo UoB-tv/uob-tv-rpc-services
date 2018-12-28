@@ -17,22 +17,22 @@ class UserServiceStub(object):
     self.GetById = channel.unary_unary(
         '/tv.uob.grpc.UserService/GetById',
         request_serializer=users__pb2.GetUserByIdRequest.SerializeToString,
-        response_deserializer=users__pb2.GetUserResponse.FromString,
+        response_deserializer=users__pb2.User.FromString,
         )
     self.GetByUsername = channel.unary_unary(
         '/tv.uob.grpc.UserService/GetByUsername',
         request_serializer=users__pb2.GetUserByUsernameRequest.SerializeToString,
-        response_deserializer=users__pb2.GetUserResponse.FromString,
+        response_deserializer=users__pb2.User.FromString,
         )
     self.GetByEmail = channel.unary_unary(
         '/tv.uob.grpc.UserService/GetByEmail',
         request_serializer=users__pb2.GetUserByEmailRequest.SerializeToString,
-        response_deserializer=users__pb2.GetUserResponse.FromString,
+        response_deserializer=users__pb2.User.FromString,
         )
     self.CreateUser = channel.unary_unary(
         '/tv.uob.grpc.UserService/CreateUser',
         request_serializer=users__pb2.CreateUserRequest.SerializeToString,
-        response_deserializer=users__pb2.CreateUserResponse.FromString,
+        response_deserializer=users__pb2.User.FromString,
         )
 
 
@@ -74,22 +74,22 @@ def add_UserServiceServicer_to_server(servicer, server):
       'GetById': grpc.unary_unary_rpc_method_handler(
           servicer.GetById,
           request_deserializer=users__pb2.GetUserByIdRequest.FromString,
-          response_serializer=users__pb2.GetUserResponse.SerializeToString,
+          response_serializer=users__pb2.User.SerializeToString,
       ),
       'GetByUsername': grpc.unary_unary_rpc_method_handler(
           servicer.GetByUsername,
           request_deserializer=users__pb2.GetUserByUsernameRequest.FromString,
-          response_serializer=users__pb2.GetUserResponse.SerializeToString,
+          response_serializer=users__pb2.User.SerializeToString,
       ),
       'GetByEmail': grpc.unary_unary_rpc_method_handler(
           servicer.GetByEmail,
           request_deserializer=users__pb2.GetUserByEmailRequest.FromString,
-          response_serializer=users__pb2.GetUserResponse.SerializeToString,
+          response_serializer=users__pb2.User.SerializeToString,
       ),
       'CreateUser': grpc.unary_unary_rpc_method_handler(
           servicer.CreateUser,
           request_deserializer=users__pb2.CreateUserRequest.FromString,
-          response_serializer=users__pb2.CreateUserResponse.SerializeToString,
+          response_serializer=users__pb2.User.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

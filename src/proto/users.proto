@@ -29,10 +29,6 @@ message GetUserByUsernameRequest {
     string username = 1;
 }
 
-message GetUserResponse {
-    User user = 1;
-}
-
 message CreateUserRequest {
     string username = 1;
     string email = 2;
@@ -45,9 +41,8 @@ message CreateUserResponse {
 
 
 service UserService {
-    rpc GetById(GetUserByIdRequest) returns (GetUserResponse) {}
-    rpc GetByUsername(GetUserByUsernameRequest) returns (GetUserResponse) {}
-    rpc GetByEmail(GetUserByEmailRequest) returns (GetUserResponse) {}
-    
-    rpc CreateUser(CreateUserRequest) returns(CreateUserResponse) {}
+    rpc GetById(GetUserByIdRequest) returns (User) {}
+    rpc GetByUsername(GetUserByUsernameRequest) returns (User) {}
+    rpc GetByEmail(GetUserByEmailRequest) returns (User) {}
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
 }
