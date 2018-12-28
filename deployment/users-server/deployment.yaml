@@ -14,11 +14,11 @@ spec:
     metadata:
       labels:
         app: users
-        version: "v1"
+        version: "v1-dev"
     spec:
       containers:
       - name: users-server
-        image: eu.gcr.io/uob-tv-project-dev/users-server:1
+        image: eu.gcr.io/uob-tv-project-dev/users-server:1-dev
         ports:
           - containerPort: 6000
         resources:

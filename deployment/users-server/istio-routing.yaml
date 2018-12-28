@@ -1,0 +1,25 @@
+# route all requests to users to users-service
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: users-service-routes
+  namespace: app-backends
+spec:
+  hosts:
+  - users-service
+  http:
+  - route:
+    - destination:
+        host: users-service
+        subset: v1-dev
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: users-service-backends
+spec:
+  host: users-service
+  subsets:
+  - name: v1-dev
+    labels:
+      version: v1-dev
