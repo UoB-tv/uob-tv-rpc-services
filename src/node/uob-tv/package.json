@@ -22,6 +22,7 @@
     "next": "^7.0.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-google-login": "^4.0.1",
     "react-jss": "^8.6.1",
     "react-player": "^1.7.1",
     "react-redux": "^6.0.0"

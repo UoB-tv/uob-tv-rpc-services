@@ -27,11 +27,7 @@ import {
 } from '@material-ui/core'
 
 import { fade } from '@material-ui/core/styles/colorManipulator';
-
-import {
-    LoginForm,
-} from '../components'
-
+import { GoogleLogin } from 'react-google-login';
 
 const sizes = {
     drawerSize: 280,
@@ -160,7 +156,8 @@ class Layout extends React.Component {
         this.handleDrawerToggle = this.handleDrawerToggle.bind(this)
         this.handleAccountMenuToggle = this.handleAccountMenuToggle.bind(this)
         this.handleLoginToggle = this.handleLoginToggle.bind(this)
-        this.handleLoginFormSubmit = this.handleLoginFormSubmit.bind(this)
+        this.handleLoginSuccess = this.handleLoginSuccess.bind(this)
+        this.handleLoginFailure = this.handleLoginFailure.bind(this)
     }
 
     handleLoginToggle() {
@@ -179,8 +176,13 @@ class Layout extends React.Component {
             drawerOpen: !this.state.drawerOpen,
         })
     }
-    handleLoginFormSubmit(email, password) {
-        console.log("logging in")
+    handleLoginSuccess(googleUser) {
+        console.log("login success")
+        console.log(googleUser)
+    }
+    handleLoginFailure(error) {
+        console.log("login error")
+        console.log(error)
     }
     render() {
         const { classes, activeSidebarItem } = this.props
@@ -287,7 +289,11 @@ class Layout extends React.Component {
                     <Typography variant="h4" className={classes.loginText}>
                         Log In
                     </Typography>
-                    <LoginForm onSubmit={this.handleLoginFormSubmit}/>
+                    <GoogleLogin
+                        clientId="536287490582-9j7apg3r8j9jbv1dpbkuuai9rfdr70f3.apps.googleusercontent.com"
+                        buttonText="Login with UoB Account"
+                        onSuccess={this.handleLoginSuccess}
+                    />
                     <div className={classes.bristol}>
                         <img src="/static/bristol_larger_logo.png" style={{width: '70%'}} />
                     </div>

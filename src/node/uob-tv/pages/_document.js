@@ -6,7 +6,6 @@ import flush from 'styled-jsx/server';
 class MyDocument extends Document {
   render() {
     const { pageContext } = this.props;
-
     return (
       <html lang="en" dir="ltr">
         <Head>
@@ -16,6 +15,7 @@ class MyDocument extends Document {
                 name="viewport"
                 content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
             />
+            <meta name="google-signin-client_id" content="536287490582-9j7apg3r8j9jbv1dpbkuuai9rfdr70f3.apps.googleusercontent.com" />
             {/* PWA primary color */}
             <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
             <link
@@ -23,6 +23,7 @@ class MyDocument extends Document {
                 href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
             />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
         </Head>
         <body>
           <Main />

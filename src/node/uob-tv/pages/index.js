@@ -14,7 +14,6 @@ import {
 import { 
     MediaPlayer,
     MediaThumbnail,
-    Carousel,
 } from '../components'
 
 const styles = theme => ({
