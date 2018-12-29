@@ -14,3 +14,18 @@ spec:
       route:
       - destination:
             host: ossrs-rtmp-ingestion-service
+---
+# route all requests to users to users-service
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ossrs-http-routes
+  namespace: video-proc-streaming
+spec:
+  hosts:
+  - ossrs-http-api
+  http:
+  - route:
+    - destination:
+        host: ossrs-http-api
+        subset: v2-dev

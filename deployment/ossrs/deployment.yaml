@@ -21,6 +21,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 1935
+          name: rtmp
+        - containerPort: 1985
+          name: http-api
         resources:
           requests:
             memory: "256Mi"
