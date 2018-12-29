@@ -1,0 +1,14 @@
+syntax = "proto3";
+package  tv.uob.grpc;
+
+option java_multiple_files = true;
+option java_package = "tv.uob.grpc";
+
+message Event {
+    string eventType = 1;
+    enum EventType {
+        ON_PUBLISH = 1;
+        ON_UNPUBLISH = 2;
+    }
+}
+
