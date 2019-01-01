@@ -4,5 +4,5 @@ python_library(
         '3rdparty/python:grpcio',
         '3rdparty/python:protobuf'
     ],
-    sources = globs("*.py")
+    sources = globs("*.py"),
 )

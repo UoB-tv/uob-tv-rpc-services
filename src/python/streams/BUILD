@@ -1,0 +1,14 @@
+python_binary(
+    name="streams-server",
+    dependencies=[
+        "generated/python:grpc_generated_services",
+        "3rdparty/python:grpcio",
+        "src/python/streams/service:service",
+    ],
+    source="main.py",
+    platforms=[
+        'current',
+        'linux-x86_64',
+        'macosx-10.12-x86_64',
+    ]
+)
