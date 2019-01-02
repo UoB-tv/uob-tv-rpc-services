@@ -2,22 +2,14 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: hello-world
+  namespace: app-backends
 spec:
   hosts:
   - "*"
   gateways:
   - uob-tv-api-gateway
-  http:
-  - match:
-    - uri:
-        prefix: /hello-world
-    route:
-    - destination:
-        host: hello-world
-        port:
-          number: 8000
-          subset: v1
-      weight: 100
+  tcp:
+    
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
