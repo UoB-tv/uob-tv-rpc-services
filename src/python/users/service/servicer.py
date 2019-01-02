@@ -3,11 +3,20 @@ import users_pb2
 import health_check_pb2
 import health_check_pb2_grpc
 
+import logging
 import os
+import sys
 
 from google.cloud import datastore
 
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", None)
+
+if GOOGLE_APPLICATION_CREDENTIALS is None:
+    logger.error("Environment variable GOOGLE_APPLICATION_CREDENTIALS is required")
+    exit(-1)
 
 KIND = "User"
 
@@ -51,7 +60,6 @@ class UsersServicer(users_pb2_grpc.UserServiceServicer):
         user.email = user_entity["email"]
         user.id = int(user_entity.id)
         user.profile.avatarURL = user_entity["profile.avatarURL"]
-
         return user
 
     def GetByEmail(self, request, context):
@@ -91,6 +99,7 @@ class UsersServicer(users_pb2_grpc.UserServiceServicer):
             self.datastore_client.put(user_entity)
             return users_pb2.CreateUserResponse(created=True)
         except Exception as e:
+            logger.error("Error creating user %s", str(e))
             return users_pb2.CreateUserResponse(
                 created=False,
                 error=str(e)
