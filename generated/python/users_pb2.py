@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x0busers.proto\x12\x0btv.uob.grpc\"p\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x04 \x01(\t\x12%\n\x07profile\x18\x05 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\" \n\x12GetUserByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x15GetUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\",\n\x18GetUserByUsernameRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"J\n\x11\x43reateUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x03 \x01(\t\"%\n\x12\x43reateUserResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x32\xa5\x02\n\x0bUserService\x12?\n\x07GetById\x12\x1f.tv.uob.grpc.GetUserByIdRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12K\n\rGetByUsername\x12%.tv.uob.grpc.GetUserByUsernameRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12\x45\n\nGetByEmail\x12\".tv.uob.grpc.GetUserByEmailRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12\x41\n\nCreateUser\x12\x1e.tv.uob.grpc.CreateUserRequest\x1a\x11.tv.uob.grpc.User\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0busers.proto\x12\x0btv.uob.grpc\"p\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x04 \x01(\t\x12%\n\x07profile\x18\x05 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\" \n\x12GetUserByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"&\n\x15GetUserByEmailRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\",\n\x18GetUserByUsernameRequest\x12\x10\n\x08username\x18\x01 \x01(\t\"J\n\x11\x43reateUserRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x14\n\x0cpasswordHash\x18\x03 \x01(\t\"4\n\x12\x43reateUserResponse\x12\x0f\n\x07\x63reated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t2\xb3\x02\n\x0bUserService\x12?\n\x07GetById\x12\x1f.tv.uob.grpc.GetUserByIdRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12K\n\rGetByUsername\x12%.tv.uob.grpc.GetUserByUsernameRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12\x45\n\nGetByEmail\x12\".tv.uob.grpc.GetUserByEmailRequest\x1a\x11.tv.uob.grpc.User\"\x00\x12O\n\nCreateUser\x12\x1e.tv.uob.grpc.CreateUserRequest\x1a\x1f.tv.uob.grpc.CreateUserResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 
@@ -267,6 +267,13 @@ _CREATEUSERRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='tv.uob.grpc.CreateUserResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -280,7 +287,7 @@ _CREATEUSERRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=368,
-  serialized_end=405,
+  serialized_end=420,
 )
 
 _USER.fields_by_name['profile'].message_type = _PROFILE
@@ -351,8 +358,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=408,
-  serialized_end=701,
+  serialized_start=423,
+  serialized_end=730,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetById',
@@ -387,7 +394,7 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
     index=3,
     containing_service=None,
     input_type=_CREATEUSERREQUEST,
-    output_type=_USER,
+    output_type=_CREATEUSERRESPONSE,
     serialized_options=None,
   ),
 ])

@@ -2,6 +2,8 @@ python_library(
     name="users_service",
     dependencies=[
         "generated/python:grpc_generated_services",
+        "3rdparty/python:google-cloud-datastore",
+        "3rdparty/python:google-cloud-core"
     ],
     sources=globs("*.py"),
 )

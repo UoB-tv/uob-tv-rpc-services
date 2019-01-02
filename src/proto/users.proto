@@ -37,6 +37,7 @@ message CreateUserRequest {
 
 message CreateUserResponse {
     bool created = 1;
+    string error = 2;
 }
 
 

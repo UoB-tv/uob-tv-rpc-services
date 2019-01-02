@@ -7,7 +7,7 @@ import os
 
 PORT = 8080
 def require_env_var(name, optional=False):
-    env_var = os.environ.get(name, default=None)
+    env_var = os.environ.get(name, None)
     if env_var is None and not optional:
         logger.error("%s variable must be set.", name)
         exit(-1)

@@ -32,7 +32,7 @@ class UserServiceStub(object):
     self.CreateUser = channel.unary_unary(
         '/tv.uob.grpc.UserService/CreateUser',
         request_serializer=users__pb2.CreateUserRequest.SerializeToString,
-        response_deserializer=users__pb2.User.FromString,
+        response_deserializer=users__pb2.CreateUserResponse.FromString,
         )
 
 
@@ -89,7 +89,7 @@ def add_UserServiceServicer_to_server(servicer, server):
       'CreateUser': grpc.unary_unary_rpc_method_handler(
           servicer.CreateUser,
           request_deserializer=users__pb2.CreateUserRequest.FromString,
-          response_serializer=users__pb2.User.SerializeToString,
+          response_serializer=users__pb2.CreateUserResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

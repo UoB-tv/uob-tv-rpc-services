@@ -21,6 +21,9 @@ spec:
         image: eu.gcr.io/uob-tv-project-dev/users-server:2-dev
         ports:
           - containerPort: 6000
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/etc/gcp_credentials/uob-tv-backend-sa.txt"
         resources:
           requests:
             memory: "64Mi"
@@ -28,3 +31,11 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "400m"
+        volumeMounts:
+          - name: gcp_credentials
+            mountPath: "/etc/gcp_credentials"
+            readOnly: true
+  volumes:
+  - name: gcp_credentials
+    secret:
+      secretName: api-backend-sa-credential
