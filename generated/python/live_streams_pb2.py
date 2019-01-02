@@ -13,6 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x12live_streams.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"n\n\x10LiveStreamStatus\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tstreamKey\x18\x02 \x01(\t\x12\x0e\n\x06isLive\x18\x03 \x01(\x08\x12+\n\x07started\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"$\n\x16GetStreamStatusRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\x66\n\x11LiveStreamService\x12Q\n\tgetStatus\x12#.tv.uob.grpc.GetStreamStatusRequest\x1a\x1d.tv.uob.grpc.LiveStreamStatus\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x12live_streams.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"X\n\x10LiveStreamStatus\x12\x10\n\x08streamId\x18\x01 \x01(\x05\x12\x11\n\tstreamKey\x18\x02 \x01(\t\x12\x0e\n\x06isLive\x18\x03 \x01(\x08\x12\x0f\n\x07started\x18\x04 \x01(\x03\"*\n\x16GetStreamStatusRequest\x12\x10\n\x08streamId\x18\x01 \x01(\x05\"N\n\x19UpdateStreamStatusRequest\x12\x10\n\x08streamId\x18\x01 \x01(\x05\x12\x0e\n\x06isLive\x18\x02 \x01(\x08\x12\x0f\n\x07started\x18\x03 \x01(\x03\"<\n\x1aUpdateStreamStatusResponse\x12\x0f\n\x07updated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"7\n\x1cListActiveLiveStreamResponse\x12\x17\n\x0f\x61\x63tiveStreamIds\x18\x01 \x03(\x05\x32\xa7\x02\n\x11LiveStreamService\x12Q\n\tgetStatus\x12#.tv.uob.grpc.GetStreamStatusRequest\x1a\x1d.tv.uob.grpc.LiveStreamStatus\"\x00\x12\x61\n\x0cupdateStatus\x12&.tv.uob.grpc.UpdateStreamStatusRequest\x1a\'.tv.uob.grpc.UpdateStreamStatusResponse\"\x00\x12\\\n\x15listActiveLiveStreams\x12\x16.google.protobuf.Empty\x1a).tv.uob.grpc.ListActiveLiveStreamResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -35,7 +36,7 @@ _LIVESTREAMSTATUS = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='tv.uob.grpc.LiveStreamStatus.id', index=0,
+      name='streamId', full_name='tv.uob.grpc.LiveStreamStatus.streamId', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -57,8 +58,8 @@ _LIVESTREAMSTATUS = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='started', full_name='tv.uob.grpc.LiveStreamStatus.started', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -74,8 +75,8 @@ _LIVESTREAMSTATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=68,
-  serialized_end=178,
+  serialized_start=97,
+  serialized_end=185,
 )
 
 
@@ -87,7 +88,7 @@ _GETSTREAMSTATUSREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='tv.uob.grpc.GetStreamStatusRequest.id', index=0,
+      name='streamId', full_name='tv.uob.grpc.GetStreamStatusRequest.streamId', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -105,13 +106,129 @@ _GETSTREAMSTATUSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=180,
-  serialized_end=216,
+  serialized_start=187,
+  serialized_end=229,
 )
 
-_LIVESTREAMSTATUS.fields_by_name['started'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+
+_UPDATESTREAMSTATUSREQUEST = _descriptor.Descriptor(
+  name='UpdateStreamStatusRequest',
+  full_name='tv.uob.grpc.UpdateStreamStatusRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='streamId', full_name='tv.uob.grpc.UpdateStreamStatusRequest.streamId', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='isLive', full_name='tv.uob.grpc.UpdateStreamStatusRequest.isLive', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='started', full_name='tv.uob.grpc.UpdateStreamStatusRequest.started', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=231,
+  serialized_end=309,
+)
+
+
+_UPDATESTREAMSTATUSRESPONSE = _descriptor.Descriptor(
+  name='UpdateStreamStatusResponse',
+  full_name='tv.uob.grpc.UpdateStreamStatusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='updated', full_name='tv.uob.grpc.UpdateStreamStatusResponse.updated', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='tv.uob.grpc.UpdateStreamStatusResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=311,
+  serialized_end=371,
+)
+
+
+_LISTACTIVELIVESTREAMRESPONSE = _descriptor.Descriptor(
+  name='ListActiveLiveStreamResponse',
+  full_name='tv.uob.grpc.ListActiveLiveStreamResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='activeStreamIds', full_name='tv.uob.grpc.ListActiveLiveStreamResponse.activeStreamIds', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=373,
+  serialized_end=428,
+)
+
 DESCRIPTOR.message_types_by_name['LiveStreamStatus'] = _LIVESTREAMSTATUS
 DESCRIPTOR.message_types_by_name['GetStreamStatusRequest'] = _GETSTREAMSTATUSREQUEST
+DESCRIPTOR.message_types_by_name['UpdateStreamStatusRequest'] = _UPDATESTREAMSTATUSREQUEST
+DESCRIPTOR.message_types_by_name['UpdateStreamStatusResponse'] = _UPDATESTREAMSTATUSRESPONSE
+DESCRIPTOR.message_types_by_name['ListActiveLiveStreamResponse'] = _LISTACTIVELIVESTREAMRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 LiveStreamStatus = _reflection.GeneratedProtocolMessageType('LiveStreamStatus', (_message.Message,), dict(
@@ -128,6 +245,27 @@ GetStreamStatusRequest = _reflection.GeneratedProtocolMessageType('GetStreamStat
   ))
 _sym_db.RegisterMessage(GetStreamStatusRequest)
 
+UpdateStreamStatusRequest = _reflection.GeneratedProtocolMessageType('UpdateStreamStatusRequest', (_message.Message,), dict(
+  DESCRIPTOR = _UPDATESTREAMSTATUSREQUEST,
+  __module__ = 'live_streams_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.UpdateStreamStatusRequest)
+  ))
+_sym_db.RegisterMessage(UpdateStreamStatusRequest)
+
+UpdateStreamStatusResponse = _reflection.GeneratedProtocolMessageType('UpdateStreamStatusResponse', (_message.Message,), dict(
+  DESCRIPTOR = _UPDATESTREAMSTATUSRESPONSE,
+  __module__ = 'live_streams_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.UpdateStreamStatusResponse)
+  ))
+_sym_db.RegisterMessage(UpdateStreamStatusResponse)
+
+ListActiveLiveStreamResponse = _reflection.GeneratedProtocolMessageType('ListActiveLiveStreamResponse', (_message.Message,), dict(
+  DESCRIPTOR = _LISTACTIVELIVESTREAMRESPONSE,
+  __module__ = 'live_streams_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.ListActiveLiveStreamResponse)
+  ))
+_sym_db.RegisterMessage(ListActiveLiveStreamResponse)
+
 
 DESCRIPTOR._options = None
 
@@ -137,8 +275,8 @@ _LIVESTREAMSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=218,
-  serialized_end=320,
+  serialized_start=431,
+  serialized_end=726,
   methods=[
   _descriptor.MethodDescriptor(
     name='getStatus',
@@ -147,6 +285,24 @@ _LIVESTREAMSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETSTREAMSTATUSREQUEST,
     output_type=_LIVESTREAMSTATUS,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='updateStatus',
+    full_name='tv.uob.grpc.LiveStreamService.updateStatus',
+    index=1,
+    containing_service=None,
+    input_type=_UPDATESTREAMSTATUSREQUEST,
+    output_type=_UPDATESTREAMSTATUSRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='listActiveLiveStreams',
+    full_name='tv.uob.grpc.LiveStreamService.listActiveLiveStreams',
+    index=2,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    output_type=_LISTACTIVELIVESTREAMRESPONSE,
     serialized_options=None,
   ),
 ])

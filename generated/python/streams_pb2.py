@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"7\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\",\n\x1a\x43reateStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"=\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\")\n\x17GetStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xcc\x01\n\rStreamService\x12j\n\x13\x43reateStreamForUser\x12\'.tv.uob.grpc.CreateStreamForUserRequest\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12O\n\x10GetStreamForUser\x12$.tv.uob.grpc.GetStreamForUserRequest\x1a\x13.tv.uob.grpc.Stream\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"[\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\",\n\x1a\x43reateStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"=\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\")\n\x17GetStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xcc\x01\n\rStreamService\x12j\n\x13\x43reateStreamForUser\x12\'.tv.uob.grpc.CreateStreamForUserRequest\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12O\n\x10GetStreamForUser\x12$.tv.uob.grpc.GetStreamForUserRequest\x1a\x13.tv.uob.grpc.Stream\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 
@@ -53,6 +53,20 @@ _STREAM = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='description', full_name='tv.uob.grpc.Stream.description', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='title', full_name='tv.uob.grpc.Stream.title', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -66,7 +80,7 @@ _STREAM = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=30,
-  serialized_end=85,
+  serialized_end=121,
 )
 
 
@@ -96,8 +110,8 @@ _CREATESTREAMFORUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=87,
-  serialized_end=131,
+  serialized_start=123,
+  serialized_end=167,
 )
 
 
@@ -134,8 +148,8 @@ _CREATESTREAMFORUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=133,
-  serialized_end=194,
+  serialized_start=169,
+  serialized_end=230,
 )
 
 
@@ -165,8 +179,8 @@ _GETSTREAMFORUSERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=196,
-  serialized_end=237,
+  serialized_start=232,
+  serialized_end=273,
 )
 
 DESCRIPTOR.message_types_by_name['Stream'] = _STREAM
@@ -212,8 +226,8 @@ _STREAMSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=240,
-  serialized_end=444,
+  serialized_start=276,
+  serialized_end=480,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateStreamForUser',

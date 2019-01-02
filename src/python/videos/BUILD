@@ -1,0 +1,14 @@
+python_binary(
+    name="videos-server",
+    dependencies=[
+        "generated/python:grpc_generated_services",
+        "src/python/videos/service:videos_service",
+        "3rdparty/python:grpcio",
+    ],
+    source="main.py",
+    platforms=[
+        'current',
+        'linux_x86_64-cp-37-cp37m',
+        'macosx-10.12-x86_64',
+    ]
+)

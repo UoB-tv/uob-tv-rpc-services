@@ -1,0 +1,9 @@
+python_library(
+    name="ossrs-sidecar-app",
+    dependencies=[
+        "3rdparty/python:Flask",
+        "3rdparty/python:grpcio",
+        "generated/python:grpc_generated_services",
+    ],
+    sources=globs("*.py"),
+)
