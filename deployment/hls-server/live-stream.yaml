@@ -1,0 +1,6 @@
+apiVersion: uob.tv/v1alpha1
+kind: LiveStream
+metadata:
+  name: uob-tv-live-stream-encoders
+spec:
+  hls-server
