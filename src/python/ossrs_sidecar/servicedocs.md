@@ -1,26 +1,26 @@
-# [Name of Service]
+# OSSRS Sidecar Container
 
 ## Functionality
-[Brief description of service purpose and functionality]
+This container is meant to be run alongside `ossrs` in the same pod, i.e. a sidecar container to handle various request such as RTMP stream authentication, publish and unpublish of streams.
 
 ## Service Definitions:
-[link to proto file is its gRPC service]
-OR
-[list of HTTP REST endpoints and parameters and example of responses.]
+
+
+
 
 ## Service Dependencies
-[Other services which this service calls]
+* Internal: `streams`, `live-stream`
+* External: `Google PubSub`.
 
 ## Networking
-* protocol: [HTTP, gRPC, TCP, etc]
-* port: [which port is the server listening on?]
+* protocol: HTTP, gRPC
+* port: accepts HTTP on 30150.
 
 ## Configuration
 
-* [Required environment variables?]
-* [Configurations file which the service expects?]
-* [Any secrets this service uses, e.g. to make calls services in Google Cloud Platform?]
+* Optional environment variable: GRPC_PORT, defaults to 6000
 
 ## External Docs
-[Any links to useful external documentation reference, or help maintainers to understand implementations]
+Definition of OSSRS HTTP callback payloads is here:
+https://github.com/ossrs/srs/wiki/v2_EN_HTTPCallback
 

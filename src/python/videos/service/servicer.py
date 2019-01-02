@@ -36,3 +36,4 @@ class HealthCheck(health_check_pb2_grpc.HealthServicer):
         return health_check_pb2.HealthCheckResponse(
             status=health_check_pb2.HealthCheckResponse.ServingStatus.SERVING
         )
+        

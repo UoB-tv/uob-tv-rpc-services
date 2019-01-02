@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ossrs-conf-file
+  namespace: video-proc-streaming
+  labels:
+    app: ossrs
+data:
+  docker.conf: |
+    listen              1935;
+    max_connections     1000;
+    srs_log_tank        console;
+    daemon              off;
+
+    stats {
+        network         0;
+        disk            sda sdb xvda xvdb;
+    }
+
+    http_api {
+        enabled         on;
+        listen          1985;
+    }
+
+    vhost __defaultVhost__ {
+        http_hooks {
+            enabled         on;
+            on_connect      http://localhost:30150/api/v1/callbacks/on_connect;
+            on_publish      http://localhost:30150/api/v1/callbacks/on_publish;
+            on_unpublish    http://localhost:30150/api/v1/callbacks/on_unpublish;
+            on_close        http://localhost:30150/api/v1/callbacks/on_close;
+        }
+    }

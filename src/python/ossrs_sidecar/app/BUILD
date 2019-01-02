@@ -3,6 +3,7 @@ python_library(
     dependencies=[
         "3rdparty/python:Flask",
         "3rdparty/python:grpcio",
+        "3rdparty/python:Flask-Injector",
         "generated/python:grpc_generated_services",
     ],
     sources=globs("*.py"),

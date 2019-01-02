@@ -1,7 +1,7 @@
 NAME = ossrs
 BINARY = ${NAME}
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=2
+VERSION=1.2
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 

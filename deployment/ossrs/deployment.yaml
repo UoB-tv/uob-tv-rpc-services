@@ -16,16 +16,43 @@ spec:
         app: ossrs
     spec:
       containers:
-      - name: ossrs
-        image: eu.gcr.io/uob-tv-project-dev/ossrs:2
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 1935
-        - containerPort: 1938
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "300m"
+        - name: ossrs
+          image: eu.gcr.io/uob-tv-project-dev/ossrs:1.2
+          command: [ "./objs/srs"]
+          args:
+            - -c
+            - /etc/ossrs/docker.conf
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 1935
+          - containerPort: 1938
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "300m"
+          volumeMounts:
+            - name: conf
+              mountPath: /etc/ossrs
+        - name: ossrs-sidecar
+          image: eu.gcr.io/uob-tv-project-dev/ossrs_sidecar:1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 6000
+          - containerPort: 30150
+          resources:
+            requests:
+              memory: "60Mi"
+              cpu: "50m"
+            limits:
+              memory: "120Mi"
+              cpu: "150m"
+          volumeMounts:
+            - name: conf
+              mountPath: /etc/ossrs
+      volumes:
+        - name: conf
+          configMap:
+            name: ossrs-conf-file

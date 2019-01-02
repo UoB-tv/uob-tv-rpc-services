@@ -3,6 +3,7 @@ python_binary(
     dependencies=[
         "src/python/ossrs_sidecar/app:ossrs-sidecar-app",
         "3rdparty/python:grpcio",
+        "3rdparty/python:Flask-Injector",
     ],
     source="main.py",
     platforms=[
