@@ -13,22 +13,22 @@ spec:
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: "/etc/gcp_credentials/credentials.json"
         command: ["python", "video-transcode-job.pex", "-b", "{{ source_bucket_name }}", "-r", "{{ gs_raw_video }}", "-c", "{{ converted_video_bucket }}", "-u", "{{ converted_video_path }}", "-f", "{{ video_format }}", "-o", "720,480,360"]
+        volumeMounts:
+          - name: gcp_credentials
+            mountPath: "/etc/gcp-credentials"
+            readOnly: true
+          - name: config-volume
+            mountPath: "/etc/config"
+            readOnly: true
       restartPolicy: Never
-      volumeMounts:
-      - name: gcp_credentials
-        mountPath: "/etc/gcp_credentials"
-        readOnly: true
+      volumes:
+      - name: gcp-credentials
+        secret:
+          secretName: video-proc-sa-credential
       - name: config-volume
-        mountPath: "/etc/config"
-        readOnly: true
-  volumes:
-  - name: gcp_credentials
-    secret:
-      secretName: video-proc-sa-credential
-  - name: config-volume
-    configMap:
-      name: video-proc-batch-config
-      items:
-        - key: config
-          path: video-proc-batch.yaml
+        configMap:
+          name: video-proc-batch-config
+          items:
+            - key: config
+              path: video-proc-batch.yaml
   backoffLimit: 4
