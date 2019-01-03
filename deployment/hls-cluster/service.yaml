@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hls-cluster-service
+spec:
+  selector:
+    app:  Selector Label
+  type:  ClusterIP
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080

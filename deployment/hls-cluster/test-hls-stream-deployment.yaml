@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hls-stream-server-deployment-{{ streamKey }}
+  namespace: video-proc-streaming
+  labels:
+    app: hls-stream-server
+    stream-key: {{ streamKey }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hls-stream-server
+      stream-key: {{ streamKey }}
+  template:
+    metadata:
+      labels:
+        app: ossrs
+        stream-key: {{ streamKey }}
+    spec:
+      containers:
+        - name: ffmpeg
+          image: eu.gcr.io/uob-tv-project-dev/uob-tv-ffmpeg:1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RTMP_SOURCE
+              value: rtmp://rtmp-ingestion-service:1935/live/stream/{{ streamKey }}
+            - name: HLS_OUTPUT_DIR
+              value: /var/ffmpeg-out
+            - name: STREAM_KEY
+              value: {{ streamKey }}
+            - name: HLS_FILE_NAME
+              value: segments
+          ports:
+          - containerPort: 1935
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "80m"
+            limits:
+              memory: "256Mi"
+              cpu: "300m"
+          volumeMounts:
+            - name: video-data
+              mountPath: /var/ffmpeg-out
+        - name: nginx
+          image: eu.gcr.io/uob-tv-project-dev/nginx:1
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: "60Mi"
+              cpu: "50m"
+            limits:
+              memory: "120Mi"
+              cpu: "150m"
+          volumeMounts:
+            - name: video-data
+              mountPath: /var/ffmpeg-out
+      volumes:
+        - name: video-data
+          emptyDir: {}
