@@ -20,7 +20,9 @@ GRPC_PORT = os.environ.get("GRPC_PORT", 6000)
 
 streams_service_host = "streams" + (SERVICES_DOMAIN and ".") + SERVICES_DOMAIN
 streams_service_port = 6000
-channel = grpc.Channel()
+
+channel = grpc.insecure_channel("{}:{}".format(streams_service_host, streams_service_port))
+stream_service = streams_pb2_grpc.StreamServiceStub(channel)
 
 @app.route("/", methods=["GET"])
 def index():
@@ -29,22 +31,22 @@ def index():
         "serviceName": SERVICE,
     })
 
-@app.route("/api/v1/callbacks/on_connect")
+@app.route("/api/v1/callbacks/on_connect", methods=["POST"])
 def on_connect():
     global request
     return "0"
 
-@app.route("/api/v1/callbacks/on_publish")
+@app.route("/api/v1/callbacks/on_publish", methods=["POST"])
 def on_publish():
     global request
     return "0"
 
-@app.route("/api/v1/callbacks/on_unpublish")
+@app.route("/api/v1/callbacks/on_unpublish", methods=["POST"])
 def on_unpublish():
     global request
     return "0"
 
-@app.route("/api/v1/callbacks/on_close")
+@app.route("/api/v1/callbacks/on_close", methods=["POST"])
 def on_close():
     global request
     return "0"
