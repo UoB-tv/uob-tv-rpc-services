@@ -94,14 +94,29 @@ class StreamsServicer(streams_pb2_grpc.StreamServiceServicer):
         return response
     
     def CreateStreamForUser(self, request, context):
+        """
+        Creates a stream entity for a user.
+        Will make sure one user can have at most one corresponding stream entity.
+        If stream already exists for userId, returns the existing stream entity instead.
+        Need to work around datastore transaction limitation. 
+        https://stackoverflow.com/questions/14397207/why-do-i-get-only-ancestor-queries-are-allowed-inside-transactions-error
+        """
         response = streams_pb2.CreateStreamForUserResponse()
         if not request.value:
             context.set_code(grpc.StatusCode.UNAVAILABLE)
             context.set_details("request.value is required")
             return response
-
-        with self.datastore_client.transaction():
-            try:
+        
+        query = self.datastore_client.query(kind=ENTITY_KIND)
+        query.add_filter("userId", "=", request.value)
+        result = list(query.fetch(limit = 1))
+        if len(result) > 0:
+            # stream already exists.
+            map_entity_to_stream(result[0], response.stream)
+            response.success = True
+            return response
+        try:
+            with self.datastore_client.transaction():
                 key = self.datastore_client.key(ENTITY_KIND)
                 stream_entity = datastore.Entity(key=key, exclude_from_indexes=["description", "title"])
                 stream_key = random_stream_key()
@@ -114,10 +129,10 @@ class StreamsServicer(streams_pb2_grpc.StreamServiceServicer):
                 self.datastore_client.put(stream_entity)
                 response.success = True
                 map_entity_to_stream(stream_entity, response.stream)
-            except Exception as e:
-                self.logger.error(e)
-                traceback.print_exc(e)
-                context.set_code(grpc.StatusCode.UNAVAILABLE)
-                context.set_details(str(e))
-                response.success = False
+        except Exception as e:
+            self.logger.error(e)
+            traceback.print_exc(e)
+            context.set_code(grpc.StatusCode.UNAVAILABLE)
+            context.set_details(str(e))
+            response.success = False
         return response

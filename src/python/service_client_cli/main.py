@@ -24,7 +24,7 @@ def main():
     call(service)
 
 def call(service):
-    result = service.GetStreamById(streams_pb2.StreamId(value=5639445604728832))
+    result = service.CreateStreamForUser(streams_pb2.UserId(value=1))
     print("stream: ", result)
 
 if __name__ == "__main__":

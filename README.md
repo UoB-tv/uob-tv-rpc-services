@@ -78,3 +78,9 @@ For a serve to run in production and accept traffic, we need write 2 main pieces
 ### Build and push a docker container to Google Container Registry
 
 See `deployment/hello_world/Makefile` for commands.
+
+### Service Monitoring
+
+Grafana Dashboard:
+http://grafana.uob-tv.co.uk:15031
+

@@ -37,7 +37,7 @@ spec:
             - name: conf
               mountPath: /etc/ossrs
         - name: ossrs-sidecar
-          image: eu.gcr.io/uob-tv-project-dev/ossrs_sidecar:1
+          image: eu.gcr.io/uob-tv-project-dev/ossrs_sidecar:1-1
           imagePullPolicy: Always
           ports:
           - containerPort: 6000
