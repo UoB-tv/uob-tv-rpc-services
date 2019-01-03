@@ -14,4 +14,16 @@ spec:
     hosts:
     - "www.uob-tv.co.uk"
     - "uob-tv.co.uk"
-    - "ingest.uob-tv.co.uk"
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "www.uob-tv.co.uk"
+    - "uob-tv.co.uk"
+    tls:
+      mode: SIMPLE
+      privateKey: /etc/istio/ingressgateway-certs/tls.key
+      serverCertificate: /etc/istio/ingressgateway-certs/tls.crt

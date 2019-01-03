@@ -82,5 +82,9 @@ See `deployment/hello_world/Makefile` for commands.
 ### Service Monitoring
 
 Grafana Dashboard:
-http://grafana.uob-tv.co.uk:15031
+http://grafana.uob-tv.co.uk
+
+
+Jaeger tracing:
+http://jaeger.uob-tv.co.uk
 
