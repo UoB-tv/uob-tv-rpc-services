@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streams-deployment
+  namespace: app-backends
+  labels:
+    app: streams
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streams
+  template:
+    metadata:
+      labels:
+        app: streams
+        version: "v2-dev"
+    spec:
+      containers:
+      - name: streams
+        image: eu.gcr.io/uob-tv-project-dev/streams:1-0
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 6000
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/etc/gcp-credentials/uob-tv-backend-sa.txt"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        volumeMounts:
+          - name: gcp-credentials
+            mountPath: "/etc/gcp-credentials"
+            readOnly: true
+      volumes:
+      - name: gcp-credentials
+        secret:
+          secretName: api-backend-sa-credential

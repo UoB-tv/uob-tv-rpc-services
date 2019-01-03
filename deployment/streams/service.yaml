@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: streams-service
+  namespace: app-backends
+spec:
+  selector:
+    app: streams
+  ports:
+  - port: 6000
+    targetPort: 6000

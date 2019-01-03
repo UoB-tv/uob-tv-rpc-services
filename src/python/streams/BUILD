@@ -1,5 +1,5 @@
 python_binary(
-    name="streams-server",
+    name="streams",
     dependencies=[
         "generated/python:grpc_generated_services",
         "3rdparty/python:grpcio",
