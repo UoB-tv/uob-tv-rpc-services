@@ -24,6 +24,3 @@ metadata:
   namespace: istio-system
 spec:
   host: tracing
-  trafficPolicy:
-    tls:
-      mode: DISABLE  

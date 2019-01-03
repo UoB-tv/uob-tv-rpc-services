@@ -1,13 +1,16 @@
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
+kind: Service
+apiVersion: v1
 metadata:
-  name: hls-cluster-frontend-vs
-  namespace: app-backends
+  name: ossrs-rtmp-ingestion-service
+  namespace: video-proc-streaming
 spec:
-  hosts:
-  - "*"
-  gateways:
-  - uob-tv-api-gateway
-  http:
-
-    
+  selector:
+    app:  ossrs
+  type:  ClusterIP
+  ports:
+  - name:  rtmp
+    port:  1935
+    targetPort:  1935
+  - name: http
+    port: 1938
+    targetPort: 1938

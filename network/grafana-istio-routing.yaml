@@ -24,6 +24,3 @@ metadata:
   namespace: istio-system
 spec:
   host: grafana
-  trafficPolicy:
-    tls:
-      mode: DISABLE  

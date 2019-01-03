@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: RTMP_SOURCE
-              value: rtmp://rtmp-ingestion-service:1935/live/stream/{{ streamKey }}
+              value: rtmp://ossrs-rtmp-ingestion-service.video-proc-streaming.svc.cluster.local:1935/live/stream/{{ streamKey }}
             - name: HLS_OUTPUT_DIR
               value: /var/ffmpeg-out
             - name: STREAM_KEY
