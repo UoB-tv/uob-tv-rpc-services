@@ -1,11 +1,11 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: grafana-vs
+  name: tracing-vs
   namespace: istio-system
 spec:
   hosts:
-  - "grafana.uob-tv.co.uk"
+  - "jaeger.uob-tv.co.uk"
   gateways:
   - uob-tv-internal-web-gateway
   http:
@@ -13,17 +13,17 @@ spec:
     - port: 80
     route:
     - destination:
-        host: grafana
+        host: tracing
         port:
-          number: 3000
+          number: 80
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: grafana
+  name: tracing
   namespace: istio-system
 spec:
-  host: grafana
+  host: tracing
   trafficPolicy:
     tls:
       mode: DISABLE  
