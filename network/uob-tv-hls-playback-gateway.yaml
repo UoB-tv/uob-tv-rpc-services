@@ -2,14 +2,14 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: uob-tv-hls-playback-gateway
-  namespace: app-backends
+  namespace: video-proc-streaming
 spec:
   selector:
     istio: ingressgateway # use istio default controller
   servers:
   - port:
       number: 80
-      name: http
+      name: http-live-playback
       protocol: HTTP
     hosts:
     - "live-playback.uob-tv.co.uk"
@@ -17,7 +17,7 @@ spec:
       httpsRedirect: true
   - port:
       number: 443
-      name: https
+      name: https-live-playback
       protocol: HTTPS
     hosts:
     - "live-playback.uob-tv.co.uk"

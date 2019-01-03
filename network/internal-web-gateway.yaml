@@ -9,20 +9,20 @@ spec:
   servers:
   - port:
       number: 80
-      name: http
+      name: http-internal-web
       protocol: HTTP
     hosts:
-    - "jaeger.uob-tv.co.uk"
-    - "grafana.uob-tv.co.uk"
+    - jaeger.uob-tv.co.uk
+    - grafana.uob-tv.co.uk
     tls:
       httpsRedirect: true
   - port:
       number: 443
-      name: https
+      name: https-internal-web
       protocol: HTTPS
     hosts:
-    - "jaeger.uob-tv.co.uk"
-    - "grafana.uob-tv.co.uk"
+    - jaeger.uob-tv.co.uk
+    - grafana.uob-tv.co.uk
     tls:
       mode: SIMPLE
       privateKey: /etc/istio/ingressgateway-certs/tls.key

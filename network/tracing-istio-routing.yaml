@@ -5,12 +5,13 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "jaeger.uob-tv.co.uk"
+  - jaeger.uob-tv.co.uk
   gateways:
   - uob-tv-internal-web-gateway
   http:
   - match:
-    - port: 80
+    - uri:
+        prefix: /
     route:
     - destination:
         host: tracing

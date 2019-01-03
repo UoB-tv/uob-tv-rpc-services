@@ -5,12 +5,13 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "grafana.uob-tv.co.uk"
+  - grafana.uob-tv.co.uk
   gateways:
   - uob-tv-internal-web-gateway
   http:
   - match:
-    - port: 80
+    - uri:
+        prefix: /
     route:
     - destination:
         host: grafana
