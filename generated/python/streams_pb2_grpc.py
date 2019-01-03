@@ -16,13 +16,23 @@ class StreamServiceStub(object):
     """
     self.CreateStreamForUser = channel.unary_unary(
         '/tv.uob.grpc.StreamService/CreateStreamForUser',
-        request_serializer=streams__pb2.CreateStreamForUserRequest.SerializeToString,
+        request_serializer=streams__pb2.UserId.SerializeToString,
         response_deserializer=streams__pb2.CreateStreamForUserResponse.FromString,
         )
     self.GetStreamForUser = channel.unary_unary(
         '/tv.uob.grpc.StreamService/GetStreamForUser',
-        request_serializer=streams__pb2.GetStreamForUserRequest.SerializeToString,
+        request_serializer=streams__pb2.UserId.SerializeToString,
         response_deserializer=streams__pb2.Stream.FromString,
+        )
+    self.GetStreamById = channel.unary_unary(
+        '/tv.uob.grpc.StreamService/GetStreamById',
+        request_serializer=streams__pb2.StreamId.SerializeToString,
+        response_deserializer=streams__pb2.Stream.FromString,
+        )
+    self.AuthenStreamToPublish = channel.unary_unary(
+        '/tv.uob.grpc.StreamService/AuthenStreamToPublish',
+        request_serializer=streams__pb2.StreamKey.SerializeToString,
+        response_deserializer=streams__pb2.StreamAuthenResult.FromString,
         )
 
 
@@ -44,18 +54,42 @@ class StreamServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetStreamById(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def AuthenStreamToPublish(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_StreamServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'CreateStreamForUser': grpc.unary_unary_rpc_method_handler(
           servicer.CreateStreamForUser,
-          request_deserializer=streams__pb2.CreateStreamForUserRequest.FromString,
+          request_deserializer=streams__pb2.UserId.FromString,
           response_serializer=streams__pb2.CreateStreamForUserResponse.SerializeToString,
       ),
       'GetStreamForUser': grpc.unary_unary_rpc_method_handler(
           servicer.GetStreamForUser,
-          request_deserializer=streams__pb2.GetStreamForUserRequest.FromString,
+          request_deserializer=streams__pb2.UserId.FromString,
           response_serializer=streams__pb2.Stream.SerializeToString,
+      ),
+      'GetStreamById': grpc.unary_unary_rpc_method_handler(
+          servicer.GetStreamById,
+          request_deserializer=streams__pb2.StreamId.FromString,
+          response_serializer=streams__pb2.Stream.SerializeToString,
+      ),
+      'AuthenStreamToPublish': grpc.unary_unary_rpc_method_handler(
+          servicer.AuthenStreamToPublish,
+          request_deserializer=streams__pb2.StreamKey.FromString,
+          response_serializer=streams__pb2.StreamAuthenResult.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

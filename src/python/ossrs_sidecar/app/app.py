@@ -15,9 +15,12 @@ import streams_pb2_grpc
 app = Flask("ossrs_sidecar.app")
 VERSION = "0.1"
 SERVICE = "ossrs_sidecar"
+SERVICES_DOMAIN = os.environ.get("SERVICES_DOMAIN", "")
 GRPC_PORT = os.environ.get("GRPC_PORT", 6000)
 
-channel = ""
+streams_service_host = "streams" + (SERVICES_DOMAIN and ".") + SERVICES_DOMAIN
+streams_service_port = 6000
+channel = grpc.Channel()
 
 @app.route("/", methods=["GET"])
 def index():

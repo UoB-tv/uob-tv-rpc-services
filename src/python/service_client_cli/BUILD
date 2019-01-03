@@ -1,16 +1,13 @@
 python_binary(
-    name="streams-server",
+    name="service_client_cli",
     dependencies=[
         "generated/python:grpc_generated_services",
         "3rdparty/python:grpcio",
-        "src/python/streams/service:service",
-        "3rdparty/python:google-cloud-datastore",
-        "3rdparty/python:google-cloud-core"
     ],
     source="main.py",
     platforms=[
         'current',
-        'linux-x86_64',
+        'linux_x86_64-cp-37-cp37m',
         'macosx-10.12-x86_64',
     ]
 )

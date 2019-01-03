@@ -24,8 +24,8 @@ app = Flask("user-authen")
 def current_time_millis():
     return int(time.time * 1000)
 
-def require_env_var(name, optional=False):
-    env_var = os.environ.get(name, None)
+def require_env_var(name, optional=False, default=None):
+    env_var = os.environ.get(name, default)
     if env_var is None and not optional:
         logger.error("%s variable must be set.", name)
         exit(-1)
@@ -38,9 +38,9 @@ ALLOWED_GSUITE_DOMAIN = require_env_var("ALLOWED_GSUITE_DOMAIN", optional=True)
 API_AUTH_JWT_SECRET = require_env_var("API_AUTH_JWT_SECRET")
 ENVIRONMENT=require_env_var("ENVIRONMENT", optional=True)
 debug = ENVIRONMENT == "development"
-SERVICES_DOMAIN = require_env_var("SERVICES_DOMAIN", optional=True)
+SERVICES_DOMAIN = require_env_var("SERVICES_DOMAIN", optional=True, default="")
 
-users_service_host = "users-service" + (str(SERVICES_DOMAIN) + ".") if SERVICES_DOMAIN is not None else ""
+users_service_host = "users-service" + (SERVICES_DOMAIN and ".") + SERVICES_DOMAIN
 users_service_port = 6000
 
 

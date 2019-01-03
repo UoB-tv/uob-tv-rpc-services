@@ -15,3 +15,9 @@ Get a graph visualization of services in the mesh
     kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=servicegraph -o jsonpath='{.items [0.metadata.name}') 8088:8088
 
 Open browser to http://localhost:8088/force/forcegraph.html
+
+
+Accessing Jaeger Dashboard for tracing.
+
+
+    kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686 &

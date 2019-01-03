@@ -37,7 +37,7 @@ class UsersServicer(users_pb2_grpc.UserServiceServicer):
             return user
 
         entity_key = self.datastore_client.key(kind=KIND, key=request.id)
-        entity = self.datastore_client.Entity(key=key)
+        entity = self.datastore_client.Entity(key=entity_key)
 
         user.email = user_entity["email"]
         user.id = int(user_entity.id)

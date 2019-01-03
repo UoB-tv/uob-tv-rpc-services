@@ -7,27 +7,38 @@ option java_multiple_files = true;
 option java_package = "tv.uob.grpc";
 
 message Stream {
-    int32 id = 1;
+    int64 id = 1;
     int32 userId = 2;
     string streamKey = 3;
     string description = 4;
     string title = 5;
 }
 
-message CreateStreamForUserRequest {
-    int32 userId = 1;
+message UserId {
+    int32 value = 1;
 }
 
 message CreateStreamForUserResponse {
     bool success = 1;
-    string error = 2;
+    Stream stream = 3;
 }
 
-message GetStreamForUserRequest {
-    int32 userId = 1;
+message StreamId {
+    int64 value = 1;
+}
+
+message StreamKey {
+    string value = 1;
+}
+
+message StreamAuthenResult {
+    bool authenticated = 1;
+    string message = 2;
 }
 
 service StreamService {
-    rpc CreateStreamForUser(CreateStreamForUserRequest) returns (CreateStreamForUserResponse) {}
-    rpc GetStreamForUser(GetStreamForUserRequest) returns (Stream) {}
+    rpc CreateStreamForUser(UserId) returns (CreateStreamForUserResponse) {}
+    rpc GetStreamForUser(UserId) returns (Stream) {}
+    rpc GetStreamById(StreamId) returns (Stream) {}
+    rpc AuthenStreamToPublish(StreamKey) returns (StreamAuthenResult) {}
 }

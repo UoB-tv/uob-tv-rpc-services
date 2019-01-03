@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"[\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\",\n\x1a\x43reateStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\"=\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\")\n\x17GetStreamForUserRequest\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x32\xcc\x01\n\rStreamService\x12j\n\x13\x43reateStreamForUser\x12\'.tv.uob.grpc.CreateStreamForUserRequest\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12O\n\x10GetStreamForUser\x12$.tv.uob.grpc.GetStreamForUserRequest\x1a\x13.tv.uob.grpc.Stream\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rstreams.proto\x12\x0btv.uob.grpc\"[\n\x06Stream\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x0e\n\x06userId\x18\x02 \x01(\x05\x12\x11\n\tstreamKey\x18\x03 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x04 \x01(\t\x12\r\n\x05title\x18\x05 \x01(\t\"\x17\n\x06UserId\x12\r\n\x05value\x18\x01 \x01(\x05\"S\n\x1b\x43reateStreamForUserResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12#\n\x06stream\x18\x03 \x01(\x0b\x32\x13.tv.uob.grpc.Stream\"\x19\n\x08StreamId\x12\r\n\x05value\x18\x01 \x01(\x03\"\x1a\n\tStreamKey\x12\r\n\x05value\x18\x01 \x01(\t\"<\n\x12StreamAuthenResult\x12\x15\n\rauthenticated\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xba\x02\n\rStreamService\x12V\n\x13\x43reateStreamForUser\x12\x13.tv.uob.grpc.UserId\x1a(.tv.uob.grpc.CreateStreamForUserResponse\"\x00\x12>\n\x10GetStreamForUser\x12\x13.tv.uob.grpc.UserId\x1a\x13.tv.uob.grpc.Stream\"\x00\x12=\n\rGetStreamById\x12\x15.tv.uob.grpc.StreamId\x1a\x13.tv.uob.grpc.Stream\"\x00\x12R\n\x15\x41uthenStreamToPublish\x12\x16.tv.uob.grpc.StreamKey\x1a\x1f.tv.uob.grpc.StreamAuthenResult\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 
@@ -34,7 +34,7 @@ _STREAM = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='tv.uob.grpc.Stream.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -84,15 +84,15 @@ _STREAM = _descriptor.Descriptor(
 )
 
 
-_CREATESTREAMFORUSERREQUEST = _descriptor.Descriptor(
-  name='CreateStreamForUserRequest',
-  full_name='tv.uob.grpc.CreateStreamForUserRequest',
+_USERID = _descriptor.Descriptor(
+  name='UserId',
+  full_name='tv.uob.grpc.UserId',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userId', full_name='tv.uob.grpc.CreateStreamForUserRequest.userId', index=0,
+      name='value', full_name='tv.uob.grpc.UserId.value', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,7 +111,7 @@ _CREATESTREAMFORUSERREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=123,
-  serialized_end=167,
+  serialized_end=146,
 )
 
 
@@ -130,7 +130,107 @@ _CREATESTREAMFORUSERRESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='error', full_name='tv.uob.grpc.CreateStreamForUserResponse.error', index=1,
+      name='stream', full_name='tv.uob.grpc.CreateStreamForUserResponse.stream', index=1,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=148,
+  serialized_end=231,
+)
+
+
+_STREAMID = _descriptor.Descriptor(
+  name='StreamId',
+  full_name='tv.uob.grpc.StreamId',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='tv.uob.grpc.StreamId.value', index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=233,
+  serialized_end=258,
+)
+
+
+_STREAMKEY = _descriptor.Descriptor(
+  name='StreamKey',
+  full_name='tv.uob.grpc.StreamKey',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='tv.uob.grpc.StreamKey.value', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=260,
+  serialized_end=286,
+)
+
+
+_STREAMAUTHENRESULT = _descriptor.Descriptor(
+  name='StreamAuthenResult',
+  full_name='tv.uob.grpc.StreamAuthenResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='authenticated', full_name='tv.uob.grpc.StreamAuthenResult.authenticated', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='tv.uob.grpc.StreamAuthenResult.message', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -148,45 +248,17 @@ _CREATESTREAMFORUSERRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=169,
-  serialized_end=230,
+  serialized_start=288,
+  serialized_end=348,
 )
 
-
-_GETSTREAMFORUSERREQUEST = _descriptor.Descriptor(
-  name='GetStreamForUserRequest',
-  full_name='tv.uob.grpc.GetStreamForUserRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='userId', full_name='tv.uob.grpc.GetStreamForUserRequest.userId', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=232,
-  serialized_end=273,
-)
-
+_CREATESTREAMFORUSERRESPONSE.fields_by_name['stream'].message_type = _STREAM
 DESCRIPTOR.message_types_by_name['Stream'] = _STREAM
-DESCRIPTOR.message_types_by_name['CreateStreamForUserRequest'] = _CREATESTREAMFORUSERREQUEST
+DESCRIPTOR.message_types_by_name['UserId'] = _USERID
 DESCRIPTOR.message_types_by_name['CreateStreamForUserResponse'] = _CREATESTREAMFORUSERRESPONSE
-DESCRIPTOR.message_types_by_name['GetStreamForUserRequest'] = _GETSTREAMFORUSERREQUEST
+DESCRIPTOR.message_types_by_name['StreamId'] = _STREAMID
+DESCRIPTOR.message_types_by_name['StreamKey'] = _STREAMKEY
+DESCRIPTOR.message_types_by_name['StreamAuthenResult'] = _STREAMAUTHENRESULT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Stream = _reflection.GeneratedProtocolMessageType('Stream', (_message.Message,), dict(
@@ -196,12 +268,12 @@ Stream = _reflection.GeneratedProtocolMessageType('Stream', (_message.Message,),
   ))
 _sym_db.RegisterMessage(Stream)
 
-CreateStreamForUserRequest = _reflection.GeneratedProtocolMessageType('CreateStreamForUserRequest', (_message.Message,), dict(
-  DESCRIPTOR = _CREATESTREAMFORUSERREQUEST,
+UserId = _reflection.GeneratedProtocolMessageType('UserId', (_message.Message,), dict(
+  DESCRIPTOR = _USERID,
   __module__ = 'streams_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.CreateStreamForUserRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.UserId)
   ))
-_sym_db.RegisterMessage(CreateStreamForUserRequest)
+_sym_db.RegisterMessage(UserId)
 
 CreateStreamForUserResponse = _reflection.GeneratedProtocolMessageType('CreateStreamForUserResponse', (_message.Message,), dict(
   DESCRIPTOR = _CREATESTREAMFORUSERRESPONSE,
@@ -210,12 +282,26 @@ CreateStreamForUserResponse = _reflection.GeneratedProtocolMessageType('CreateSt
   ))
 _sym_db.RegisterMessage(CreateStreamForUserResponse)
 
-GetStreamForUserRequest = _reflection.GeneratedProtocolMessageType('GetStreamForUserRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETSTREAMFORUSERREQUEST,
+StreamId = _reflection.GeneratedProtocolMessageType('StreamId', (_message.Message,), dict(
+  DESCRIPTOR = _STREAMID,
   __module__ = 'streams_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.GetStreamForUserRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.StreamId)
   ))
-_sym_db.RegisterMessage(GetStreamForUserRequest)
+_sym_db.RegisterMessage(StreamId)
+
+StreamKey = _reflection.GeneratedProtocolMessageType('StreamKey', (_message.Message,), dict(
+  DESCRIPTOR = _STREAMKEY,
+  __module__ = 'streams_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.StreamKey)
+  ))
+_sym_db.RegisterMessage(StreamKey)
+
+StreamAuthenResult = _reflection.GeneratedProtocolMessageType('StreamAuthenResult', (_message.Message,), dict(
+  DESCRIPTOR = _STREAMAUTHENRESULT,
+  __module__ = 'streams_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.StreamAuthenResult)
+  ))
+_sym_db.RegisterMessage(StreamAuthenResult)
 
 
 DESCRIPTOR._options = None
@@ -226,15 +312,15 @@ _STREAMSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=276,
-  serialized_end=480,
+  serialized_start=351,
+  serialized_end=665,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateStreamForUser',
     full_name='tv.uob.grpc.StreamService.CreateStreamForUser',
     index=0,
     containing_service=None,
-    input_type=_CREATESTREAMFORUSERREQUEST,
+    input_type=_USERID,
     output_type=_CREATESTREAMFORUSERRESPONSE,
     serialized_options=None,
   ),
@@ -243,8 +329,26 @@ _STREAMSERVICE = _descriptor.ServiceDescriptor(
     full_name='tv.uob.grpc.StreamService.GetStreamForUser',
     index=1,
     containing_service=None,
-    input_type=_GETSTREAMFORUSERREQUEST,
+    input_type=_USERID,
     output_type=_STREAM,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetStreamById',
+    full_name='tv.uob.grpc.StreamService.GetStreamById',
+    index=2,
+    containing_service=None,
+    input_type=_STREAMID,
+    output_type=_STREAM,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AuthenStreamToPublish',
+    full_name='tv.uob.grpc.StreamService.AuthenStreamToPublish',
+    index=3,
+    containing_service=None,
+    input_type=_STREAMKEY,
+    output_type=_STREAMAUTHENRESULT,
     serialized_options=None,
   ),
 ])
