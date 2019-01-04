@@ -1,6 +1,6 @@
-IMAGE_NAME = uob-tv-ffmpeg
+IMAGE_NAME = nginx
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION = 1
+VERSION = 1-3
 
 TAG = ${REGISTRY_URL}/${IMAGE_NAME}:${VERSION}
 

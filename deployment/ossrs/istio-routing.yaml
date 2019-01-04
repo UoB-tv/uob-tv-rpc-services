@@ -5,7 +5,8 @@ metadata:
     namespace: video-proc-streaming
 spec:
     hosts:
-    - "*"
+    - ossrs-rtmp-ingestion-service
+    - "ingest.uob-tv.co.uk"
     gateways:
     - uob-tv-ingestion-gateway
     tcp:
@@ -13,4 +14,8 @@ spec:
         - port: 1935
       route:
       - destination:
-            host: ossrs-rtmp-ingestion-service
+          host: ossrs-rtmp-ingestion-service
+          port:
+            number: 1935
+
+# ossrs-rtmp-ingestion-service.video-proc-streaming.svc.cluster.local

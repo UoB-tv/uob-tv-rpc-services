@@ -4,12 +4,12 @@ metadata:
     name: uob-tv-ingestion-gateway
     namespace: video-proc-streaming
 spec:
-    selector:
-        istio: ingressgateway # use istio default controller
-    servers:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
     - port:
         number: 1935
-        name: rtmp
+        name: rtmp-ingest
         protocol: TCP
       hosts:
-        - "ingestion.uob-tv.co.uk"
+        - "ingest.uob-tv.co.uk"

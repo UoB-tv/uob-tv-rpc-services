@@ -1,16 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ossrs-rtmp-ingestion-service
+  name: hls-cluster-service
   namespace: video-proc-streaming
 spec:
   selector:
-    app:  ossrs
+    app:  hls-stream-server
   type:  ClusterIP
   ports:
-  - name:  rtmp
-    port:  1935
-    targetPort:  1935
-  - name: http
-    port: 1938
-    targetPort: 1938
+  - name: http-hls
+    port: 8080
+    targetPort: 8080

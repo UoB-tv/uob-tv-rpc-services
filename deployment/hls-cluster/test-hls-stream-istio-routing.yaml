@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-hls-frontend
+  namespace: video-proc-streaming
+spec:
+  hosts:
+  - "live-playback.uob-tv.co.uk"
+  gateways:
+  - uob-tv-hls-playback-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: hls-cluster-service
+        port:
+          number: 8080
+        subset: stream-1234
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: test-hls-backend-destination
+  namespace: video-proc-streaming
+spec:
+  host: hls-cluster-service
+  subsets:
+  - name: stream-1234
+    labels:
+      stream-key: abcd-1234

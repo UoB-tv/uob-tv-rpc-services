@@ -2,9 +2,10 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hls-cluster-service
+  namespace: video-proc-streaming
 spec:
   selector:
-    app:  Selector Label
+    app: hls-stream-server
   type:  ClusterIP
   ports:
   - name: http
