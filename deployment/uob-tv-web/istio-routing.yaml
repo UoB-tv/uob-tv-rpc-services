@@ -6,7 +6,6 @@ metadata:
 spec:
   hosts:
   - "www.uob-tv.co.uk"
-  - "uob-tv.co.uk"
   gateways:
   - uob-tv-public-gateway
   http:

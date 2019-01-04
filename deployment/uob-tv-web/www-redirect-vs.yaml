@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: uob-tv-web-www-redirect-rule
+  namespace: app-backends
+spec:
+  hosts:
+  - uob-tv.co.uk
+  gateways:
+  - uob-tv-public-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    redirect:
+      uri: /
+      authority: www.uob-tv.co.uk

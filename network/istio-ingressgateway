@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"istio-ingressgateway","chart":"gateways-1.0.5","heritage":"Tiller","istio":"ingressgateway","release":"istio"},"name":"istio-ingressgateway","namespace":"istio-system"},"spec":{"ports":[{"name":"http2","nodePort":31380,"port":80,"targetPort":80},{"name":"https","nodePort":31390,"port":443},{"name":"tcp","nodePort":31400,"port":31400},{"name":"tcp-pilot-grpc-tls","port":15011,"targetPort":15011},{"name":"tcp-citadel-grpc-tls","port":8060,"targetPort":8060},{"name":"tcp-dns-tls","port":853,"targetPort":853},{"name":"http2-prometheus","port":15030,"targetPort":15030},{"name":"http2-grafana","port":15031,"targetPort":15031}],"selector":{"app":"istio-ingressgateway","istio":"ingressgateway"},"type":"LoadBalancer"}}
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2018-10-28T00:44:56Z","labels":{"app":"istio-ingressgateway","chart":"gateways-1.0.5","heritage":"Tiller","istio":"ingressgateway","release":"istio"},"name":"istio-ingressgateway","namespace":"istio-system","resourceVersion":"10252308","selfLink":"/api/v1/namespaces/istio-system/services/istio-ingressgateway","uid":"b0a7bb8f-da4a-11e8-ba2f-42010a9a00cb"},"spec":{"clusterIP":"10.31.253.220","externalTrafficPolicy":"Cluster","ports":[{"name":"http2","nodePort":31380,"port":80,"protocol":"TCP","targetPort":80},{"name":"https","nodePort":31390,"port":443,"protocol":"TCP","targetPort":443},{"name":"tcp","nodePort":31400,"port":31400,"protocol":"TCP","targetPort":31400},{"name":"tcp-pilot-grpc-tls","nodePort":32189,"port":15011,"protocol":"TCP","targetPort":15011},{"name":"tcp-citadel-grpc-tls","nodePort":30001,"port":8060,"protocol":"TCP","targetPort":8060},{"name":"tcp-dns-tls","nodePort":31160,"port":853,"protocol":"TCP","targetPort":853},{"name":"http2-prometheus","nodePort":31041,"port":15030,"protocol":"TCP","targetPort":15030},{"name":"http2-grafana","nodePort":30375,"port":15031,"protocol":"TCP","targetPort":15031},{"name":"rtmp","nodePort":30376,"port":1935,"protocol":"TCP","targetPort":1935}],"selector":{"app":"istio-ingressgateway","istio":"ingressgateway"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{"ingress":[{"ip":"35.246.22.124"}]}}}
   creationTimestamp: 2018-10-28T00:44:56Z
   labels:
     app: istio-ingressgateway
@@ -13,7 +13,7 @@ metadata:
     release: istio
   name: istio-ingressgateway
   namespace: istio-system
-  resourceVersion: "10252308"
+  resourceVersion: "10503590"
   selfLink: /api/v1/namespaces/istio-system/services/istio-ingressgateway
   uid: b0a7bb8f-da4a-11e8-ba2f-42010a9a00cb
 spec:
