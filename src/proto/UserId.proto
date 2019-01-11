@@ -5,5 +5,5 @@ option java_multiple_files = true;
 option java_package = "tv.uob.grpc";
 
 message UserId {
-    int64 value = 1;
+    string value = 1;
 }

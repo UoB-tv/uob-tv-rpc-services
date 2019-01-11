@@ -9,8 +9,8 @@ const GOOGLE_SIGN_IN_CLIENT_ID = process.env.GOOGLE_SIGN_IN_CLIENT_ID
 const TOKEN_VALID_DURATION = 1000 * 60 * 60 * 24 
 const SERVICE_DOMAINS = process.env.SERVICE_DOMAINS || ""
 
-const messages = require("./generated-grpc/users_pb")
-const services = require("./generated-grpc/users_grpc_pb")
+const messages = require("./generated-grpc/users_v2_pb")
+const services = require("./generated-grpc/users_v2_grpc_pb")
 
 let ALLOWED_GSUITE_DOMAINS = new Set([])
 if (process.env.ALLOWED_GSUITE_DOMAINS) {
@@ -23,7 +23,8 @@ const API_AUTH_JWT_SECRET = process.env.API_AUTH_JWT_SECRET || "SECRET123456"
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(GOOGLE_SIGN_IN_CLIENT_ID);
 
-const USERS_HOST = "users-service" + (SERVICE_DOMAINS && ".") + SERVICE_DOMAINS
+//const USERS_HOST = "users-service" + (SERVICE_DOMAINS && ".") + SERVICE_DOMAINS
+const USERS_HOST = "localhost"
 const USERS_PORT = 6000
 
 
@@ -36,13 +37,29 @@ class VerificationError extends Error {
     }
 }
 
-async function createOrGetUser(usersServiceClient, userId, email) {
-    const deadline = new Date().getMilliseconds() + 5000
+async function userExists(usersServiceClient, email) {
+    
     return new Promise((resolve, reject)=>{
-        let request = new messages.CreateUserRequest()
-        request.setEmail(email)
-        request.setUserId(userId)
-        usersServiceClient.createUserIfNotExists(request, (err, user) => {
+        let request = new messages.Email()
+        request.setValue(email)
+        usersServiceClient.userExists(request, (err, result) => {
+            if(err) {
+                console.error("err when executing GetByEmail", err)
+                reject(err)
+            } else {
+                resolve(result)
+            }
+        })
+    })
+}
+
+async function initializeUserAccount(usersServiceClient, userId, email) {
+    
+    return new Promise((resolve, reject)=>{
+        let request = new messages.UserInitialData()
+        request.setGoogleuseremail(email)
+        request.setGoogleuserid(userId)
+        usersServiceClient.initializeIfNotExist(request, (err, user) => {
             if(err) {
                 console.error("err when executing GetByEmail", err)
                 reject(err)
@@ -52,7 +69,6 @@ async function createOrGetUser(usersServiceClient, userId, email) {
         })
     })
 }
-
 async function verify(token, clientId, allowedDomains) {
     const ticket = await client.verifyIdToken({
         idToken: token,
@@ -66,11 +82,11 @@ async function verify(token, clientId, allowedDomains) {
     // If request specified a G Suite domain:
     const domain = payload['hd'];
     console.log("domain", domain)
+    console.log("userId", payload["sub"])
     if(allowedDomains && allowedDomains.size > 0) {
         if(!allowedDomains.has(domain))
             throw new VerificationError("Domain is not allowed:" + domain)
     }
-    
     return {
         email: payload["email"],
         userId: payload["sub"],
@@ -113,6 +129,11 @@ app.post("/api/v1/verify_signin", async (request, response) => {
             return 
         }
         console.log("id_token verified")
+        console.log("create or get user with email.")
+        const exist = await userExists(usersGrpcClient, result.email)
+        if(!exist.value) {
+            await initializeUserAccount(usersGrpcClient, result.userId, result.email)
+        }
         time_millis = new Date().getTime()
         console.log("generate signed jwt token")
         const token = jsonwebtoken.sign(
@@ -125,9 +146,7 @@ app.post("/api/v1/verify_signin", async (request, response) => {
             },
             API_AUTH_JWT_SECRET,
         )
-        console.log("create or get user with email.")
-        await createOrGetUser(usersGrpcClient, result.userId, result.email)
-
+        
         response.status(200).send({
             message: "user verified",
             success: true,
@@ -136,7 +155,7 @@ app.post("/api/v1/verify_signin", async (request, response) => {
 
     } catch (err) {
         console.error(err)
-        response.status(400).send({
+        response.status(500).send({
             message: "error processing token: " + err.message,
             success: false
         })

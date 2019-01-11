@@ -12,5 +12,5 @@ docker_push_image: docker_image
 	docker push ${TAG}
 
 
-gen-proto-js:
+gen-proto:
 	grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./generated-grpc --grpc_out=./generated-grpc --plugin=protoc-gen-grpc=`which grpc_tools_node_protoc_plugin` --proto_path=../../proto ../../proto/*.proto

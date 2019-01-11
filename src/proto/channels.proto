@@ -16,7 +16,7 @@ message Channel {
 }
 
 message Owner {
-    int64 userId = 1;
+    string userId = 1;
     string email = 2;
     string username = 3;
 }

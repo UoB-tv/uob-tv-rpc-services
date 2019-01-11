@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x0eusers_v2.proto\x12\x0btv.uob.grpc\x1a\x0f\x43hannelId.proto\x1a\x0cUserId.proto\"\xae\x01\n\x04User\x12\x0e\n\x06userId\x18\x01 \x01(\x03\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12%\n\x07profile\x18\x04 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\x12%\n\x06stream\x18\x05 \x01(\x0b\x32\x15.tv.uob.grpc.StreamId\x12\'\n\x07\x63hannel\x18\x06 \x01(\x0b\x32\x16.tv.uob.grpc.ChannelId\")\n\x08StreamId\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tstreamKey\x18\x02 \x01(\t\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\"@\n\x0fUserInitialData\x12\x17\n\x0fgoogleUserEmail\x18\x01 \x01(\t\x12\x14\n\x0cgoogleUserId\x18\x02 \x01(\x03\"\x16\n\x05\x45mail\x12\r\n\x05value\x18\x01 \x01(\t\"\x18\n\x07\x42oolean\x12\r\n\x05value\x18\x01 \x01(\x08\x32\xd2\x02\n\x0bUserService\x12J\n\x15InitializeUserAccount\x12\x1c.tv.uob.grpc.UserInitialData\x1a\x11.tv.uob.grpc.User\"\x00\x12I\n\x14InitializeIfNotExist\x12\x1c.tv.uob.grpc.UserInitialData\x1a\x11.tv.uob.grpc.User\"\x00\x12\x39\n\x0eGetUserByEmail\x12\x12.tv.uob.grpc.Email\x1a\x11.tv.uob.grpc.User\"\x00\x12\x37\n\x0bGetUserById\x12\x13.tv.uob.grpc.UserId\x1a\x11.tv.uob.grpc.User\"\x00\x12\x38\n\nUserExists\x12\x12.tv.uob.grpc.Email\x1a\x14.tv.uob.grpc.Boolean\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0eusers_v2.proto\x12\x0btv.uob.grpc\x1a\x0f\x43hannelId.proto\x1a\x0cUserId.proto\"\xae\x01\n\x04User\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12%\n\x07profile\x18\x04 \x01(\x0b\x32\x14.tv.uob.grpc.Profile\x12%\n\x06stream\x18\x05 \x01(\x0b\x32\x15.tv.uob.grpc.StreamId\x12\'\n\x07\x63hannel\x18\x06 \x01(\x0b\x32\x16.tv.uob.grpc.ChannelId\")\n\x08StreamId\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tstreamKey\x18\x02 \x01(\t\"\x1c\n\x07Profile\x12\x11\n\tavatarURL\x18\x01 \x01(\t\"@\n\x0fUserInitialData\x12\x17\n\x0fgoogleUserEmail\x18\x01 \x01(\t\x12\x14\n\x0cgoogleUserId\x18\x02 \x01(\t\"\x16\n\x05\x45mail\x12\r\n\x05value\x18\x01 \x01(\t\"\x18\n\x07\x42oolean\x12\r\n\x05value\x18\x01 \x01(\x08\x32\xd2\x02\n\x0bUserService\x12J\n\x15InitializeUserAccount\x12\x1c.tv.uob.grpc.UserInitialData\x1a\x11.tv.uob.grpc.User\"\x00\x12I\n\x14InitializeIfNotExist\x12\x1c.tv.uob.grpc.UserInitialData\x1a\x11.tv.uob.grpc.User\"\x00\x12\x39\n\x0eGetUserByEmail\x12\x12.tv.uob.grpc.Email\x1a\x11.tv.uob.grpc.User\"\x00\x12\x37\n\x0bGetUserById\x12\x13.tv.uob.grpc.UserId\x1a\x11.tv.uob.grpc.User\"\x00\x12\x38\n\nUserExists\x12\x12.tv.uob.grpc.Email\x1a\x14.tv.uob.grpc.Boolean\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
   dependencies=[ChannelId__pb2.DESCRIPTOR,UserId__pb2.DESCRIPTOR,])
 
@@ -37,8 +37,8 @@ _USER = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='userId', full_name='tv.uob.grpc.User.userId', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -179,8 +179,8 @@ _USERINITIALDATA = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='googleUserId', full_name='tv.uob.grpc.UserInitialData.googleUserId', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

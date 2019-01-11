@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x0cUserId.proto\x12\x0btv.uob.grpc\"\x17\n\x06UserId\x12\r\n\x05value\x18\x01 \x01(\x03\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0cUserId.proto\x12\x0btv.uob.grpc\"\x17\n\x06UserId\x12\r\n\x05value\x18\x01 \x01(\tB\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
 )
 
 
@@ -34,8 +34,8 @@ _USERID = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='value', full_name='tv.uob.grpc.UserId.value', index=0,
-      number=1, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

@@ -59,7 +59,7 @@ proto.tv.uob.grpc.UserId.prototype.toObject = function(opt_includeInstance) {
  */
 proto.tv.uob.grpc.UserId.toObject = function(includeInstance, msg) {
   var f, obj = {
-    value: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    value: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -97,7 +97,7 @@ proto.tv.uob.grpc.UserId.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setValue(value);
       break;
     default:
@@ -130,8 +130,8 @@ proto.tv.uob.grpc.UserId.prototype.serializeBinary = function() {
 proto.tv.uob.grpc.UserId.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getValue();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -140,15 +140,15 @@ proto.tv.uob.grpc.UserId.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 value = 1;
- * @return {number}
+ * optional string value = 1;
+ * @return {string}
  */
 proto.tv.uob.grpc.UserId.prototype.getValue = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.tv.uob.grpc.UserId.prototype.setValue = function(value) {
   jspb.Message.setField(this, 1, value);
 };

@@ -330,7 +330,7 @@ proto.tv.uob.grpc.Owner.prototype.toObject = function(opt_includeInstance) {
  */
 proto.tv.uob.grpc.Owner.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     email: jspb.Message.getFieldWithDefault(msg, 2, ""),
     username: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
@@ -370,7 +370,7 @@ proto.tv.uob.grpc.Owner.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserid(value);
       break;
     case 2:
@@ -411,8 +411,8 @@ proto.tv.uob.grpc.Owner.prototype.serializeBinary = function() {
 proto.tv.uob.grpc.Owner.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUserid();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -435,15 +435,15 @@ proto.tv.uob.grpc.Owner.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 userId = 1;
- * @return {number}
+ * optional string userId = 1;
+ * @return {string}
  */
 proto.tv.uob.grpc.Owner.prototype.getUserid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.tv.uob.grpc.Owner.prototype.setUserid = function(value) {
   jspb.Message.setField(this, 1, value);
 };

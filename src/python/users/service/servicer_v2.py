@@ -37,7 +37,7 @@ def random_stream_key():
 
 def map_user_entity_to_user_pb(user_entity, channel_id_entity, stream_id_entity):
     user = users_v2_pb2.User()
-    user.userId = int(user_entity.id)
+    user.userId = user_entity.key.name
     user.username = user_entity["username"]
     user.profile.avatarURL = user_entity["profile"]["avatarURL"]
     user.channel.value = int(channel_id_entity.id)
@@ -158,9 +158,9 @@ class UsersServicer(users_v2_pb2_grpc.UserServiceServicer):
     
 
     def InitializeIfNotExist(self, request, context):
-        user_entity, channel_id, stream_id  = self._getUserById(request.userId)
+        user_entity, channel_id, stream_id  = self._getUserById(request.googleUserId)
         if user_entity is None:
-            user_entity, channel_id, stream_id = self._initialize_account()
+            user_entity, channel_id, stream_id = self._initialize_account(request)
         return map_user_entity_to_user_pb(user_entity, channel_id, stream_id)
         
     

@@ -9,7 +9,7 @@ import "ChannelId.proto";
 import "UserId.proto";
 
 message User {
-    int64 userId = 1;
+    string userId = 1;
     string username = 2;
     string email = 3;
     Profile profile = 4;
@@ -28,7 +28,7 @@ message Profile {
 
 message UserInitialData {
     string googleUserEmail = 1;
-    int64 googleUserId = 2;
+    string googleUserId = 2;
 }
 
 message Email {

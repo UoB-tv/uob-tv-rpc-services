@@ -66,7 +66,7 @@ proto.tv.uob.grpc.User.prototype.toObject = function(opt_includeInstance) {
  */
 proto.tv.uob.grpc.User.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     username: jspb.Message.getFieldWithDefault(msg, 2, ""),
     email: jspb.Message.getFieldWithDefault(msg, 3, ""),
     profile: (f = msg.getProfile()) && proto.tv.uob.grpc.Profile.toObject(includeInstance, f),
@@ -109,7 +109,7 @@ proto.tv.uob.grpc.User.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserid(value);
       break;
     case 2:
@@ -165,8 +165,8 @@ proto.tv.uob.grpc.User.prototype.serializeBinary = function() {
 proto.tv.uob.grpc.User.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUserid();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
@@ -213,15 +213,15 @@ proto.tv.uob.grpc.User.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional int64 userId = 1;
- * @return {number}
+ * optional string userId = 1;
+ * @return {string}
  */
 proto.tv.uob.grpc.User.prototype.getUserid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.tv.uob.grpc.User.prototype.setUserid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
@@ -706,7 +706,7 @@ proto.tv.uob.grpc.UserInitialData.prototype.toObject = function(opt_includeInsta
 proto.tv.uob.grpc.UserInitialData.toObject = function(includeInstance, msg) {
   var f, obj = {
     googleuseremail: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    googleuserid: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    googleuserid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -748,7 +748,7 @@ proto.tv.uob.grpc.UserInitialData.deserializeBinaryFromReader = function(msg, re
       msg.setGoogleuseremail(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setGoogleuserid(value);
       break;
     default:
@@ -788,8 +788,8 @@ proto.tv.uob.grpc.UserInitialData.serializeBinaryToWriter = function(message, wr
     );
   }
   f = message.getGoogleuserid();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -813,15 +813,15 @@ proto.tv.uob.grpc.UserInitialData.prototype.setGoogleuseremail = function(value)
 
 
 /**
- * optional int64 googleUserId = 2;
- * @return {number}
+ * optional string googleUserId = 2;
+ * @return {string}
  */
 proto.tv.uob.grpc.UserInitialData.prototype.getGoogleuserid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.tv.uob.grpc.UserInitialData.prototype.setGoogleuserid = function(value) {
   jspb.Message.setField(this, 2, value);
 };
@@ -1016,7 +1016,7 @@ proto.tv.uob.grpc.Boolean.prototype.toObject = function(opt_includeInstance) {
  */
 proto.tv.uob.grpc.Boolean.toObject = function(includeInstance, msg) {
   var f, obj = {
-    value: jspb.Message.getFieldWithDefault(msg, 1, "")
+    value: jspb.Message.getFieldWithDefault(msg, 1, false)
   };
 
   if (includeInstance) {
@@ -1054,7 +1054,7 @@ proto.tv.uob.grpc.Boolean.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setValue(value);
       break;
     default:
@@ -1087,8 +1087,8 @@ proto.tv.uob.grpc.Boolean.prototype.serializeBinary = function() {
 proto.tv.uob.grpc.Boolean.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getValue();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f) {
+    writer.writeBool(
       1,
       f
     );
@@ -1097,15 +1097,17 @@ proto.tv.uob.grpc.Boolean.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string value = 1;
- * @return {string}
+ * optional bool value = 1;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
  */
 proto.tv.uob.grpc.Boolean.prototype.getValue = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 1, false));
 };
 
 
-/** @param {string} value */
+/** @param {boolean} value */
 proto.tv.uob.grpc.Boolean.prototype.setValue = function(value) {
   jspb.Message.setField(this, 1, value);
 };
