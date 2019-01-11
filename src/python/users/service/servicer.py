@@ -42,7 +42,6 @@ class UsersServicer(users_pb2_grpc.UserServiceServicer):
         user.email = user_entity["email"]
         user.id = int(user_entity.id)
         user.profile.avatarURL = user_entity["profile.avatarURL"]
-
         return user
 
     def GetByUsername(self, request, context):
@@ -105,6 +104,32 @@ class UsersServicer(users_pb2_grpc.UserServiceServicer):
                 error=str(e)
             )
 
+    def CreateUserIfNotExists(self, request, context):
+        if not request.email:
+            return users_pb2.CreateUserResponse(created=False, error="Email is not present.")
+
+        user_key = None
+        if request.id:
+            user_key = self.datastore_client.key(KIND, request.id)
+        else:
+            user_key = self.datastore_client.key(KIND)
+        try:
+            user_entity = self.datastore_client.Entity(key=user_key)
+
+            user_entity.update({
+                "email": request.email,
+                "username": get_name_from_email(request.email),
+                "profile.avatarURL": "/static/avatars/1.png",
+            })
+            self.datastore_client.put(user_entity)
+            return users_pb2.CreateUserResponse(created=True)
+        except Exception as e:
+            logger.error("Error creating user %s", str(e))
+            return users_pb2.CreateUserResponse(
+                created=False,
+                error=str(e)
+            )
+        
 class HealthCheck(health_check_pb2_grpc.HealthServicer):
     def __init__(self):
         pass

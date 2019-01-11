@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package  tv.uob.grpc;
+
+option java_multiple_files = true;
+option java_package = "tv.uob.grpc";
+
+import "ChannelId.proto";
+import "UserId.proto";
+
+message User {
+    int64 userId = 1;
+    string username = 2;
+    string email = 3;
+    Profile profile = 4;
+    StreamId stream = 5;
+    ChannelId channel = 6;
+}
+
+message StreamId {
+    int64 id = 1;
+    string streamKey = 2;
+}
+
+message Profile {
+    string avatarURL = 1;
+}
+
+message UserInitialData {
+    string googleUserEmail = 1;
+    int64 googleUserId = 2;
+}
+
+message Email {
+    string value = 1;
+}
+
+message Boolean {
+    bool value = 1;
+}
+
+service UserService {
+    rpc InitializeUserAccount(UserInitialData) returns(User) {}
+    rpc InitializeIfNotExist(UserInitialData) returns (User) {}
+    rpc GetUserByEmail(Email) returns (User) {}
+    rpc GetUserById(UserId) returns (User) {}
+    rpc UserExists(Email) returns (Boolean) {}
+}

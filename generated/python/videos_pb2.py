@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"*\n\nVideoAsset\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\"\x9e\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tcreatedAt\x18\x02 \x01(\x03\x12\x17\n\x0f\x64urationSeconds\x18\x03 \x01(\x05\x12\r\n\x05title\x18\x04 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x05 \x01(\t\x12\x11\n\tpublished\x18\x06 \x01(\x08\x12&\n\x05\x61sset\x18\x07 \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\"!\n\x13GetVideoByIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video\"5\n\x13\x43reateVideoResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"R\n\x17UpdateVideoAssetRequest\x12\x0f\n\x07videoId\x18\x01 \x01(\x05\x12&\n\x05\x61sset\x18\x02 \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\":\n\x18UpdateVideoAssetResponse\x12\x0f\n\x07updated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"&\n\x13PublishVideoRequest\x12\x0f\n\x07videoId\x18\x01 \x01(\x05\"I\n\x14PublishVideoResponse\x12\x0f\n\x07videoId\x18\x01 \x01(\x05\x12\x11\n\tpublished\x18\x02 \x01(\x08\x12\r\n\x05\x65rror\x18\x03 \x01(\t\"(\n\x15UnpublishVideoRequest\x12\x0f\n\x07videoid\x18\x01 \x01(\x05\"M\n\x16UnpublishVideoResponse\x12\x0f\n\x07videoId\x18\x01 \x01(\x05\x12\r\n\x05\x65rror\x18\x02 \x01(\t\x12\x13\n\x0bunpublished\x18\x03 \x01(\x08\x32\xaf\x03\n\x0cVideoService\x12\x46\n\x0cGetVideoById\x12 .tv.uob.grpc.GetVideoByIdRequest\x1a\x12.tv.uob.grpc.Video\"\x00\x12\x45\n\x0b\x43reateVideo\x12\x12.tv.uob.grpc.Video\x1a .tv.uob.grpc.CreateVideoResponse\"\x00\x12\\\n\x0bUpdateVideo\x12$.tv.uob.grpc.UpdateVideoAssetRequest\x1a%.tv.uob.grpc.UpdateVideoAssetResponse\"\x00\x12U\n\x0cPublishVideo\x12 .tv.uob.grpc.PublishVideoRequest\x1a!.tv.uob.grpc.PublishVideoResponse\"\x00\x12[\n\x0eUnpublishVideo\x12\".tv.uob.grpc.UnpublishVideoRequest\x1a#.tv.uob.grpc.UnpublishVideoResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"=\n\nVideoAsset\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x11\n\tcreatedAt\x18\x03 \x01(\x03\"\xb4\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tcreatedAt\x18\x02 \x01(\x03\x12\'\n\x08uploader\x18\x04 \x01(\x0b\x32\x15.tv.uob.grpc.Uploader\x12\x17\n\x0f\x64urationSeconds\x18\x05 \x01(\x05\x12\r\n\x05title\x18\x06 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x07 \x01(\t\x12&\n\x05\x61sset\x18\t \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\";\n\x08Uploader\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\"\x18\n\x07VideoId\x12\r\n\x05value\x18\x01 \x01(\x03\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video\"5\n\x13\x43reateVideoResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"R\n\x17UpdateVideoAssetRequest\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12&\n\x05\x61sset\x18\x02 \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\":\n\x18UpdateVideoAssetResponse\x12\x0f\n\x07updated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"]\n\rVideoMetadata\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x17\n\x0f\x64urationSeconds\x18\x04 \x01(\x05\"<\n\x1aVideoMetadatUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t2\xd2\x02\n\x0cVideoService\x12:\n\x0cGetVideoById\x12\x14.tv.uob.grpc.VideoId\x1a\x12.tv.uob.grpc.Video\"\x00\x12\x45\n\x0b\x43reateVideo\x12\x12.tv.uob.grpc.Video\x1a .tv.uob.grpc.CreateVideoResponse\"\x00\x12\x61\n\x10UpdateVideoAsset\x12$.tv.uob.grpc.UpdateVideoAssetRequest\x1a%.tv.uob.grpc.UpdateVideoAssetResponse\"\x00\x12\\\n\x13UpdateVideoMetadata\x12\x1a.tv.uob.grpc.VideoMetadata\x1a\'.tv.uob.grpc.VideoMetadatUpdateResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -48,6 +48,13 @@ _VIDEOASSET = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='createdAt', full_name='tv.uob.grpc.VideoAsset.createdAt', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -61,7 +68,7 @@ _VIDEOASSET = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=62,
-  serialized_end=104,
+  serialized_end=123,
 )
 
 
@@ -74,7 +81,7 @@ _VIDEO = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='tv.uob.grpc.Video.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -87,36 +94,36 @@ _VIDEO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='durationSeconds', full_name='tv.uob.grpc.Video.durationSeconds', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      name='uploader', full_name='tv.uob.grpc.Video.uploader', index=2,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='durationSeconds', full_name='tv.uob.grpc.Video.durationSeconds', index=3,
+      number=5, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='title', full_name='tv.uob.grpc.Video.title', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      name='title', full_name='tv.uob.grpc.Video.title', index=4,
+      number=6, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='description', full_name='tv.uob.grpc.Video.description', index=4,
-      number=5, type=9, cpp_type=9, label=1,
+      name='description', full_name='tv.uob.grpc.Video.description', index=5,
+      number=7, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='published', full_name='tv.uob.grpc.Video.published', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='asset', full_name='tv.uob.grpc.Video.asset', index=6,
-      number=7, type=11, cpp_type=10, label=1,
+      number=9, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -133,21 +140,66 @@ _VIDEO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=107,
-  serialized_end=265,
+  serialized_start=126,
+  serialized_end=306,
 )
 
 
-_GETVIDEOBYIDREQUEST = _descriptor.Descriptor(
-  name='GetVideoByIdRequest',
-  full_name='tv.uob.grpc.GetVideoByIdRequest',
+_UPLOADER = _descriptor.Descriptor(
+  name='Uploader',
+  full_name='tv.uob.grpc.Uploader',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='tv.uob.grpc.GetVideoByIdRequest.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      name='userId', full_name='tv.uob.grpc.Uploader.userId', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='email', full_name='tv.uob.grpc.Uploader.email', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='username', full_name='tv.uob.grpc.Uploader.username', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=308,
+  serialized_end=367,
+)
+
+
+_VIDEOID = _descriptor.Descriptor(
+  name='VideoId',
+  full_name='tv.uob.grpc.VideoId',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='tv.uob.grpc.VideoId.value', index=0,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -164,8 +216,8 @@ _GETVIDEOBYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=267,
-  serialized_end=300,
+  serialized_start=369,
+  serialized_end=393,
 )
 
 
@@ -202,8 +254,8 @@ _GETVIDEORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=302,
-  serialized_end=371,
+  serialized_start=395,
+  serialized_end=464,
 )
 
 
@@ -240,8 +292,8 @@ _CREATEVIDEORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=373,
-  serialized_end=426,
+  serialized_start=466,
+  serialized_end=519,
 )
 
 
@@ -254,7 +306,7 @@ _UPDATEVIDEOASSETREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='videoId', full_name='tv.uob.grpc.UpdateVideoAssetRequest.videoId', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -278,8 +330,8 @@ _UPDATEVIDEOASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=428,
-  serialized_end=510,
+  serialized_start=521,
+  serialized_end=603,
 )
 
 
@@ -316,143 +368,43 @@ _UPDATEVIDEOASSETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=512,
-  serialized_end=570,
+  serialized_start=605,
+  serialized_end=663,
 )
 
 
-_PUBLISHVIDEOREQUEST = _descriptor.Descriptor(
-  name='PublishVideoRequest',
-  full_name='tv.uob.grpc.PublishVideoRequest',
+_VIDEOMETADATA = _descriptor.Descriptor(
+  name='VideoMetadata',
+  full_name='tv.uob.grpc.VideoMetadata',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='videoId', full_name='tv.uob.grpc.PublishVideoRequest.videoId', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=572,
-  serialized_end=610,
-)
-
-
-_PUBLISHVIDEORESPONSE = _descriptor.Descriptor(
-  name='PublishVideoResponse',
-  full_name='tv.uob.grpc.PublishVideoResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='videoId', full_name='tv.uob.grpc.PublishVideoResponse.videoId', index=0,
-      number=1, type=5, cpp_type=1, label=1,
+      name='videoId', full_name='tv.uob.grpc.VideoMetadata.videoId', index=0,
+      number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='published', full_name='tv.uob.grpc.PublishVideoResponse.published', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='error', full_name='tv.uob.grpc.PublishVideoResponse.error', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=612,
-  serialized_end=685,
-)
-
-
-_UNPUBLISHVIDEOREQUEST = _descriptor.Descriptor(
-  name='UnpublishVideoRequest',
-  full_name='tv.uob.grpc.UnpublishVideoRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='videoid', full_name='tv.uob.grpc.UnpublishVideoRequest.videoid', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=687,
-  serialized_end=727,
-)
-
-
-_UNPUBLISHVIDEORESPONSE = _descriptor.Descriptor(
-  name='UnpublishVideoResponse',
-  full_name='tv.uob.grpc.UnpublishVideoResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='videoId', full_name='tv.uob.grpc.UnpublishVideoResponse.videoId', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='error', full_name='tv.uob.grpc.UnpublishVideoResponse.error', index=1,
+      name='title', full_name='tv.uob.grpc.VideoMetadata.title', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='unpublished', full_name='tv.uob.grpc.UnpublishVideoResponse.unpublished', index=2,
-      number=3, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='description', full_name='tv.uob.grpc.VideoMetadata.description', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='durationSeconds', full_name='tv.uob.grpc.VideoMetadata.durationSeconds', index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -468,24 +420,62 @@ _UNPUBLISHVIDEORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=729,
-  serialized_end=806,
+  serialized_start=665,
+  serialized_end=758,
 )
 
+
+_VIDEOMETADATUPDATERESPONSE = _descriptor.Descriptor(
+  name='VideoMetadatUpdateResponse',
+  full_name='tv.uob.grpc.VideoMetadatUpdateResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='tv.uob.grpc.VideoMetadatUpdateResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='tv.uob.grpc.VideoMetadatUpdateResponse.error', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=760,
+  serialized_end=820,
+)
+
+_VIDEO.fields_by_name['uploader'].message_type = _UPLOADER
 _VIDEO.fields_by_name['asset'].message_type = _VIDEOASSET
 _GETVIDEORESPONSE.fields_by_name['video'].message_type = _VIDEO
 _UPDATEVIDEOASSETREQUEST.fields_by_name['asset'].message_type = _VIDEOASSET
 DESCRIPTOR.message_types_by_name['VideoAsset'] = _VIDEOASSET
 DESCRIPTOR.message_types_by_name['Video'] = _VIDEO
-DESCRIPTOR.message_types_by_name['GetVideoByIdRequest'] = _GETVIDEOBYIDREQUEST
+DESCRIPTOR.message_types_by_name['Uploader'] = _UPLOADER
+DESCRIPTOR.message_types_by_name['VideoId'] = _VIDEOID
 DESCRIPTOR.message_types_by_name['GetVideoResponse'] = _GETVIDEORESPONSE
 DESCRIPTOR.message_types_by_name['CreateVideoResponse'] = _CREATEVIDEORESPONSE
 DESCRIPTOR.message_types_by_name['UpdateVideoAssetRequest'] = _UPDATEVIDEOASSETREQUEST
 DESCRIPTOR.message_types_by_name['UpdateVideoAssetResponse'] = _UPDATEVIDEOASSETRESPONSE
-DESCRIPTOR.message_types_by_name['PublishVideoRequest'] = _PUBLISHVIDEOREQUEST
-DESCRIPTOR.message_types_by_name['PublishVideoResponse'] = _PUBLISHVIDEORESPONSE
-DESCRIPTOR.message_types_by_name['UnpublishVideoRequest'] = _UNPUBLISHVIDEOREQUEST
-DESCRIPTOR.message_types_by_name['UnpublishVideoResponse'] = _UNPUBLISHVIDEORESPONSE
+DESCRIPTOR.message_types_by_name['VideoMetadata'] = _VIDEOMETADATA
+DESCRIPTOR.message_types_by_name['VideoMetadatUpdateResponse'] = _VIDEOMETADATUPDATERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 VideoAsset = _reflection.GeneratedProtocolMessageType('VideoAsset', (_message.Message,), dict(
@@ -502,12 +492,19 @@ Video = _reflection.GeneratedProtocolMessageType('Video', (_message.Message,), d
   ))
 _sym_db.RegisterMessage(Video)
 
-GetVideoByIdRequest = _reflection.GeneratedProtocolMessageType('GetVideoByIdRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETVIDEOBYIDREQUEST,
+Uploader = _reflection.GeneratedProtocolMessageType('Uploader', (_message.Message,), dict(
+  DESCRIPTOR = _UPLOADER,
   __module__ = 'videos_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.GetVideoByIdRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.Uploader)
   ))
-_sym_db.RegisterMessage(GetVideoByIdRequest)
+_sym_db.RegisterMessage(Uploader)
+
+VideoId = _reflection.GeneratedProtocolMessageType('VideoId', (_message.Message,), dict(
+  DESCRIPTOR = _VIDEOID,
+  __module__ = 'videos_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.VideoId)
+  ))
+_sym_db.RegisterMessage(VideoId)
 
 GetVideoResponse = _reflection.GeneratedProtocolMessageType('GetVideoResponse', (_message.Message,), dict(
   DESCRIPTOR = _GETVIDEORESPONSE,
@@ -537,33 +534,19 @@ UpdateVideoAssetResponse = _reflection.GeneratedProtocolMessageType('UpdateVideo
   ))
 _sym_db.RegisterMessage(UpdateVideoAssetResponse)
 
-PublishVideoRequest = _reflection.GeneratedProtocolMessageType('PublishVideoRequest', (_message.Message,), dict(
-  DESCRIPTOR = _PUBLISHVIDEOREQUEST,
+VideoMetadata = _reflection.GeneratedProtocolMessageType('VideoMetadata', (_message.Message,), dict(
+  DESCRIPTOR = _VIDEOMETADATA,
   __module__ = 'videos_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.PublishVideoRequest)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.VideoMetadata)
   ))
-_sym_db.RegisterMessage(PublishVideoRequest)
+_sym_db.RegisterMessage(VideoMetadata)
 
-PublishVideoResponse = _reflection.GeneratedProtocolMessageType('PublishVideoResponse', (_message.Message,), dict(
-  DESCRIPTOR = _PUBLISHVIDEORESPONSE,
+VideoMetadatUpdateResponse = _reflection.GeneratedProtocolMessageType('VideoMetadatUpdateResponse', (_message.Message,), dict(
+  DESCRIPTOR = _VIDEOMETADATUPDATERESPONSE,
   __module__ = 'videos_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.PublishVideoResponse)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.VideoMetadatUpdateResponse)
   ))
-_sym_db.RegisterMessage(PublishVideoResponse)
-
-UnpublishVideoRequest = _reflection.GeneratedProtocolMessageType('UnpublishVideoRequest', (_message.Message,), dict(
-  DESCRIPTOR = _UNPUBLISHVIDEOREQUEST,
-  __module__ = 'videos_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.UnpublishVideoRequest)
-  ))
-_sym_db.RegisterMessage(UnpublishVideoRequest)
-
-UnpublishVideoResponse = _reflection.GeneratedProtocolMessageType('UnpublishVideoResponse', (_message.Message,), dict(
-  DESCRIPTOR = _UNPUBLISHVIDEORESPONSE,
-  __module__ = 'videos_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.UnpublishVideoResponse)
-  ))
-_sym_db.RegisterMessage(UnpublishVideoResponse)
+_sym_db.RegisterMessage(VideoMetadatUpdateResponse)
 
 
 DESCRIPTOR._options = None
@@ -574,15 +557,15 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=809,
-  serialized_end=1240,
+  serialized_start=823,
+  serialized_end=1161,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVideoById',
     full_name='tv.uob.grpc.VideoService.GetVideoById',
     index=0,
     containing_service=None,
-    input_type=_GETVIDEOBYIDREQUEST,
+    input_type=_VIDEOID,
     output_type=_VIDEO,
     serialized_options=None,
   ),
@@ -596,8 +579,8 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='UpdateVideo',
-    full_name='tv.uob.grpc.VideoService.UpdateVideo',
+    name='UpdateVideoAsset',
+    full_name='tv.uob.grpc.VideoService.UpdateVideoAsset',
     index=2,
     containing_service=None,
     input_type=_UPDATEVIDEOASSETREQUEST,
@@ -605,21 +588,12 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='PublishVideo',
-    full_name='tv.uob.grpc.VideoService.PublishVideo',
+    name='UpdateVideoMetadata',
+    full_name='tv.uob.grpc.VideoService.UpdateVideoMetadata',
     index=3,
     containing_service=None,
-    input_type=_PUBLISHVIDEOREQUEST,
-    output_type=_PUBLISHVIDEORESPONSE,
-    serialized_options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='UnpublishVideo',
-    full_name='tv.uob.grpc.VideoService.UnpublishVideo',
-    index=4,
-    containing_service=None,
-    input_type=_UNPUBLISHVIDEOREQUEST,
-    output_type=_UNPUBLISHVIDEORESPONSE,
+    input_type=_VIDEOMETADATA,
+    output_type=_VIDEOMETADATUPDATERESPONSE,
     serialized_options=None,
   ),
 ])

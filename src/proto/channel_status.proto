@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package  tv.uob.grpc;
+option java_multiple_files = true;
+option java_package = "tv.uob.grpc";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+import "ChannelId.proto";
+
+
+
+message LiveChannelStatus {
+    int64 channelid = 1;
+    string streamKey = 2;
+    bool isLive = 3;
+    int64 started = 4;
+    string playbackURL = 5;
+}
+
+message InitialChannelStatusData {
+    int64 channelid = 1;
+    string streamKey = 2;
+    string playbackURL = 3;
+}
+message UpdateStreamStatusRequest {
+    int64 channelId = 1;
+    bool isLive = 2;
+    int64 started = 3;
+}
+
+message UpdateStreamStatusResponse {
+    bool updated = 1;
+    string error = 2;
+}
+
+message ListActiveLiveStreamResponse {
+    repeated LiveChannelStatus channels = 1;
+}
+
+
+service ChannelStatusService {
+    rpc createDefaultStatus(InitialChannelStatusData) returns (google.protobuf.Empty) {}
+    rpc getStatus(ChannelId) returns (LiveChannelStatus) {}
+    rpc updateStatus(UpdateStreamStatusRequest) returns (UpdateStreamStatusResponse) {}
+    rpc listActiveLiveChannels(google.protobuf.Empty) returns (ListActiveLiveStreamResponse) {}
+}

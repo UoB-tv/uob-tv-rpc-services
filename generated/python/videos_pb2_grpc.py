@@ -16,7 +16,7 @@ class VideoServiceStub(object):
     """
     self.GetVideoById = channel.unary_unary(
         '/tv.uob.grpc.VideoService/GetVideoById',
-        request_serializer=videos__pb2.GetVideoByIdRequest.SerializeToString,
+        request_serializer=videos__pb2.VideoId.SerializeToString,
         response_deserializer=videos__pb2.Video.FromString,
         )
     self.CreateVideo = channel.unary_unary(
@@ -24,20 +24,15 @@ class VideoServiceStub(object):
         request_serializer=videos__pb2.Video.SerializeToString,
         response_deserializer=videos__pb2.CreateVideoResponse.FromString,
         )
-    self.UpdateVideo = channel.unary_unary(
-        '/tv.uob.grpc.VideoService/UpdateVideo',
+    self.UpdateVideoAsset = channel.unary_unary(
+        '/tv.uob.grpc.VideoService/UpdateVideoAsset',
         request_serializer=videos__pb2.UpdateVideoAssetRequest.SerializeToString,
         response_deserializer=videos__pb2.UpdateVideoAssetResponse.FromString,
         )
-    self.PublishVideo = channel.unary_unary(
-        '/tv.uob.grpc.VideoService/PublishVideo',
-        request_serializer=videos__pb2.PublishVideoRequest.SerializeToString,
-        response_deserializer=videos__pb2.PublishVideoResponse.FromString,
-        )
-    self.UnpublishVideo = channel.unary_unary(
-        '/tv.uob.grpc.VideoService/UnpublishVideo',
-        request_serializer=videos__pb2.UnpublishVideoRequest.SerializeToString,
-        response_deserializer=videos__pb2.UnpublishVideoResponse.FromString,
+    self.UpdateVideoMetadata = channel.unary_unary(
+        '/tv.uob.grpc.VideoService/UpdateVideoMetadata',
+        request_serializer=videos__pb2.VideoMetadata.SerializeToString,
+        response_deserializer=videos__pb2.VideoMetadatUpdateResponse.FromString,
         )
 
 
@@ -59,21 +54,14 @@ class VideoServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def UpdateVideo(self, request, context):
+  def UpdateVideoAsset(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def PublishVideo(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def UnpublishVideo(self, request, context):
+  def UpdateVideoMetadata(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -85,7 +73,7 @@ def add_VideoServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetVideoById': grpc.unary_unary_rpc_method_handler(
           servicer.GetVideoById,
-          request_deserializer=videos__pb2.GetVideoByIdRequest.FromString,
+          request_deserializer=videos__pb2.VideoId.FromString,
           response_serializer=videos__pb2.Video.SerializeToString,
       ),
       'CreateVideo': grpc.unary_unary_rpc_method_handler(
@@ -93,20 +81,15 @@ def add_VideoServiceServicer_to_server(servicer, server):
           request_deserializer=videos__pb2.Video.FromString,
           response_serializer=videos__pb2.CreateVideoResponse.SerializeToString,
       ),
-      'UpdateVideo': grpc.unary_unary_rpc_method_handler(
-          servicer.UpdateVideo,
+      'UpdateVideoAsset': grpc.unary_unary_rpc_method_handler(
+          servicer.UpdateVideoAsset,
           request_deserializer=videos__pb2.UpdateVideoAssetRequest.FromString,
           response_serializer=videos__pb2.UpdateVideoAssetResponse.SerializeToString,
       ),
-      'PublishVideo': grpc.unary_unary_rpc_method_handler(
-          servicer.PublishVideo,
-          request_deserializer=videos__pb2.PublishVideoRequest.FromString,
-          response_serializer=videos__pb2.PublishVideoResponse.SerializeToString,
-      ),
-      'UnpublishVideo': grpc.unary_unary_rpc_method_handler(
-          servicer.UnpublishVideo,
-          request_deserializer=videos__pb2.UnpublishVideoRequest.FromString,
-          response_serializer=videos__pb2.UnpublishVideoResponse.SerializeToString,
+      'UpdateVideoMetadata': grpc.unary_unary_rpc_method_handler(
+          servicer.UpdateVideoMetadata,
+          request_deserializer=videos__pb2.VideoMetadata.FromString,
+          response_serializer=videos__pb2.VideoMetadatUpdateResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

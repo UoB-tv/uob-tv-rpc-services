@@ -10,20 +10,27 @@ option java_package = "tv.uob.grpc";
 message VideoAsset {
     string bucket = 1;
     string path = 2;
+    int64 createdAt = 3;
 }
 
 message Video {
-    int32 id = 1;
+    int64 id = 1;
     int64 createdAt = 2;
-    int32 durationSeconds = 3;
-    string title = 4;
-    string description = 5;
-    bool published = 6;
-    VideoAsset asset = 7;
+    Uploader uploader = 4;
+    int32 durationSeconds = 5;
+    string title = 6;
+    string description = 7;
+    VideoAsset asset = 9;
 }
 
-message GetVideoByIdRequest {
-    int32 id = 1;
+message Uploader {
+    string userId = 1;
+    string email = 2;
+    string username = 3;
+}
+
+message VideoId {
+    int64 value = 1;
 }
 
 message GetVideoResponse {
@@ -37,7 +44,7 @@ message CreateVideoResponse {
 }
 
 message UpdateVideoAssetRequest {
-    int32 videoId = 1;
+    int64 videoId = 1;
     VideoAsset asset = 2;
 }
 
@@ -45,31 +52,21 @@ message UpdateVideoAssetResponse {
     bool updated = 1;
     string error = 2;
 }
-
-message PublishVideoRequest {
-    int32 videoId = 1;
+message VideoMetadata {
+    int64 videoId = 1;
+    string title = 2;
+    string description = 3;
+    int32 durationSeconds = 4;
 }
 
-message PublishVideoResponse {
-    int32 videoId = 1;
-    bool published = 2;
-    string error = 3;
-}
-
-message UnpublishVideoRequest {
-    int32 videoid = 1;
-}
-
-message UnpublishVideoResponse {
-    int32 videoId = 1;
+message VideoMetadatUpdateResponse {
+    bool success = 1;
     string error = 2;
-    bool unpublished = 3;
 }
 
 service VideoService {
-    rpc GetVideoById(GetVideoByIdRequest) returns (Video) {}
+    rpc GetVideoById(VideoId) returns (Video) {}
     rpc CreateVideo(Video) returns (CreateVideoResponse) {}
-    rpc UpdateVideo(UpdateVideoAssetRequest) returns (UpdateVideoAssetResponse) {}
-    rpc PublishVideo(PublishVideoRequest) returns (PublishVideoResponse) {}
-    rpc UnpublishVideo(UnpublishVideoRequest) returns (UnpublishVideoResponse) {}
+    rpc UpdateVideoAsset(UpdateVideoAssetRequest) returns (UpdateVideoAssetResponse) {}
+    rpc UpdateVideoMetadata(VideoMetadata) returns (VideoMetadatUpdateResponse) {}
 }

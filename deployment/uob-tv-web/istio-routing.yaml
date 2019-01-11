@@ -24,6 +24,8 @@ spec:
         prefix: /_next
     - uri:
         prefix: /static
+    - uri:
+        prefix: /browse
     route:
     - destination:
         host: uob-tv-web-service

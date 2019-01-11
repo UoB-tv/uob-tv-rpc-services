@@ -1,10 +1,9 @@
-NAME = uob-tv-web
-BINARY = ${NAME}
-
+NAME = user-authen-server
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=0.2
+VERSION=1-7
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
+
 
 docker_image:
 	docker build --rm -t ${TAG}  --build-arg  BINARY=${BINARY} .

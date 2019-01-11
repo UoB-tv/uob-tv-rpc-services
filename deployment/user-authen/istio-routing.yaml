@@ -13,8 +13,6 @@ spec:
   - match:
     - uri:
         exact: /api/v1/verify_signin
-    rewrite:
-      uri: /verify_signin
     route:
     - destination:
         host: user-authen-service

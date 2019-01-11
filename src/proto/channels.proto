@@ -4,28 +4,32 @@ package  tv.uob.grpc;
 option java_multiple_files = true;
 option java_package = "tv.uob.grpc";
 
+import "ChannelId.proto";
+import "UserId.proto";
 
 message Channel {
-    int32 id = 1;
-    int32 userId = 4;
-    string title = 2;
-    string description = 3;
+    int64 id = 1;
+    Owner owner = 2;
+    string title = 3;
+    string description = 4;
+    string playbackURL = 5;
+}
+
+message Owner {
+    int64 userId = 1;
+    string email = 2;
+    string username = 3;
 }
 
 
-message GetChannelForUserRequest {
-    int32 userid = 1;
-}
-
-message GetChannelByIdRequest {
-    int32 id = 1;
-}
-
-message CreateChannelForUser {
-    int32 userId = 1;
+message InitialChannelData {
+    int64 userId = 1;
+    int64 channelId = 2;
 }
 
 service ChannelService {
-    rpc GetChannelById(GetChannelByIdRequest) returns (Channel) {}
-    rpc GetChannelForUser(GetChannelForUserRequest) returns (Channel) {}
+    rpc InitializeChannel(InitialChannelData) returns (Channel) {}
+    rpc GetChannelById(ChannelId) returns (Channel) {}
+    rpc GetChannelForUser(UserId) returns (Channel) {}
+    rpc UpdateChannel(Channel) returns (Channel) {}
 }

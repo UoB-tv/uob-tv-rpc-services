@@ -16,61 +16,6 @@ function deserialize_tv_uob_grpc_CreateVideoResponse(buffer_arg) {
   return videos_pb.CreateVideoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_tv_uob_grpc_GetVideoByIdRequest(arg) {
-  if (!(arg instanceof videos_pb.GetVideoByIdRequest)) {
-    throw new Error('Expected argument of type tv.uob.grpc.GetVideoByIdRequest');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_tv_uob_grpc_GetVideoByIdRequest(buffer_arg) {
-  return videos_pb.GetVideoByIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_tv_uob_grpc_PublishVideoRequest(arg) {
-  if (!(arg instanceof videos_pb.PublishVideoRequest)) {
-    throw new Error('Expected argument of type tv.uob.grpc.PublishVideoRequest');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_tv_uob_grpc_PublishVideoRequest(buffer_arg) {
-  return videos_pb.PublishVideoRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_tv_uob_grpc_PublishVideoResponse(arg) {
-  if (!(arg instanceof videos_pb.PublishVideoResponse)) {
-    throw new Error('Expected argument of type tv.uob.grpc.PublishVideoResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_tv_uob_grpc_PublishVideoResponse(buffer_arg) {
-  return videos_pb.PublishVideoResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_tv_uob_grpc_UnpublishVideoRequest(arg) {
-  if (!(arg instanceof videos_pb.UnpublishVideoRequest)) {
-    throw new Error('Expected argument of type tv.uob.grpc.UnpublishVideoRequest');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_tv_uob_grpc_UnpublishVideoRequest(buffer_arg) {
-  return videos_pb.UnpublishVideoRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_tv_uob_grpc_UnpublishVideoResponse(arg) {
-  if (!(arg instanceof videos_pb.UnpublishVideoResponse)) {
-    throw new Error('Expected argument of type tv.uob.grpc.UnpublishVideoResponse');
-  }
-  return new Buffer(arg.serializeBinary());
-}
-
-function deserialize_tv_uob_grpc_UnpublishVideoResponse(buffer_arg) {
-  return videos_pb.UnpublishVideoResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_tv_uob_grpc_UpdateVideoAssetRequest(arg) {
   if (!(arg instanceof videos_pb.UpdateVideoAssetRequest)) {
     throw new Error('Expected argument of type tv.uob.grpc.UpdateVideoAssetRequest');
@@ -104,16 +49,49 @@ function deserialize_tv_uob_grpc_Video(buffer_arg) {
   return videos_pb.Video.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_tv_uob_grpc_VideoId(arg) {
+  if (!(arg instanceof videos_pb.VideoId)) {
+    throw new Error('Expected argument of type tv.uob.grpc.VideoId');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_tv_uob_grpc_VideoId(buffer_arg) {
+  return videos_pb.VideoId.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_tv_uob_grpc_VideoMetadatUpdateResponse(arg) {
+  if (!(arg instanceof videos_pb.VideoMetadatUpdateResponse)) {
+    throw new Error('Expected argument of type tv.uob.grpc.VideoMetadatUpdateResponse');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_tv_uob_grpc_VideoMetadatUpdateResponse(buffer_arg) {
+  return videos_pb.VideoMetadatUpdateResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_tv_uob_grpc_VideoMetadata(arg) {
+  if (!(arg instanceof videos_pb.VideoMetadata)) {
+    throw new Error('Expected argument of type tv.uob.grpc.VideoMetadata');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_tv_uob_grpc_VideoMetadata(buffer_arg) {
+  return videos_pb.VideoMetadata.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var VideoServiceService = exports.VideoServiceService = {
   getVideoById: {
     path: '/tv.uob.grpc.VideoService/GetVideoById',
     requestStream: false,
     responseStream: false,
-    requestType: videos_pb.GetVideoByIdRequest,
+    requestType: videos_pb.VideoId,
     responseType: videos_pb.Video,
-    requestSerialize: serialize_tv_uob_grpc_GetVideoByIdRequest,
-    requestDeserialize: deserialize_tv_uob_grpc_GetVideoByIdRequest,
+    requestSerialize: serialize_tv_uob_grpc_VideoId,
+    requestDeserialize: deserialize_tv_uob_grpc_VideoId,
     responseSerialize: serialize_tv_uob_grpc_Video,
     responseDeserialize: deserialize_tv_uob_grpc_Video,
   },
@@ -128,8 +106,8 @@ var VideoServiceService = exports.VideoServiceService = {
     responseSerialize: serialize_tv_uob_grpc_CreateVideoResponse,
     responseDeserialize: deserialize_tv_uob_grpc_CreateVideoResponse,
   },
-  updateVideo: {
-    path: '/tv.uob.grpc.VideoService/UpdateVideo',
+  updateVideoAsset: {
+    path: '/tv.uob.grpc.VideoService/UpdateVideoAsset',
     requestStream: false,
     responseStream: false,
     requestType: videos_pb.UpdateVideoAssetRequest,
@@ -139,27 +117,16 @@ var VideoServiceService = exports.VideoServiceService = {
     responseSerialize: serialize_tv_uob_grpc_UpdateVideoAssetResponse,
     responseDeserialize: deserialize_tv_uob_grpc_UpdateVideoAssetResponse,
   },
-  publishVideo: {
-    path: '/tv.uob.grpc.VideoService/PublishVideo',
+  updateVideoMetadata: {
+    path: '/tv.uob.grpc.VideoService/UpdateVideoMetadata',
     requestStream: false,
     responseStream: false,
-    requestType: videos_pb.PublishVideoRequest,
-    responseType: videos_pb.PublishVideoResponse,
-    requestSerialize: serialize_tv_uob_grpc_PublishVideoRequest,
-    requestDeserialize: deserialize_tv_uob_grpc_PublishVideoRequest,
-    responseSerialize: serialize_tv_uob_grpc_PublishVideoResponse,
-    responseDeserialize: deserialize_tv_uob_grpc_PublishVideoResponse,
-  },
-  unpublishVideo: {
-    path: '/tv.uob.grpc.VideoService/UnpublishVideo',
-    requestStream: false,
-    responseStream: false,
-    requestType: videos_pb.UnpublishVideoRequest,
-    responseType: videos_pb.UnpublishVideoResponse,
-    requestSerialize: serialize_tv_uob_grpc_UnpublishVideoRequest,
-    requestDeserialize: deserialize_tv_uob_grpc_UnpublishVideoRequest,
-    responseSerialize: serialize_tv_uob_grpc_UnpublishVideoResponse,
-    responseDeserialize: deserialize_tv_uob_grpc_UnpublishVideoResponse,
+    requestType: videos_pb.VideoMetadata,
+    responseType: videos_pb.VideoMetadatUpdateResponse,
+    requestSerialize: serialize_tv_uob_grpc_VideoMetadata,
+    requestDeserialize: deserialize_tv_uob_grpc_VideoMetadata,
+    responseSerialize: serialize_tv_uob_grpc_VideoMetadatUpdateResponse,
+    responseDeserialize: deserialize_tv_uob_grpc_VideoMetadatUpdateResponse,
   },
 };
 

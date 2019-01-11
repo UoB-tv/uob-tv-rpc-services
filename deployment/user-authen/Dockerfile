@@ -1,4 +1,4 @@
-FROM eu.gcr.io/uob-tv-project-dev/uob-tv-python3:v1
+FROM eu.gcr.io/uob-tv-project-dev/uob-tv-python3:v2
 ARG BINARY
 ENV BIN=$BINARY  
 

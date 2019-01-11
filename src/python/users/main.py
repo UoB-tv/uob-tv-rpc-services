@@ -1,7 +1,7 @@
-import users_pb2_grpc
+import users_v2_pb2_grpc
 import health_check_pb2_grpc
 
-from users.service.servicer import UsersServicer, HealthCheck
+from users.service.servicer_v2 import UsersServicer, HealthCheck
 
 import time
 import os
@@ -17,7 +17,7 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 def main():
     logger.info("initializing server")
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    users_pb2_grpc.add_UserServiceServicer_to_server(UsersServicer(), server)
+    users_v2_pb2_grpc.add_UserServiceServicer_to_server(UsersServicer(None), server)
     health_check_pb2_grpc.add_HealthServicer_to_server(HealthCheck(), server)
 
     server.add_insecure_port('[::]:{}'.format(GRPC_PORT))

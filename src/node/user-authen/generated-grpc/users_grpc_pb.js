@@ -116,6 +116,17 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_tv_uob_grpc_CreateUserResponse,
     responseDeserialize: deserialize_tv_uob_grpc_CreateUserResponse,
   },
+  createUserIfNotExists: {
+    path: '/tv.uob.grpc.UserService/CreateUserIfNotExists',
+    requestStream: false,
+    responseStream: false,
+    requestType: users_pb.CreateUserRequest,
+    responseType: users_pb.CreateUserResponse,
+    requestSerialize: serialize_tv_uob_grpc_CreateUserRequest,
+    requestDeserialize: deserialize_tv_uob_grpc_CreateUserRequest,
+    responseSerialize: serialize_tv_uob_grpc_CreateUserResponse,
+    responseDeserialize: deserialize_tv_uob_grpc_CreateUserResponse,
+  },
 };
 
 exports.UserServiceClient = grpc.makeGenericClientConstructor(UserServiceService);

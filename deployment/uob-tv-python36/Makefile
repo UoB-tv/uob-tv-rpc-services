@@ -1,5 +1,5 @@
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION = v2
+VERSION = v1
 TAG = ${REGISTRY_URL}/uob-tv-python3:${VERSION}
 
 docker_image:
