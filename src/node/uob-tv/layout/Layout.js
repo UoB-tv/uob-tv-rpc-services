@@ -2,6 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 
+import { connect } from 'react-redux'
+import {
+    login,
+    logout,
+} from '../store/auth'
+
+import { AuthenClient } from '../api'
+
 import {
     CssBaseline,
     Divider,
@@ -124,20 +132,22 @@ class Layout extends React.Component {
             "id": "home",
             "icon": "home",
             "text": "Home",
-            "href": "/"
+            "href": "/",
+            "authenticated": false
         },
         {
             "id": "my_channel",
             "icon": "list",
             "text": "My Channel",
-            "href": "/my_channel"
-
+            "href": "/my_channel",
+            "authenticated": true,
         },
         {
             "id": "live",
             "icon": "camera",
             "text": "Go Live",
-            "href": "/live"
+            "href": "/live",
+            "authenticated": true
         },
     ]
     static propTypes = {
@@ -158,6 +168,7 @@ class Layout extends React.Component {
         this.handleLoginToggle = this.handleLoginToggle.bind(this)
         this.handleLoginSuccess = this.handleLoginSuccess.bind(this)
         this.handleLoginFailure = this.handleLoginFailure.bind(this)
+        this.authenClient = new AuthenClient("http://www.uob-tv.co.uk:8080/api/v1")
     }
 
     handleLoginToggle() {
@@ -179,13 +190,22 @@ class Layout extends React.Component {
     handleLoginSuccess(googleUser) {
         console.log("login success")
         console.log(googleUser)
+        const idToken = googleUser.getAuthResponse().id_token;
+        console.log("idToken", idToken)
+        this.authenClient.verifySignIn(idToken)
+            .then(response => {
+                console.log("verify_signin success", response)
+            })
+            .catch(error => {
+                console.error("verify_signin failed", error)
+            })
     }
     handleLoginFailure(error) {
         console.log("login error")
         console.log(error)
     }
     render() {
-        const { classes, activeSidebarItem } = this.props
+        const { classes, activeSidebarItem, authenticated, user } = this.props
         return (
             <div className={ classes.root }>
                 <CssBaseline />
@@ -198,7 +218,9 @@ class Layout extends React.Component {
                             <Icon fontSize="large">tv</Icon>
                             uob.tv
                         </Typography>
-                        <Button>Browse</Button>
+                        <Link href="/browse">
+                            <Button>Browse</Button>
+                        </Link>
                         <div className={classes.grow}></div>
                         <form className={classes.search}>
                             <div className={classes.searchIcon}>
@@ -215,30 +237,38 @@ class Layout extends React.Component {
                         <Button>Search</Button>
                         <div className={classes.grow}>
                         </div>
-                        <Button onClick={this.handleLoginToggle}>
-                            Login
-                        </Button>
-                        <Button onClick={this.handleAccountMenuToggle}>
-                            <Icon>account_circle</Icon>
-                            My Account
-                        </Button>
-                        <Menu
-                            id="menu-appbar"
-                            
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={this.state.accountMenuOpen}
-                            onClose={this.handleAccountMenuToggle}
-                        >
-                            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                        </Menu>
+                        {
+                            !authenticated ?
+                            <Button onClick={this.handleLoginToggle}>
+                                Login
+                            </Button>
+                            :
+                                <Button onClick={this.handleAccountMenuToggle}>
+                                    <Icon>account_circle</Icon>
+                                    My Account
+                                </Button>
+                        }
+                        {   
+                            authenticated ? 
+                            <Menu
+                                id="menu-appbar"
+                                
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                open={this.state.accountMenuOpen}
+                                onClose={this.handleAccountMenuToggle}
+                            >
+                                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                            </Menu>
+                            : null
+                        }
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -262,6 +292,7 @@ class Layout extends React.Component {
                     <List>
                         {
                             Layout.sidebarMenuItems.map((item, index) => (
+                                (!item.authenticated || authenticated)?
                                 <Link key={item.id} href={item.href} as={item.href} prefetch>
                                     <ListItem
                                         key={item.id}
@@ -274,6 +305,7 @@ class Layout extends React.Component {
                                         <ListItemText primary={item.text} />
                                     </ListItem>
                                 </Link>
+                                : null
                             ))
                         }
                     </List>
@@ -306,4 +338,18 @@ class Layout extends React.Component {
     }
 }
 
-export default withStyles(styles)(Layout)
+
+function mapStateToProps(state) {
+    return {
+        user: state.auth.user,
+        authenticated: state.auth.authenticated,
+    }
+}
+function mapPropsToDispatch(dispatch) {
+    return {
+        login: (user, token) => dispatch(login(user, token)),
+        logout: () => dispatch(logout()),
+    }
+}
+
+export default connect(mapStateToProps, mapPropsToDispatch)(withStyles(styles)(Layout))

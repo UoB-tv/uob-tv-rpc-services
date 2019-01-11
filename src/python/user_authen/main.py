@@ -20,9 +20,16 @@ def run_wsgi_app(app):
     from gunicorn.app.wsgiapp import WSGIApplication
     class GunicornApplication(WSGIApplication):
         def init(self, parser, opts, args):
+            self.options = opts
+            self.args = args
+            #super(GunicornApplication, self).__init__(parser, opts, args)
             return {
                 'bind': '0.0.0.0:{}'.format(PORT),
-                'workers': 4,
+                'workers': 2,
+                "accesslog": "-",
+                "errorlog": "-",
+                "loglevel": "debug",
+                "timeout": 20,
             }
         def load(self):
             return app

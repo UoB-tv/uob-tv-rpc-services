@@ -6,7 +6,7 @@ python_binary(
     source="main.py",
     platforms=[
         'current',
-        'linux-x86_64',
+        'linux_x86_64',
         'macosx-10.12-x86_64',
     ],
 )

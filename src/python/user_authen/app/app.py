@@ -17,7 +17,7 @@ import users_pb2_grpc
 import grpc
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-logger = logging.getLogger("user-authen-app.app")
+logger = logging.getLogger("gunicorn.error")
 
 app = Flask("user-authen")
 
@@ -38,9 +38,10 @@ ALLOWED_GSUITE_DOMAIN = require_env_var("ALLOWED_GSUITE_DOMAIN", optional=True)
 API_AUTH_JWT_SECRET = require_env_var("API_AUTH_JWT_SECRET")
 ENVIRONMENT=require_env_var("ENVIRONMENT", optional=True)
 debug = ENVIRONMENT == "development"
-SERVICES_DOMAIN = require_env_var("SERVICES_DOMAIN", optional=True, default="")
 
-users_service_host = "users-service" + (SERVICES_DOMAIN and ".") + SERVICES_DOMAIN
+SERVICES_DOMAIN = require_env_var("SERVICES_DOMAIN", optional=True, default="")
+SERVICES_DOMAIN = SERVICES_DOMAIN or ""
+users_service_host = "users-service" + (SERVICES_DOMAIN and ".") + (SERVICES_DOMAIN or "")
 users_service_port = 6000
 
 
@@ -80,11 +81,11 @@ def generate_jwt_token(user):
         headers=headers,
     )
 
-@app.route("/")
+@app.route("/api/v1/verify_signin", methods=["GET"])
 def index():
     return jsonify(service_info())
 
-@app.route("/verify_signin", methods=["POST"])
+@app.route("/api/v1/verify_signin", methods=["POST"])
 def verify_signin():
     """
     Verify sign-in using google oauth library
@@ -92,21 +93,24 @@ def verify_signin():
     see if user already exist.
     Non-existent user will created on the fly.
     """
+ 
     global request
-    post = request.json
-    if not post:
+
+    if request.json is None:
+        logger.warn("Payload is not JSON or is empty.")
         abort(400)
 
-    if request.json.get("id_token", default=None) is None:
+    if request.json.get("id_token", None) is None:
+        logger.warn("id_token is not present in json payload")
         abort(400)
     id_token_str = request.json.get("id_token")
-    print("hello world")
     idinfo = None
-    try: 
+    try:
+        logger.info("verifying google idtoken")
         idinfo = id_token.verify_oauth2_token(
             id_token_str, requests.Request(), GOOGLE_SIGN_IN_CLIENT_ID)
         if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
-            logger.info("verification failed, wrong issuers, %s", idinfo['iss'])
+            logger.warn("verification failed, wrong issuers, %s", idinfo['iss'])
             abort(403)
     except ValueError:
         logger.info("verification failed, not a valid token", id_token_str)
@@ -120,7 +124,7 @@ def verify_signin():
     accessToken = None
     user = None
     try:
-        request = users_pb2.GetUserByIdRequest()
+        request = users_pb2.GetUserByEmailRequest()
         request.email = idinfo["email"]
         user = users_service.GetByEmail(request)
         
@@ -140,9 +144,9 @@ def verify_signin():
 
     try:
         token = generate_jwt_token(user)
-        return {
+        return jsonify({
             "accessToken": token,
-        }
+        })
     except:
         abort(500)
 

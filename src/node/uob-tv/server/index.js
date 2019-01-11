@@ -28,8 +28,12 @@ app.prepare().then(() => {
         return app.render(req, res, '/watch_video', req.query)
     })
 
-    server.listen(3000, err => {
+    server.get('/browse', (req, res) => {
+        return app.render(req, res, '/browse', req.query)
+    })
+
+    server.listen(80, err => {
         if (err) throw err
-        console.log('> Ready on http://localhost:3000')
+        console.log('> Ready on http://localhost:80')
     })
 })

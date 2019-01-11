@@ -32,7 +32,7 @@ message GetUserByUsernameRequest {
 message CreateUserRequest {
     string username = 1;
     string email = 2;
-    string passwordHash = 3;
+    int64 userId = 3;
 }
 
 message CreateUserResponse {
@@ -46,4 +46,5 @@ service UserService {
     rpc GetByUsername(GetUserByUsernameRequest) returns (User) {}
     rpc GetByEmail(GetUserByEmailRequest) returns (User) {}
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+    rpc CreateUserIfNotExists(CreateUserRequest) returns (CreateUserResponse) {}
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+
 import {
     Grid,
     withStyles,
@@ -76,6 +77,7 @@ export class IndexPage extends React.Component {
 
         this.handleMediaThumbnailClick = this.handleMediaThumbnailClick.bind(this)
     }
+
     handleMediaThumbnailClick(media) {
         console.log(media)
     }
@@ -138,5 +140,6 @@ export class IndexPage extends React.Component {
         )
     }
 }
+
 
 export default withStyles(styles)(IndexPage)
