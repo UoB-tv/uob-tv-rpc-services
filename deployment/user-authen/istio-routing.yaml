@@ -18,3 +18,18 @@ spec:
         host: user-authen-service
         port:
           number: 8080
+    corsPolicy:
+      allowOrigin:
+        - "*"
+      allowMethods:
+      - POST
+      - GET
+      allowHeaders:
+      - authorization
+      - content-type
+      - accept
+      - origin
+      - user-agent
+      allowCredentials: true
+
+

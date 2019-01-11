@@ -3,8 +3,7 @@ package tv.uob.graphql.api.clients;
 import com.google.inject.AbstractModule;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import tv.uob.grpc.UserServiceGrpc;
-import tv.uob.grpc.VideoServiceGrpc;
+import tv.uob.grpc.videos.VideoServiceGrpc;
 
 public class VideosClient extends AbstractModule {
 

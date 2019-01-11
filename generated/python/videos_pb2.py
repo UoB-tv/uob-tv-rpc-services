@@ -13,6 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='tv.uob.grpc',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"=\n\nVideoAsset\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x11\n\tcreatedAt\x18\x03 \x01(\x03\"\xb4\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tcreatedAt\x18\x02 \x01(\x03\x12\'\n\x08uploader\x18\x04 \x01(\x0b\x32\x15.tv.uob.grpc.Uploader\x12\x17\n\x0f\x64urationSeconds\x18\x05 \x01(\x05\x12\r\n\x05title\x18\x06 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x07 \x01(\t\x12&\n\x05\x61sset\x18\t \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\";\n\x08Uploader\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\"\x18\n\x07VideoId\x12\r\n\x05value\x18\x01 \x01(\x03\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video\"5\n\x13\x43reateVideoResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"R\n\x17UpdateVideoAssetRequest\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12&\n\x05\x61sset\x18\x02 \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\":\n\x18UpdateVideoAssetResponse\x12\x0f\n\x07updated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"]\n\rVideoMetadata\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x17\n\x0f\x64urationSeconds\x18\x04 \x01(\x05\"<\n\x1aVideoMetadatUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t2\xd2\x02\n\x0cVideoService\x12:\n\x0cGetVideoById\x12\x14.tv.uob.grpc.VideoId\x1a\x12.tv.uob.grpc.Video\"\x00\x12\x45\n\x0b\x43reateVideo\x12\x12.tv.uob.grpc.Video\x1a .tv.uob.grpc.CreateVideoResponse\"\x00\x12\x61\n\x10UpdateVideoAsset\x12$.tv.uob.grpc.UpdateVideoAssetRequest\x1a%.tv.uob.grpc.UpdateVideoAssetResponse\"\x00\x12\\\n\x13UpdateVideoMetadata\x12\x1a.tv.uob.grpc.VideoMetadata\x1a\'.tv.uob.grpc.VideoMetadatUpdateResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0cvideos.proto\x12\x0btv.uob.grpc\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"=\n\nVideoAsset\x12\x0e\n\x06\x62ucket\x18\x01 \x01(\t\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x11\n\tcreatedAt\x18\x03 \x01(\x03\"\xb4\x01\n\x05Video\x12\n\n\x02id\x18\x01 \x01(\x03\x12\x11\n\tcreatedAt\x18\x02 \x01(\x03\x12\'\n\x08uploader\x18\x04 \x01(\x0b\x32\x15.tv.uob.grpc.Uploader\x12\x17\n\x0f\x64urationSeconds\x18\x05 \x01(\x05\x12\r\n\x05title\x18\x06 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x07 \x01(\t\x12&\n\x05\x61sset\x18\t \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\";\n\x08Uploader\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08username\x18\x03 \x01(\t\"\x18\n\x07VideoId\x12\r\n\x05value\x18\x01 \x01(\x03\"E\n\x10GetVideoResponse\x12\x0e\n\x06sucess\x18\x01 \x01(\x08\x12!\n\x05video\x18\x02 \x01(\x0b\x32\x12.tv.uob.grpc.Video\"5\n\x13\x43reateVideoResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"R\n\x17UpdateVideoAssetRequest\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12&\n\x05\x61sset\x18\x02 \x01(\x0b\x32\x17.tv.uob.grpc.VideoAsset\":\n\x18UpdateVideoAssetResponse\x12\x0f\n\x07updated\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t\"]\n\rVideoMetadata\x12\x0f\n\x07videoId\x18\x01 \x01(\x03\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x17\n\x0f\x64urationSeconds\x18\x04 \x01(\x05\"/\n\tVideoList\x12\"\n\x06videos\x18\x01 \x03(\x0b\x32\x12.tv.uob.grpc.Video\"<\n\x1aVideoMetadatUpdateResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\r\n\x05\x65rror\x18\x02 \x01(\t2\x92\x03\n\x0cVideoService\x12:\n\x0cGetVideoById\x12\x14.tv.uob.grpc.VideoId\x1a\x12.tv.uob.grpc.Video\"\x00\x12>\n\nlistVideos\x12\x16.google.protobuf.Empty\x1a\x16.tv.uob.grpc.VideoList\"\x00\x12\x45\n\x0b\x43reateVideo\x12\x12.tv.uob.grpc.Video\x1a .tv.uob.grpc.CreateVideoResponse\"\x00\x12\x61\n\x10UpdateVideoAsset\x12$.tv.uob.grpc.UpdateVideoAssetRequest\x1a%.tv.uob.grpc.UpdateVideoAssetResponse\"\x00\x12\\\n\x13UpdateVideoMetadata\x12\x1a.tv.uob.grpc.VideoMetadata\x1a\'.tv.uob.grpc.VideoMetadatUpdateResponse\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -67,8 +68,8 @@ _VIDEOASSET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=62,
-  serialized_end=123,
+  serialized_start=91,
+  serialized_end=152,
 )
 
 
@@ -140,8 +141,8 @@ _VIDEO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=126,
-  serialized_end=306,
+  serialized_start=155,
+  serialized_end=335,
 )
 
 
@@ -185,8 +186,8 @@ _UPLOADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=308,
-  serialized_end=367,
+  serialized_start=337,
+  serialized_end=396,
 )
 
 
@@ -216,8 +217,8 @@ _VIDEOID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=369,
-  serialized_end=393,
+  serialized_start=398,
+  serialized_end=422,
 )
 
 
@@ -254,8 +255,8 @@ _GETVIDEORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=395,
-  serialized_end=464,
+  serialized_start=424,
+  serialized_end=493,
 )
 
 
@@ -292,8 +293,8 @@ _CREATEVIDEORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=466,
-  serialized_end=519,
+  serialized_start=495,
+  serialized_end=548,
 )
 
 
@@ -330,8 +331,8 @@ _UPDATEVIDEOASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=521,
-  serialized_end=603,
+  serialized_start=550,
+  serialized_end=632,
 )
 
 
@@ -368,8 +369,8 @@ _UPDATEVIDEOASSETRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=605,
-  serialized_end=663,
+  serialized_start=634,
+  serialized_end=692,
 )
 
 
@@ -420,8 +421,39 @@ _VIDEOMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=665,
-  serialized_end=758,
+  serialized_start=694,
+  serialized_end=787,
+)
+
+
+_VIDEOLIST = _descriptor.Descriptor(
+  name='VideoList',
+  full_name='tv.uob.grpc.VideoList',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='videos', full_name='tv.uob.grpc.VideoList.videos', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=789,
+  serialized_end=836,
 )
 
 
@@ -458,14 +490,15 @@ _VIDEOMETADATUPDATERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=760,
-  serialized_end=820,
+  serialized_start=838,
+  serialized_end=898,
 )
 
 _VIDEO.fields_by_name['uploader'].message_type = _UPLOADER
 _VIDEO.fields_by_name['asset'].message_type = _VIDEOASSET
 _GETVIDEORESPONSE.fields_by_name['video'].message_type = _VIDEO
 _UPDATEVIDEOASSETREQUEST.fields_by_name['asset'].message_type = _VIDEOASSET
+_VIDEOLIST.fields_by_name['videos'].message_type = _VIDEO
 DESCRIPTOR.message_types_by_name['VideoAsset'] = _VIDEOASSET
 DESCRIPTOR.message_types_by_name['Video'] = _VIDEO
 DESCRIPTOR.message_types_by_name['Uploader'] = _UPLOADER
@@ -475,6 +508,7 @@ DESCRIPTOR.message_types_by_name['CreateVideoResponse'] = _CREATEVIDEORESPONSE
 DESCRIPTOR.message_types_by_name['UpdateVideoAssetRequest'] = _UPDATEVIDEOASSETREQUEST
 DESCRIPTOR.message_types_by_name['UpdateVideoAssetResponse'] = _UPDATEVIDEOASSETRESPONSE
 DESCRIPTOR.message_types_by_name['VideoMetadata'] = _VIDEOMETADATA
+DESCRIPTOR.message_types_by_name['VideoList'] = _VIDEOLIST
 DESCRIPTOR.message_types_by_name['VideoMetadatUpdateResponse'] = _VIDEOMETADATUPDATERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -541,6 +575,13 @@ VideoMetadata = _reflection.GeneratedProtocolMessageType('VideoMetadata', (_mess
   ))
 _sym_db.RegisterMessage(VideoMetadata)
 
+VideoList = _reflection.GeneratedProtocolMessageType('VideoList', (_message.Message,), dict(
+  DESCRIPTOR = _VIDEOLIST,
+  __module__ = 'videos_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.VideoList)
+  ))
+_sym_db.RegisterMessage(VideoList)
+
 VideoMetadatUpdateResponse = _reflection.GeneratedProtocolMessageType('VideoMetadatUpdateResponse', (_message.Message,), dict(
   DESCRIPTOR = _VIDEOMETADATUPDATERESPONSE,
   __module__ = 'videos_pb2'
@@ -557,8 +598,8 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=823,
-  serialized_end=1161,
+  serialized_start=901,
+  serialized_end=1303,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVideoById',
@@ -570,9 +611,18 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='listVideos',
+    full_name='tv.uob.grpc.VideoService.listVideos',
+    index=1,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    output_type=_VIDEOLIST,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='CreateVideo',
     full_name='tv.uob.grpc.VideoService.CreateVideo',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_VIDEO,
     output_type=_CREATEVIDEORESPONSE,
@@ -581,7 +631,7 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UpdateVideoAsset',
     full_name='tv.uob.grpc.VideoService.UpdateVideoAsset',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_UPDATEVIDEOASSETREQUEST,
     output_type=_UPDATEVIDEOASSETRESPONSE,
@@ -590,7 +640,7 @@ _VIDEOSERVICE = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='UpdateVideoMetadata',
     full_name='tv.uob.grpc.VideoService.UpdateVideoMetadata',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_VIDEOMETADATA,
     output_type=_VIDEOMETADATUPDATERESPONSE,

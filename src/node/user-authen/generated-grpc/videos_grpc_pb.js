@@ -4,6 +4,18 @@
 var grpc = require('grpc');
 var videos_pb = require('./videos_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
+
+function serialize_google_protobuf_Empty(arg) {
+  if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
+    throw new Error('Expected argument of type google.protobuf.Empty');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_google_protobuf_Empty(buffer_arg) {
+  return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_tv_uob_grpc_CreateVideoResponse(arg) {
   if (!(arg instanceof videos_pb.CreateVideoResponse)) {
@@ -60,6 +72,17 @@ function deserialize_tv_uob_grpc_VideoId(buffer_arg) {
   return videos_pb.VideoId.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_tv_uob_grpc_VideoList(arg) {
+  if (!(arg instanceof videos_pb.VideoList)) {
+    throw new Error('Expected argument of type tv.uob.grpc.VideoList');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_tv_uob_grpc_VideoList(buffer_arg) {
+  return videos_pb.VideoList.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_tv_uob_grpc_VideoMetadatUpdateResponse(arg) {
   if (!(arg instanceof videos_pb.VideoMetadatUpdateResponse)) {
     throw new Error('Expected argument of type tv.uob.grpc.VideoMetadatUpdateResponse');
@@ -94,6 +117,17 @@ var VideoServiceService = exports.VideoServiceService = {
     requestDeserialize: deserialize_tv_uob_grpc_VideoId,
     responseSerialize: serialize_tv_uob_grpc_Video,
     responseDeserialize: deserialize_tv_uob_grpc_Video,
+  },
+  listVideos: {
+    path: '/tv.uob.grpc.VideoService/listVideos',
+    requestStream: false,
+    responseStream: false,
+    requestType: google_protobuf_empty_pb.Empty,
+    responseType: videos_pb.VideoList,
+    requestSerialize: serialize_google_protobuf_Empty,
+    requestDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_tv_uob_grpc_VideoList,
+    responseDeserialize: deserialize_tv_uob_grpc_VideoList,
   },
   createVideo: {
     path: '/tv.uob.grpc.VideoService/CreateVideo',

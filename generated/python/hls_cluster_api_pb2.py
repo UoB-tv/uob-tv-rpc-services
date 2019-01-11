@@ -17,10 +17,10 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='hls_cluster_api.proto',
-  package='tv.uob.grpc',
+  package='tv.uob.grpc.hls_cluster',
   syntax='proto3',
   serialized_options=_b('\n\013tv.uob.grpcP\001'),
-  serialized_pb=_b('\n\x15hls_cluster_api.proto\x12\x0btv.uob.grpc\x1a\x1bgoogle/protobuf/empty.proto\"2\n\x0fStartTransmuxer\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x11\n\tstreamKey\x18\x02 \x01(\t\"6\n\x0f\x41\x64\x64RouterRecord\x12\x11\n\tstreamKey\x18\x01 \x01(\t\x12\x10\n\x08streamId\x18\x02 \x01(\x03\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x15hls_cluster_api.proto\x12\x17tv.uob.grpc.hls_cluster\x1a\x1bgoogle/protobuf/empty.proto\"2\n\x0fStartTransmuxer\x12\x0c\n\x04time\x18\x01 \x01(\x03\x12\x11\n\tstreamKey\x18\x02 \x01(\t\"6\n\x0f\x41\x64\x64RouterRecord\x12\x11\n\tstreamKey\x18\x01 \x01(\t\x12\x10\n\x08streamId\x18\x02 \x01(\x03\"\x1a\n\tStreamKey\x12\r\n\x05value\x18\x01 \x01(\t\"\x18\n\x07\x42oolean\x12\r\n\x05value\x18\x01 \x01(\x08\x32\x62\n\nHlsCluster\x12T\n\ncanConnect\x12\".tv.uob.grpc.hls_cluster.StreamKey\x1a .tv.uob.grpc.hls_cluster.Boolean\"\x00\x42\x0f\n\x0btv.uob.grpcP\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -29,20 +29,20 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _STARTTRANSMUXER = _descriptor.Descriptor(
   name='StartTransmuxer',
-  full_name='tv.uob.grpc.StartTransmuxer',
+  full_name='tv.uob.grpc.hls_cluster.StartTransmuxer',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='time', full_name='tv.uob.grpc.StartTransmuxer.time', index=0,
+      name='time', full_name='tv.uob.grpc.hls_cluster.StartTransmuxer.time', index=0,
       number=1, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='streamKey', full_name='tv.uob.grpc.StartTransmuxer.streamKey', index=1,
+      name='streamKey', full_name='tv.uob.grpc.hls_cluster.StartTransmuxer.streamKey', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -60,27 +60,27 @@ _STARTTRANSMUXER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=67,
-  serialized_end=117,
+  serialized_start=79,
+  serialized_end=129,
 )
 
 
 _ADDROUTERRECORD = _descriptor.Descriptor(
   name='AddRouterRecord',
-  full_name='tv.uob.grpc.AddRouterRecord',
+  full_name='tv.uob.grpc.hls_cluster.AddRouterRecord',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='streamKey', full_name='tv.uob.grpc.AddRouterRecord.streamKey', index=0,
+      name='streamKey', full_name='tv.uob.grpc.hls_cluster.AddRouterRecord.streamKey', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='streamId', full_name='tv.uob.grpc.AddRouterRecord.streamId', index=1,
+      name='streamId', full_name='tv.uob.grpc.hls_cluster.AddRouterRecord.streamId', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -98,28 +98,130 @@ _ADDROUTERRECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=119,
-  serialized_end=173,
+  serialized_start=131,
+  serialized_end=185,
+)
+
+
+_STREAMKEY = _descriptor.Descriptor(
+  name='StreamKey',
+  full_name='tv.uob.grpc.hls_cluster.StreamKey',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='tv.uob.grpc.hls_cluster.StreamKey.value', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=187,
+  serialized_end=213,
+)
+
+
+_BOOLEAN = _descriptor.Descriptor(
+  name='Boolean',
+  full_name='tv.uob.grpc.hls_cluster.Boolean',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='value', full_name='tv.uob.grpc.hls_cluster.Boolean.value', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=215,
+  serialized_end=239,
 )
 
 DESCRIPTOR.message_types_by_name['StartTransmuxer'] = _STARTTRANSMUXER
 DESCRIPTOR.message_types_by_name['AddRouterRecord'] = _ADDROUTERRECORD
+DESCRIPTOR.message_types_by_name['StreamKey'] = _STREAMKEY
+DESCRIPTOR.message_types_by_name['Boolean'] = _BOOLEAN
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StartTransmuxer = _reflection.GeneratedProtocolMessageType('StartTransmuxer', (_message.Message,), dict(
   DESCRIPTOR = _STARTTRANSMUXER,
   __module__ = 'hls_cluster_api_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.StartTransmuxer)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.hls_cluster.StartTransmuxer)
   ))
 _sym_db.RegisterMessage(StartTransmuxer)
 
 AddRouterRecord = _reflection.GeneratedProtocolMessageType('AddRouterRecord', (_message.Message,), dict(
   DESCRIPTOR = _ADDROUTERRECORD,
   __module__ = 'hls_cluster_api_pb2'
-  # @@protoc_insertion_point(class_scope:tv.uob.grpc.AddRouterRecord)
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.hls_cluster.AddRouterRecord)
   ))
 _sym_db.RegisterMessage(AddRouterRecord)
 
+StreamKey = _reflection.GeneratedProtocolMessageType('StreamKey', (_message.Message,), dict(
+  DESCRIPTOR = _STREAMKEY,
+  __module__ = 'hls_cluster_api_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.hls_cluster.StreamKey)
+  ))
+_sym_db.RegisterMessage(StreamKey)
+
+Boolean = _reflection.GeneratedProtocolMessageType('Boolean', (_message.Message,), dict(
+  DESCRIPTOR = _BOOLEAN,
+  __module__ = 'hls_cluster_api_pb2'
+  # @@protoc_insertion_point(class_scope:tv.uob.grpc.hls_cluster.Boolean)
+  ))
+_sym_db.RegisterMessage(Boolean)
+
 
 DESCRIPTOR._options = None
+
+_HLSCLUSTER = _descriptor.ServiceDescriptor(
+  name='HlsCluster',
+  full_name='tv.uob.grpc.hls_cluster.HlsCluster',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  serialized_start=241,
+  serialized_end=339,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='canConnect',
+    full_name='tv.uob.grpc.hls_cluster.HlsCluster.canConnect',
+    index=0,
+    containing_service=None,
+    input_type=_STREAMKEY,
+    output_type=_BOOLEAN,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_HLSCLUSTER)
+
+DESCRIPTOR.services_by_name['HlsCluster'] = _HLSCLUSTER
+
 # @@protoc_insertion_point(module_scope)

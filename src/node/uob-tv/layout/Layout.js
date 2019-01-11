@@ -168,7 +168,7 @@ class Layout extends React.Component {
         this.handleLoginToggle = this.handleLoginToggle.bind(this)
         this.handleLoginSuccess = this.handleLoginSuccess.bind(this)
         this.handleLoginFailure = this.handleLoginFailure.bind(this)
-        this.authenClient = new AuthenClient("http://www.uob-tv.co.uk:8080/api/v1")
+        this.authenClient = new AuthenClient("http://localhost:8080/api/v1")
     }
 
     handleLoginToggle() {
@@ -176,6 +176,7 @@ class Layout extends React.Component {
             loginOpen: !this.state.loginOpen,
         })
     }
+
     handleAccountMenuToggle() {
         this.setState({
             accountMenuOpen: !this.state.accountMenuOpen,
@@ -193,11 +194,18 @@ class Layout extends React.Component {
         const idToken = googleUser.getAuthResponse().id_token;
         console.log("idToken", idToken)
         this.authenClient.verifySignIn(idToken)
-            .then(response => {
-                console.log("verify_signin success", response)
+            .then(json => {
+                console.log("verify_signin success")
+                const accessToken = json.accessToken
+                this.props.login(googleUser, accessToken)
             })
             .catch(error => {
                 console.error("verify_signin failed", error)
+            })
+            .finally( () => {
+                this.setState({
+                    loginOpen: false,
+                })
             })
     }
     handleLoginFailure(error) {

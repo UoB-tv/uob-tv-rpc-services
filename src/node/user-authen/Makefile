@@ -1,11 +1,11 @@
 NAME = user-authen-server
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=1-7
+VERSION=1-13
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 
 
-docker_image:
+docker_image: gen-proto
 	docker build --rm -t ${TAG}  --build-arg  BINARY=${BINARY} .
 
 docker_push_image: docker_image

@@ -19,6 +19,13 @@ spec:
       containers:
       - name: graphql-api-server
         image: eu.gcr.io/uob-tv-project-dev/graphql-api:0.1
+        imagePullPolicy: Always
+        env: 
+          - name: API_AUTH_JWT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: user-auth-secrets
+                key: api-auth-jwt-secret
         ports:
           - containerPort: 8080
         resources:

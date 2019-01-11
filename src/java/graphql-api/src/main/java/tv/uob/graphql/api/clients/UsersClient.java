@@ -3,7 +3,7 @@ package tv.uob.graphql.api.clients;
 import com.google.inject.AbstractModule;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import tv.uob.grpc.UserServiceGrpc;
+import tv.uob.grpc.users.UserServiceGrpc;
 
 public class UsersClient extends AbstractModule {
     private static final String host;

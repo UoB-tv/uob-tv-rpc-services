@@ -9,12 +9,16 @@ import com.google.inject.servlet.ServletModule;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.eclipse.jetty.util.resource.PathResource;
 import tv.uob.graphql.api.clients.ClientModule;
 import tv.uob.graphql.api.schemas.SchemaModule;
 
+import javax.inject.Singleton;
 import java.io.File;
 import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import static javax.servlet.DispatcherType.ASYNC;
@@ -39,7 +43,15 @@ public class GraphQLServer {
                                 new ServletModule() {
                                     @Override
                                     protected void configureServlets() {
+                                        Map<String, String> corsParams = new HashMap<>();
+                                        corsParams.put("allowedOrigins", "*");
+                                        corsParams.put("allowCredentials","true");
+                                        corsParams.put("allowedMethods","GET,POST,OPTIONS,DELETE,HEAD");
+
+                                        bind(CrossOriginFilter.class).in(Singleton.class);
                                         serve("/graphql").with(GraphQLServlet.class);
+                                        filter("/graphql").through(CrossOriginFilter.class, corsParams);
+                                        filter("/graphql").through(JwtAuthenticationFilter.class);
                                     }
                                 },
                                 new DataLoaderModule(),

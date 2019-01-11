@@ -1,7 +1,7 @@
 FROM node:8-alpine
 
 RUN mkdir -p /opt/app
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat openssl-dev curl
 ENV NODE_ENV production
 ENV PORT 8080
 EXPOSE 8080

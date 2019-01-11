@@ -2,9 +2,10 @@ syntax = "proto3";
 package  tv.uob.grpc;
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 option java_multiple_files = true;
-option java_package = "tv.uob.grpc";
+option java_package = "tv.uob.grpc.videos";
 
 
 message VideoAsset {
@@ -59,6 +60,9 @@ message VideoMetadata {
     int32 durationSeconds = 4;
 }
 
+message VideoList {
+    repeated Video videos = 1;
+}
 message VideoMetadatUpdateResponse {
     bool success = 1;
     string error = 2;
@@ -66,6 +70,7 @@ message VideoMetadatUpdateResponse {
 
 service VideoService {
     rpc GetVideoById(VideoId) returns (Video) {}
+    rpc listVideos(google.protobuf.Empty) returns (VideoList) {}
     rpc CreateVideo(Video) returns (CreateVideoResponse) {}
     rpc UpdateVideoAsset(UpdateVideoAssetRequest) returns (UpdateVideoAssetResponse) {}
     rpc UpdateVideoMetadata(VideoMetadata) returns (VideoMetadatUpdateResponse) {}

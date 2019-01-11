@@ -98,25 +98,6 @@ export class IndexPage extends React.Component {
                             live={true}
                         />
                     </Grid>
-                    { false ? 
-                    <Grid item xs={12} className={classes.playerContainer}>
-                        <MediaPlayer
-                            url="http://127.0.0.1:8080/playlist.m3u8"
-                            controls
-                            responsive={true}
-                            showMetadata
-                            metadata={this.metadata}
-                            playsinline
-                            config={{
-                                file : {
-                                    forceHLS: true
-                                }
-                            }}
-                            
-                        /> 
-                    </Grid> : null
-                    }
-                    
                     <Grid item xs={12} className={classes.pageSection}>
                         <Typography variant="h6">
                             Popular Live Streams

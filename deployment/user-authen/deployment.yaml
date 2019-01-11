@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: user-authen-server
-        image: eu.gcr.io/uob-tv-project-dev/user-authen-server:1-7
+        image: eu.gcr.io/uob-tv-project-dev/user-authen-server:1-13
         imagePullPolicy: Always
         env: 
           - name: API_AUTH_JWT_SECRET

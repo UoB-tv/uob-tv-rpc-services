@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package  tv.uob.grpc;
+package  tv.uob.grpc.hls_cluster;
 
 import "google/protobuf/empty.proto";
 
@@ -18,3 +18,32 @@ message AddRouterRecord {
     int64 streamId = 2;
 }
 
+message StreamKey {
+    string value = 1;
+}
+
+message Boolean {
+    bool value = 1;
+}
+
+message RpcResult {
+    bool success = 1;
+    string error = 2;
+}
+
+message TranmuxerParameters {
+    string streamKey = 1;
+    string streamId = 2;
+}
+
+message StreamId {
+    string streamKey = 1;
+    int64 streamId = 2;
+}
+
+service HlsCluster {
+    rpc setupStream(StreamId) returns (RpcResult) {}
+    rpc canConnect(StreamKey) returns (Boolean) {}
+    rpc provisionTranmuxer(TranmuxerParameters) returns (RpcResult) {}
+    rpc unprovisionTranmuxer(StreamKey) returns (RpcResult) {}
+}

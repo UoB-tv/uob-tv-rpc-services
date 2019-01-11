@@ -13,7 +13,7 @@ export class AuthenClient {
             "id_token": idToken
         })
         .then(response => {
-            console.log(response)
+            return response.data
         })
         .catch(error => {
             console.log(error)

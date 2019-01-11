@@ -2,7 +2,7 @@ syntax = "proto3";
 package  tv.uob.grpc;
 
 option java_multiple_files = true;
-option java_package = "tv.uob.grpc";
+option java_package = "tv.uob.grpc.channels";
 
 import "ChannelId.proto";
 import "UserId.proto";
@@ -21,9 +21,8 @@ message Owner {
     string username = 3;
 }
 
-
 message InitialChannelData {
-    int64 userId = 1;
+    string userId = 1;
     int64 channelId = 2;
 }
 

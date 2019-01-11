@@ -1,5 +1,5 @@
 NAME = graphql-api
-VERSION = 0.1
+VERSION = 0-2
 
 JAR_VERSION = 1.0-SNAPSHOT
 

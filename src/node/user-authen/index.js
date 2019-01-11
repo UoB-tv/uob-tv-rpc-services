@@ -3,6 +3,7 @@ const http = require("http")
 const bodyParser = require("body-parser")
 const jsonwebtoken = require('jsonwebtoken')
 const grpc = require('grpc')
+const cors = require('cors')
 
 const PORT = process.env.PORT || 8080
 const GOOGLE_SIGN_IN_CLIENT_ID = process.env.GOOGLE_SIGN_IN_CLIENT_ID
@@ -23,8 +24,8 @@ const API_AUTH_JWT_SECRET = process.env.API_AUTH_JWT_SECRET || "SECRET123456"
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(GOOGLE_SIGN_IN_CLIENT_ID);
 
-//const USERS_HOST = "users-service" + (SERVICE_DOMAINS && ".") + SERVICE_DOMAINS
-const USERS_HOST = "localhost"
+const USERS_HOST = "users-service" + (SERVICE_DOMAINS && ".") + SERVICE_DOMAINS
+//const USERS_HOST = "localhost"
 const USERS_PORT = 6000
 
 
@@ -96,6 +97,7 @@ async function verify(token, clientId, allowedDomains) {
 
 app = express()
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -114,6 +116,8 @@ app.post("/api/v1/verify_signin", async (request, response) => {
             success: false,
         })
     }
+
+
     try {
         console.log("verifying id_token")
         const id_token = request.body.id_token
@@ -122,6 +126,7 @@ app.post("/api/v1/verify_signin", async (request, response) => {
             result = await verify(id_token, GOOGLE_SIGN_IN_CLIENT_ID, ALLOWED_GSUITE_DOMAINS)
         } catch(err) {
             console.log("probably token is invalid")
+            console.error(err)
             response.status(400).send({
                 message: "token is invalid or have expired.",
                 success: false,
@@ -165,5 +170,3 @@ app.post("/api/v1/verify_signin", async (request, response) => {
 app.listen(PORT, () => {
     console.log("listening on", PORT)
 })
-
-

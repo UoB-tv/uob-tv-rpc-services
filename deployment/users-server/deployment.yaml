@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: users-server
-        image: eu.gcr.io/uob-tv-project-dev/users-server:1-4
+        image: eu.gcr.io/uob-tv-project-dev/users-server:1-5
         imagePullPolicy: Always
         ports:
           - containerPort: 6000
