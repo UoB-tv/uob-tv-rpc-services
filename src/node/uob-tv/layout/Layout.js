@@ -28,6 +28,7 @@ import {
     ListItemIcon,
     Button,
     Menu,
+    MenuList,
     MenuItem,
     InputBase,
     Input,
@@ -162,6 +163,7 @@ class Layout extends React.Component {
             drawerOpen: false,
             accountMenuOpen: false,
             loginOpen: false,
+            anchorEl: null,
         }
         this.handleDrawerToggle = this.handleDrawerToggle.bind(this)
         this.handleAccountMenuToggle = this.handleAccountMenuToggle.bind(this)
@@ -177,9 +179,10 @@ class Layout extends React.Component {
         })
     }
 
-    handleAccountMenuToggle() {
+    handleAccountMenuToggle(event) {
         this.setState({
             accountMenuOpen: !this.state.accountMenuOpen,
+            anchorEl: event.currentTarget,
         })
     }
 
@@ -214,6 +217,7 @@ class Layout extends React.Component {
     }
     render() {
         const { classes, activeSidebarItem, authenticated, user } = this.props
+        const { anchorEl } = this.state
         return (
             <div className={ classes.root }>
                 <CssBaseline />
@@ -245,6 +249,7 @@ class Layout extends React.Component {
                         <Button>Search</Button>
                         <div className={classes.grow}>
                         </div>
+                        <div>
                         {
                             !authenticated ?
                             <Button onClick={this.handleLoginToggle}>
@@ -257,12 +262,12 @@ class Layout extends React.Component {
                                 </Button>
                         }
                         {   
-                            authenticated ? 
+                            authenticated ?
                             <Menu
                                 id="menu-appbar"
-                                
+                                anchorEl={anchorEl}
                                 anchorOrigin={{
-                                    vertical: 'top',
+                                    vertical: 'bottom',
                                     horizontal: 'right',
                                 }}
                                 transformOrigin={{
@@ -277,6 +282,7 @@ class Layout extends React.Component {
                             </Menu>
                             : null
                         }
+                        </div>
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -351,6 +357,7 @@ function mapStateToProps(state) {
     return {
         user: state.auth.user,
         authenticated: state.auth.authenticated,
+        profile: state.auth.profile,
     }
 }
 function mapPropsToDispatch(dispatch) {

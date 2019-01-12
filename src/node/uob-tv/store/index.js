@@ -5,10 +5,18 @@ import { auth } from './auth'
 
 
 export function storeCreator() {
-    return createStore(
+    let store = createStore(
         combineReducers({
             auth: auth
         }),
         composeWithDevTools(applyMiddleware(logger))
     )
+    store.subscribe(() => {
+        const auth = { ...store.getState().auth };
+        delete auth.user
+        if(window && window.localStorage) {
+            window.localStorage.setItem("auth_state", JSON.stringify(auth))
+        }
+    })
+    return store
 }

@@ -32,6 +32,9 @@ app.prepare().then(() => {
         return app.render(req, res, '/browse', req.query)
     })
 
+    server.get('/live', (req, res) => {
+        return app.render(req, res, '/live', req.query)
+    })
     server.listen(80, err => {
         if (err) throw err
         console.log('> Ready on http://localhost:80')
