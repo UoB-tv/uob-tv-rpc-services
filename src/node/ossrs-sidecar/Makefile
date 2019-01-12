@@ -1,6 +1,6 @@
-NAME = user-authen-server
+NAME = ossrs_sidecar
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=1-13
+VERSION=1-2
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 

@@ -1,0 +1,11 @@
+apiVersion: k8s.uob.tv/v1
+kind: HlsStream
+metadata:
+  name: stream-dddd
+  namespace: video-proc-streaming
+spec:
+  streamKey: dddd
+  rtmpService: ossrs-ingestion-service
+  ip: 10.14.123.41
+  port: 1935
+  channelId: 1235

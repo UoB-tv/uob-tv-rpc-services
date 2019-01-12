@@ -18,7 +18,6 @@ const RTMP_SERVICE = process.env.RTMP_SERVICE || "ossrs-ingestion-service"
 const HLS_CLUSTER_HOST = "hls-cluster-service" + (SERVICE_DOMAINS && ".") + SERVICE_DOMAINS
 const HLS_PORT = GRPC_PORT
 
-
 const hlsClusterGrpcClient = new services
     .HlsClusterClient(`${HLS_CLUSTER_HOST}:${HLS_PORT}`, grpc.credentials.createInsecure())
 

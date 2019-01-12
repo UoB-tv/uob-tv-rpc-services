@@ -1,0 +1,67 @@
+# variables: streamKey, ffmpegImage, nginxImage, channelId
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ appName }}-{{ streamKey }}
+  namespace: {{ namespace }}
+  labels:
+    app: {{ appName }}
+    stream-key: {{ streamKey }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ appName }}
+      stream-key: {{ streamKey }}
+  template:
+    metadata:
+      labels:
+        app: {{ appName }}
+        stream-key: {{ streamKey }}
+        namespace: {{ namespace }}
+    spec:
+      containers:
+        - name: ffmpeg
+          image: {{ ffmpegImage }}
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RTMP_SOURCE
+              value: {{ rtmpUrl }}/live/stream/{{ streamKey }}
+            - name: HLS_OUTPUT_DIR
+              value: /var/ffmpeg-out
+            - name: STREAM_KEY
+              value: {{ streamKey }}
+            - name: HLS_FILE_NAME
+              value: segments
+            - name: CHANNEL_ID
+              value: {{ channelId }}
+          ports:
+          - containerPort: 1935
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "80m"
+            limits:
+              memory: "256Mi"
+              cpu: "300m"
+          volumeMounts:
+            - name: video-data
+              mountPath: /var/ffmpeg-out
+        - name: nginx
+          image: {{ nginxImage }}
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: "60Mi"
+              cpu: "50m"
+            limits:
+              memory: "120Mi"
+              cpu: "150m"
+          volumeMounts:
+            - name: video-data
+              mountPath: /var/ffmpeg-out
+      volumes:
+        - name: video-data
+          emptyDir: {}
