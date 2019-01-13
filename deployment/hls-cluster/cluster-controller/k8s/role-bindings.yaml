@@ -1,0 +1,14 @@
+# This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: video-proc-streaming-cluster:admin
+  namespace: video-proc-streaming
+subjects:
+- name: default
+  kind: ServiceAccount
+  namespace: video-proc-streaming
+roleRef:
+  kind: Role
+  name: hls-streams-admin-edit
+  apiGroup: rbac.authorization.k8s.io

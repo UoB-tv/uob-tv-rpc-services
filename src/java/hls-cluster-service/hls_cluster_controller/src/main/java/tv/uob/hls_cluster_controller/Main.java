@@ -34,7 +34,7 @@ public class Main {
 
     private static String CRD_GROUP = "k8s.uob.tv";
     private static String CRD_NAME = "hlsstreams.k8s.uob.tv";
-
+    private static volatile boolean shouldWatch = true;
     static {
         try {
             template = Resources.toString(Resources.getResource("hls-streamer-template.yaml"), Charsets.UTF_8);
@@ -74,6 +74,12 @@ public class Main {
         try (final KubernetesClient client = new DefaultKubernetesClient(config)) {
             IstioClient istioClient = new DefaultIstioClient(client.getConfiguration());
             namespace = client.getNamespace();
+            logger.info("client running in namespace: " +namespace);
+
+            if(namespace != "video-proc-streaming") {
+                namespace = "video-proc-streaming";
+                logger.info("forcing namespace to be " + namespace);
+            }
             CustomResourceDefinition hlsStreamCRD = null;
 
             //hlsStreamCRD = client.customResourceDefinitions().withName(CRD_NAME).get();
@@ -91,19 +97,15 @@ public class Main {
                             DoneableHlsStream.class
                     );
 
-            if (namespace != null) {
-                hlsStreamsClient = ((MixedOperation<HlsStream, HlsStreamList, DoneableHlsStream, Resource<HlsStream, DoneableHlsStream>>) hlsStreamsClient).inNamespace(namespace);
-            }
+            hlsStreamsClient = ((MixedOperation<HlsStream, HlsStreamList, DoneableHlsStream, Resource<HlsStream,DoneableHlsStream>>) hlsStreamsClient).inNamespace(namespace);
 
-            CustomResourceList<HlsStream> dummyList = hlsStreamsClient.list();
-            List<HlsStream> items = dummyList.getItems();
-            System.out.println("  found " + items.size() + " hls-streamers");
-
+            //CustomResourceList<HlsStream> dummyList = hlsStreamsClient.list();
+            //List<HlsStream> items = dummyList.getItems();
+            //System.out.println("  found " + items.size() + " hls-streamers");
             // reconciliate on startup.
 
-
             HlsStreamWatcher watcher = new HlsStreamWatcher(
-                    client,
+                    ((DefaultKubernetesClient) client).inNamespace(namespace),
                     istioClient,
                     appName,
                     jinja,
@@ -112,13 +114,33 @@ public class Main {
                     nginxImage
             );
 
-            try (Watch watch = hlsStreamsClient
-                    .withResourceVersion(hlsStreamCRD.getMetadata().getResourceVersion())
-                    .watch(watcher)) {
-                System.in.read();
-            } catch (Exception e) {
-                logger.error("Error when watching resources");
-                logger.trace(e.getMessage(), e);
+            while(true) {
+                try (
+                    Watch watch = hlsStreamsClient
+                            .withResourceVersion(hlsStreamCRD.getMetadata().getResourceVersion())
+                            .watch(watcher)
+                ){
+
+                    while(shouldWatch) {
+                        System.in.read();
+                        logger.info("continued from wait for key.");
+                        try {
+                            Thread.sleep(5000);
+                        } catch(InterruptedException e) {
+                            logger.info("sleep interrupted");
+                        }
+                    }
+                } catch (Exception e) {
+                    logger.error("Error when watching resources");
+                    logger.trace(e.getMessage(), e);
+                    e.printStackTrace();
+                }
+                logger.info("watcher stopped, sleeping before trying again");
+                try {
+                    Thread.sleep(5000);
+                } catch(InterruptedException e) {
+                    logger.info("sleep interrupted");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

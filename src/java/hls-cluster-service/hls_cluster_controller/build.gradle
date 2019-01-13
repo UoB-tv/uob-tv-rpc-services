@@ -1,9 +1,20 @@
 group 'tv.uob'
 version '1.0-SNAPSHOT'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
+mainClassName = "tv.uob.hls_cluster_controller.Main"
 
+apply plugin: 'com.github.johnrengelman.shadow'
 sourceCompatibility = 1.8
 
 repositories {
@@ -24,7 +35,7 @@ dependencies {
     compile group: 'me.snowdrop', name: 'istio-client-uberjar', version: '1.0.2-SNAPSHOT'
 }
 
-mainClassName = "tv.uob.hls_cluster_controller.Main"
+
 
 apply plugin: 'idea'
 
@@ -37,5 +48,4 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
 startScripts.enabled = false

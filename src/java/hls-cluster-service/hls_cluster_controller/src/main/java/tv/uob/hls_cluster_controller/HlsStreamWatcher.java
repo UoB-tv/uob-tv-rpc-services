@@ -244,9 +244,13 @@ public class HlsStreamWatcher implements Watcher<HlsStream> {
 
     @Override
     public void onClose(KubernetesClientException e) {
-        logger.error("error when closing watcher");
-        logger.error(e.getMessage());
-        logger.error(e.getStatus().toString());
+        if(e != null) {
+            logger.error("error when closing watcher");
+            logger.error(e.getMessage());
+            logger.error(e.getStatus().toString());
+        } else{
+            logger.info("closing watcher");
+        }
     }
 
 
