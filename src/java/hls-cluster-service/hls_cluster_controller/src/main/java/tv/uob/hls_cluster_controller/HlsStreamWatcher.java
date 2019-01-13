@@ -11,14 +11,14 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClientException;
 import io.fabric8.kubernetes.client.Watcher;
 import io.fabric8.kubernetes.client.dsl.ScalableResource;
-import me.snowdrop.istio.api.IstioResource;
-import me.snowdrop.istio.api.networking.v1alpha3.*;
+import me.snowdrop.istio.api.networking.v1alpha3.VirtualService;
+import me.snowdrop.istio.api.networking.v1alpha3.VirtualServiceBuilder;
 import me.snowdrop.istio.client.IstioClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.reflect.annotation.ExceptionProxy;
 import tv.uob.hls_cluster_controller.api.HlsStream;
 import tv.uob.hls_cluster_controller.api.HlsStreamSpec;
+
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
