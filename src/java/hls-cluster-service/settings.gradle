@@ -1,2 +1,4 @@
-rootProject.name = 'hls-cluster-service'
+rootProject.name = 'hls-cluster'
 
+include "hls_cluster_controller"
+include "hls_cluster_service"

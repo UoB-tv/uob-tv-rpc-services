@@ -7,6 +7,7 @@ metadata:
   labels:
     app: {{ appName }}
     stream-key: {{ streamKey }}
+    managed-by: hls-cluster-controller
 spec:
   replicas: 1
   selector:
@@ -18,15 +19,15 @@ spec:
       labels:
         app: {{ appName }}
         stream-key: {{ streamKey }}
-        namespace: {{ namespace }}
     spec:
       containers:
         - name: ffmpeg
           image: {{ ffmpegImage }}
           imagePullPolicy: IfNotPresent
+          command: ["/start-ffmpeg.sh"]
           env:
             - name: RTMP_SOURCE
-              value: {{ rtmpUrl }}/live/stream/{{ streamKey }}
+              value: {{ rtmpUrl }}/live/stream
             - name: HLS_OUTPUT_DIR
               value: /var/ffmpeg-out
             - name: STREAM_KEY

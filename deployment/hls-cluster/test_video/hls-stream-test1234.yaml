@@ -1,0 +1,11 @@
+apiVersion: k8s.uob.tv/v1
+kind: HlsStream
+metadata:
+  name: teststream
+  namespace: video-proc-streaming
+spec:
+  streamKey: test1234
+  rtmpService: ossrs-ingestion-service
+  ip: 10.31.243.186
+  port: 1935
+  channelId: 12345678

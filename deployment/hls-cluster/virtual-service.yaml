@@ -5,7 +5,7 @@ metadata:
   namespace: video-proc-streaming
 spec:
   selector:
-    app:  hls-stream-server
+    app:  hls-streamer
   type:  ClusterIP
   ports:
   - name: http-hls

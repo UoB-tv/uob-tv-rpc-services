@@ -13,6 +13,7 @@ public class HlsStreamSpec implements KubernetesResource {
     private String streamKey;
     private Integer port;
     private String ip;
+    private String channelId;
 
     public HlsStreamSpec() {
     }
@@ -36,7 +37,7 @@ public class HlsStreamSpec implements KubernetesResource {
         this.channelId = channelId;
     }
 
-    private String channelId;
+
 
     public Integer getPort() {
         return port;

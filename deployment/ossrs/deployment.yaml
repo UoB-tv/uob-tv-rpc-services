@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: Always
           ports:
           - containerPort: 1935
-          - containerPort: 1938
+          - containerPort: 1985
           resources:
             requests:
               memory: "256Mi"
@@ -37,7 +37,7 @@ spec:
             - name: conf
               mountPath: /etc/ossrs
         - name: ossrs-sidecar
-          image: eu.gcr.io/uob-tv-project-dev/ossrs_sidecar:1-2
+          image: eu.gcr.io/uob-tv-project-dev/ossrs_sidecar:1-1
           imagePullPolicy: Always
           ports:
           - containerPort: 6000

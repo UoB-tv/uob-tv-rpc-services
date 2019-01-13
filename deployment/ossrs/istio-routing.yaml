@@ -17,5 +17,12 @@ spec:
           host: ossrs-rtmp-ingestion-service
           port:
             number: 1935
-
-# ossrs-rtmp-ingestion-service.video-proc-streaming.svc.cluster.local
+    http:
+    - match:
+      - uri:
+          prefix: /api
+      route:
+      - destination:
+          host: ossrs-http-api
+          port:
+            number: 1985

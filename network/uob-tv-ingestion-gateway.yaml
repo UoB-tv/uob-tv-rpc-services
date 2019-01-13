@@ -13,3 +13,9 @@ spec:
         protocol: TCP
       hosts:
         - "ingest.uob-tv.co.uk"
+    - port:
+        number: 80
+        name: http-api
+        protocol: HTTP
+      hosts:
+        - "ingest.uob-tv.co.uk"

@@ -11,13 +11,15 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /
+        prefix: /test-stream
+    rewrite:
+      uri: /
     route:
     - destination:
         host: hls-cluster-service
         port:
           number: 8080
-        subset: stream-1234
+        subset: stream-test1234
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
@@ -27,6 +29,6 @@ metadata:
 spec:
   host: hls-cluster-service
   subsets:
-  - name: stream-1234
+  - name: stream-test1234
     labels:
-      stream-key: abcd-1234
+      stream-key: test1234

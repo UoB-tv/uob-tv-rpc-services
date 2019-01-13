@@ -1,0 +1,26 @@
+apiVersion: "networking.istio.io/v1alpha3"
+kind: "VirtualService"
+metadata:
+  name: "hls-stream-test1235-route"
+  annotations: {}
+  labels:
+    app: "hls-streamer"
+    stream-key: "test1235"
+    managedby: "hls-cluster-controller"
+  namespace: "video-proc-streaming"
+spec:
+  gateways:
+  - "uob-tv-hls-playback-gateway"
+  hosts:
+  - "live-playback.uob-tv.co.uk"
+  http:
+  - match:
+    - uri:
+        prefix: "/8888"
+    rewrite:
+      uri: "/"
+    route:
+    - destination:
+        host: "hls-streamer-service-test1235"
+        port:
+          number: 8080

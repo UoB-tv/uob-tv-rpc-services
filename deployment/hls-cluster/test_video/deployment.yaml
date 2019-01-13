@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-video-deployment
+  namespace: video-proc-streaming
+  labels:
+    app: test-video
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-video-ffmpeg
+  template:
+    metadata:
+      labels:
+        app: test-video-ffmpeg
+    spec:
+      containers:
+        - name: ffmpeg
+          image: eu.gcr.io/uob-tv-project-dev/uob-tv-ffmpeg:1-3
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/bash", "-ec", "while :; do ffmpeg -re -f lavfi -i testsrc=size=1920x1080:rate=30 -pix_fmt yuv420p -acodec libfaac -vcodec libx264 -profile:v baseline -preset veryfast -f flv rtmp://10.31.243.186/live/stream/test1234; sleep 60 ; done"]
+          ports:
+          - containerPort: 1935
+          resources:
+            requests:
+              memory: "48Mi"
+              cpu: "400m"
+            limits:
+              memory: "256Mi"
+              cpu: "800m"

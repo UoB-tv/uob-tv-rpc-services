@@ -9,15 +9,11 @@ spec:
   gateways:
   - uob-tv-api-gateway
   tcp:
-    
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: hello-world-destination
-spec:
-  host: hello-world.prod.svc.cluster.local
-  subsets:
-  - name: v1
-    labels:
-      version: v1
+    - match:
+        - port: 6000
+      route:
+      - destination:
+          host: hello-world-service-v1
+          port:
+            number: 6000
+

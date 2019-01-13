@@ -19,10 +19,7 @@ public class HlsClusterGrpcServer {
         GRPC_PORT = Integer.parseInt(grpcPort);
     }
     public static void main(String[] args) {
-
         try {
-
-
             Server server = ServerBuilder
                     .forPort(GRPC_PORT)
                     .addService(new HlsClusterService())
