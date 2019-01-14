@@ -2,7 +2,7 @@ NAME = uob-tv-web
 BINARY = ${NAME}
 
 REGISTRY_URL = eu.gcr.io/uob-tv-project-dev
-VERSION=0.4
+VERSION=0.5
 
 TAG = ${REGISTRY_URL}/${NAME}:${VERSION}
 
