@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: uob-tv-web
-        image: eu.gcr.io/uob-tv-project-dev/uob-tv-web:0.2
+        image: eu.gcr.io/uob-tv-project-dev/uob-tv-web:0.4
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

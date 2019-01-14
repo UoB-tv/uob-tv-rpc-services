@@ -41,7 +41,7 @@ export class IndexPage extends React.Component {
         super(props)
 
         this.metadata= {
-            title: "Bunny",
+            title: "Static Video Test",
         }
 
         this.popularStreams = [
@@ -99,24 +99,34 @@ export class IndexPage extends React.Component {
                         />
                     </Grid>
                     <Grid item xs={12} className={classes.pageSection}>
-                        <Typography variant="h6">
-                            Popular Live Streams
-                        </Typography>
                         <Grid container spacing={8} className={classes.pageInnerSection}>
-                            {
-                                this.popularStreams.map(stream => (
-                                    <Grid item xs={3} key={stream.id}>
-                                        <ButtonBase
-                                            onClick={this.handleMediaThumbnailClick}
-                                        >
-                                            <MediaThumbnail media={stream} />
-                                        </ButtonBase>
-                                    </Grid>
-                                ))
-                            }
+                            <Grid item xs={3} key="test-stream"></Grid>
+                                <MediaPlayer
+                                //url="http://35.241.0.213/vods/i0as8id8f0adf/manifest.m3u8"
+                                url="https://live-playback.uob-tv.co.uk/test-stream/segments.m3u8"
+                                controls
+                                showMetadata
+                                metadata={{title: "test-stream"}}
+                                playsinline
+                                live={true}
+                                />
+                            </Grid>
+                            <Grid item xs={3} key="8888">
+                                <MediaPlayer
+                                //url="http://35.241.0.213/vods/i0as8id8f0adf/manifest.m3u8"
+                                url="https://live-playback.uob-tv.co.uk/8888/segments.m3u8"
+                                controls
+                                showMetadata
+                                metadata={{test: "Your Live Stream"}}
+                                playsinline
+                                live={true}
+                                />
+                                <Typography variant="h6">
+                                    You can stream to rtmp://ingest.uob-tv.co.uk/live/stream with stream key: test1235
+                                </Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
             </Layout>
         )
     }

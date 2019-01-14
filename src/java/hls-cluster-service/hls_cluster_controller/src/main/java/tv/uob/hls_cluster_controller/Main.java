@@ -7,26 +7,25 @@ import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition;
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionBuilder;
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionNamesBuilder;
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinitionVersionBuilder;
-import io.fabric8.kubernetes.client.*;
+import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.NonNamespaceOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.kubernetes.internal.KubernetesDeserializer;
+import java.io.IOException;
+import java.util.Arrays;
 import me.snowdrop.istio.client.DefaultIstioClient;
 import me.snowdrop.istio.client.IstioClient;
 import org.slf4j.LoggerFactory;
 import tv.uob.hls_cluster_controller.api.DoneableHlsStream;
 import tv.uob.hls_cluster_controller.api.HlsStream;
 import tv.uob.hls_cluster_controller.api.HlsStreamList;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
     private static String ffmpegImage = "eu.gcr.io/uob-tv-project-dev/uob-tv-ffmpeg:1-3";
-    private static String nginxImage = "eu.gcr.io/uob-tv-project-dev/nginx:1-5";
+    private static String nginxImage = "eu.gcr.io/uob-tv-project-dev/nginx:1-6";
 
     private static String template = "";
     private static Jinjava jinja = new Jinjava();
