@@ -170,7 +170,7 @@ class Layout extends React.Component {
         this.handleLoginToggle = this.handleLoginToggle.bind(this)
         this.handleLoginSuccess = this.handleLoginSuccess.bind(this)
         this.handleLoginFailure = this.handleLoginFailure.bind(this)
-        this.authenClient = new AuthenClient("http://localhost:8080/api/v1")
+        this.authenClient = new AuthenClient("http://www.uob-tv.co.uj/api/v1")
     }
 
     handleLoginToggle() {
